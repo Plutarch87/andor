@@ -1,0 +1,110 @@
+body {
+	font-family: Verdana, sans-serif;
+	overflow-x: hidden;
+}
+
+header { 
+  background: url(images/background.jpg) no-repeat center center fixed ;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+  position: relative;
+  height: 100vh;
+}
+
+
+a {
+	text-decoration: none!important;
+}
+
+#logo {
+	height: 50px;
+}
+
+.nav {
+	width: 100%;
+	height: 55px;
+	background-color: #9C25A9;
+	opacity: 0.7;
+}
+
+.nav ul {
+	line-height: 1.7;
+	position: relative;
+	right: 106px;
+}
+
+.nav li {
+	display: inline;
+	list-style-type: none;
+	float: left;
+	margin-left: 77px;
+}
+
+.nav li a {
+	font-size: 28px;
+	font-weight: 600;
+	color: white;
+	opacity: 0.4;
+	transition: all 0.4s;
+}
+
+.nav li a:hover {
+	opacity: 1;
+	transition: all 0.4s;
+}
+
+.navbar-form {
+	position:relative;
+	left: 90px;
+}
+
+#formdiv {
+	width: 25%;
+	position:relative;
+	top:13%;
+	left: 37%;
+	background:#AF65B5;
+	box-shadow: 0px 9px 40px #8330A1; 
+    -webkit-box-shadow: 0px 9px 40px #8330A1;
+    -moz-box-shadow: 0px 9px 40px #8330A1;
+    /*border: solid #8330A1;*/
+}
+
+#name {
+	position: relative;
+	left: 8%;
+}
+
+#adress {
+	position: relative;
+	left: 21%;
+}
+
+#place {
+	position: relative;
+	left: 23%
+}
+
+#postalcode {
+	position: relative;
+	left: 8%;
+}
+
+textarea {
+	position: relative;
+	left: 21%;
+}
+
+#phone {
+	position: relative;
+	left: 20%;
+}
+
+#email {
+	position: relative;
+	left: 23%;
+}
+
