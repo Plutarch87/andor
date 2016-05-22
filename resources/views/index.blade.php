@@ -95,52 +95,5 @@
     </div>
 </div>
 </section>
-    <script>
-
-    $(function() {
-    $.ajaxSetup({
-        headers: {
-            'X-XSRF-Token': $('meta[name="_token"]').attr('content')
-        }
-    });
-});
-    // $("table").stupidtable();
-    $(document).ready(function() {
-
-        // Ajax for our form
-        $('form#createE').on('submit', function(event){
-            event.preventDefault();
-            var formData = {
-                name     : $('input[name=name]').val(),
-
-            }
-
-            $.ajaxSetup({
-                headers: {
-                    'X-XSRF-Token': $('meta[name="_token"]').attr('content')
-                }
-            });
-
-            $.ajax({
-                type     : "POST",
-                url      : $(this).attr('action'),
-                //url      : $(this).attr('action'),
-                data     : formData,
-                cache    : false,
-
-                success  : function(data) {
-                    console.log(data);
-                }
-            })
-
-            // console.log(formData);
-
-            return false;
-
-            // alert($(this).attr('action'));
-
-            // alert('form is submited');
-        });
-    });
-    </script>
+   
 @endsection

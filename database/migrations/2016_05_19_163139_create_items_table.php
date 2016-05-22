@@ -13,6 +13,7 @@ class CreateItemsTable extends Migration
     public function up()
     {
         Schema::create('items', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('category_id');
             $table->integer('subcat_id');
             $table->string('name');

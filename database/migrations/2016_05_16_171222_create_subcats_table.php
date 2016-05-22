@@ -13,6 +13,7 @@ class CreateSubcatsTable extends Migration
     public function up()
     {
         Schema::create('subcats', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('category_id');
             $table->string('name');
             $table->rememberToken();

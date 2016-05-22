@@ -10,9 +10,6 @@
 <link rel="stylesheet" type="text/css" href="css_flyoutverticalmenu.css">
 <link rel="stylesheet" type="text/css" href="assets/index.css">
 
-<meta name="_token" content="{{ app('Illuminate\Encryption\Encrypter')->encrypt(csrf_token()) }}" />
-
-
 </head>
 <body>
 <div class="main">        
