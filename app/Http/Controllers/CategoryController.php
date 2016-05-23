@@ -2,20 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Item;
 use App\Category;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
+use App\Repositories\CategoryRepository;
+use App\Repositories\ItemRepository;
 
 class CategoryController extends Controller
 {
     
+    protected $categories;
 
-    public function __construct()
+    public function __construct(CategoryRepository $categories)
     {
         $this->middleware('auth');
 
-       
+        $this->categories = $categories;
     }
 
     public function index()
@@ -36,6 +40,14 @@ class CategoryController extends Controller
             ]);
         
         return redirect('/#main');
+    }
+
+    public function show(Request $request, CategoryRepository $categories, ItemRepository $items, Category $categories)
+    {   
+
+        $request = $category()->items()->get();
+
+        return view('/categories', ['items' => $items]);
     }
 
     public function destroy(Request $request, Category $category)

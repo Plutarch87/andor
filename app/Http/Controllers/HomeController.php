@@ -3,20 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use DB;
 use Illuminate\Http\Request;
 
+
 class HomeController extends Controller
-{
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+{    
 
     /**
      * Show the application dashboard.
@@ -24,11 +15,7 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-       
-        return view('index', [
-            'categories' => $categories,
-            'items' => $items,
-        ]);
+    {    
+        return view('/home');
     }
 }

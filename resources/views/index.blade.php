@@ -9,7 +9,7 @@
     @if (count($categories) > 0)
         @foreach ($categories as $category)
             <li>
-                <a href="#main/{{ $category->id }}">{{ $category->name }}</a>                
+                <a href="{{ $category->name }}">{{ $category->name }}</a>                
                     <span >
                     <form action="{{ url('category/'.$category->id) }}" method="POST" id="delete" style="display:inline">
                         {{ csrf_field() }}
@@ -22,27 +22,15 @@
     @endif
     
         @if(Auth::check())
-            <li>
-                <form action="{{ url('category') }}" method="POST" id="create">
-                {{ csrf_field() }}
-                <input style="width:95%" type="text" name="name" id="create">
-            </li>
-            <li>
-                
-
-                    <a href="#" onclick="document.forms['create'].submit();return false;">+ Dodaj</a>
-                </form>
+           
             </li>
             <li>
                 <form action="{{ url('category') }}" method="POST" id="createE">
-                {{ csrf_field() }}
-                <input style="width:95%" type="text" name="name" id="create">
+                    {{ csrf_field() }}
+                    <input style="width:95%; margin: 4% 10% 0 2%" type="text" name="name" id="create">
             </li>
             <li>
-                
-
-                    <input type="submit" name="sumbit" value="sub">
-
+                    <input style="float: right; margin-top: 4%; margin-right: 10%;" type="submit" name="submit" value="+ Dodaj kategoriju">
                 </form>
             </li>
         @endif
@@ -55,7 +43,7 @@
     @if(Auth::check())
     <button type="button" href="#main" class="btn btn-info">+ Dodaj predmet</button>
     @endif
-                @if (count($items) > 0)
+                @if (count($items) > 0)           
                     @foreach ($items as $item)
                 <tr>
                     <td id="page">
@@ -69,27 +57,25 @@
                                 {{ method_field('DELETE') }}
                                 <button type="submit" id="delete-item-{{ $item->category_id }}" class="btn btn-danger">Izbrisi</button>
                             </form>
-                        @else
-                            <button type="button" class="btn btn-danger">{{ $item->sifra }}</button>
-                            <button type="button" class="btn btn-success" id="myBtn">Detalji</button>
                         @endif
+                            <button type="button" class="btn btn-danger">{{ $item->sifra }}</button>
+                            <button type="button" id="myBtn" class="btn btn-success">Detalji</button>
                     </td>
                 </tr>
                         <div id="myModal" class="modal">
                             <div class="modal-content">
-                                <span class="close">
-                                    &times;
-                                </span>
-                                <div class="container">
-                                <p>
-                                    {{ $item->description }}
-                                </p>
-                                <img src="assets/images/modal/v427.jpg" class="modalImg">
+                                <div class="modal-header">
+                                    <span class="close">&times;</span>
+                                    <h4 class="modal-title">{{ $item->name }}</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>{{ $item->description }}</p>
+                                    <img src="assets/images/modal/v427.jpg" class="modalImg">
                                 </div>
                             </div>  
                         </div>
-                        @endforeach
-                        @endif
+                    @endforeach
+                @endif
             </tbody>
         </table>
     </div>

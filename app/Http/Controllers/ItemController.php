@@ -29,10 +29,16 @@ class ItemController extends Controller
     	return redirect('/item');
     }
 
+    public function show(Request $request, Category $id)
+    {
+        $request = $items->get();
+        return view('/#main', ['items' => $items])->where($items->category_id);
+    }
+
     public function destroy(Request $request, Item $item)
     {
     	$item->delete();
 
-    	return redirect('/');
+    	return redirect('/#main');
     }
 }
