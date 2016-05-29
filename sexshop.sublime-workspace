@@ -4,19 +4,31 @@
 		"selected_items":
 		[
 			[
-				"categor",
-				"categories"
-			],
-			[
 				"cate",
-				"categories"
+				"category_id"
 			],
 			[
-				"ca",
-				"categories"
+				"Item",
+				"ItemRepository"
+			],
+			[
+				"geti",
+				"curl_getinfo"
 			],
 			[
 				"catego",
+				"category_id"
+			],
+			[
+				"categ",
+				"category_id"
+			],
+			[
+				"categor",
+				"category_id"
+			],
+			[
+				"ca",
 				"categories"
 			],
 			[
@@ -96,38 +108,10 @@
 	"buffers":
 	[
 		{
-			"contents": "@extends('layouts.app')\n\n@section('content')\n<section style=\"background-image: url('assets/images/purple-curtains-6.jpg');background-color: #F7BEF1;\" >\n<div class=\"container\">\n    <div class=\"left-content\">\n<div id=\"menuwrapper\">\n    <ul>\n    @if (count($categories) > 0)\n        @foreach ($categories as $category)\n            <li>\n                <a href=\"{{ $category->name }}\">{{ $category->name }}</a>                \n                    <span >\n                    <form action=\"{{ url('category/'.$category->id) }}\" method=\"POST\" id=\"delete\" style=\"display:inline\">\n                        {{ csrf_field() }}\n                        {{ method_field('DELETE') }}\n                        <button type=\"submit\" id=\"delete-category-{{ $category->id }}\" style=\"float:right; margin-top:4%; margin-right:10%;\" id=\"delete\">&times;</button>\n                    </form>\n                    </span>\n            </li>\n        @endforeach\n    @endif\n    \n        @if(Auth::check())\n           \n            </li>\n            <li>\n                <form action=\"{{ url('category') }}\" method=\"POST\" id=\"createE\">\n                    {{ csrf_field() }}\n                    <input style=\"width:95%; margin: 4% 10% 0 2%\" type=\"text\" name=\"name\" id=\"create\">\n            </li>\n            <li>\n                    <input style=\"float: right; margin-top: 4%; margin-right: 10%;\" type=\"submit\" name=\"submit\" value=\"+ Dodaj kategoriju\">\n                </form>\n            </li>\n        @endif\n    </ul>\n</div>\n</div>\n    <div class=\"main-content\" id=\"main\">\n        <table>\n            <tbody>\n    @if(Auth::check())\n    <button type=\"button\" href=\"{{\" class=\"btn btn-info\">+ Dodaj predmet</button>\n    @endif\n                @if (count($items) > 0)           \n                    @foreach ($items as $item)\n                <tr>\n                    <td id=\"page\">\n                        <h3>{{ $item->name }}</h3>\n                        <img src=\"assets/images/lubrikanti/v427.jpg\" id=\"Slubrikant\">\n                        <h5>{{ $item->price}}</h5>\n                        @if(Auth::check())\n                            <button type=\"button\" class=\"btn btn-info\">Izmeni</button>\n                            <form action=\"{{ url('item/'.$item->category_id) }}\" method=\"POST\" id=\"delete\">\n                                {{ csrf_field() }}\n                                {{ method_field('DELETE') }}\n                                <button type=\"submit\" id=\"delete-item-{{ $item->category_id }}\" class=\"btn btn-danger\">Izbrisi</button>\n                            </form>\n                        @endif\n                            <button type=\"button\" class=\"btn btn-danger\">{{ $item->sifra }}</button>\n                            <button type=\"button\" id=\"myBtn\" class=\"btn btn-success\">Detalji</button>\n                    </td>\n                </tr>\n                        <div id=\"myModal\" class=\"modal\">\n                            <div class=\"modal-content\">\n                                <div class=\"modal-header\">\n                                    <span class=\"close\">&times;</span>\n                                    <h4 class=\"modal-title\">{{ $item->name }}</h4>\n                                </div>\n                                <div class=\"modal-body\">\n                                    <p>{{ $item->description }}</p>\n                                    <img src=\"assets/images/modal/v427.jpg\" class=\"modalImg\">\n                                </div>\n                            </div>  \n                        </div>\n                    @endforeach\n                @endif\n            </tbody>\n        </table>\n    </div>\n</div>\n</section>\n   \n@endsection",
-			"file": "resources/views/index.blade.php",
-			"file_size": 3756,
-			"file_write_time": 131084998039358333,
+			"file": "app/Http/Controllers/ItemController.php",
 			"settings":
 			{
-				"buffer_size": 3669,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/views/categories.blade.php",
-			"settings":
-			{
-				"buffer_size": 3674,
-				"line_ending": "Windows",
-				"name": "categories.blade.php"
-			}
-		},
-		{
-			"file": "app/Http/Controllers/CategoryController.php",
-			"settings":
-			{
-				"buffer_size": 1343,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/Repositories/CategoryRepository.php",
-			"settings":
-			{
-				"buffer_size": 190,
+				"buffer_size": 1434,
 				"line_ending": "Windows"
 			}
 		},
@@ -135,32 +119,15 @@
 			"file": "app/Http/routes.php",
 			"settings":
 			{
-				"buffer_size": 847,
+				"buffer_size": 907,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "app/Repositories/ItemRepository.php",
+			"file": "resources/views/categories.blade.php",
 			"settings":
 			{
-				"buffer_size": 179,
-				"line_ending": "Windows",
-				"name": "ItemRepository.php"
-			}
-		},
-		{
-			"file": "resources/views/home.blade.php",
-			"settings":
-			{
-				"buffer_size": 1831,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/Http/Controllers/ItemController.php",
-			"settings":
-			{
-				"buffer_size": 861,
+				"buffer_size": 1765,
 				"line_ending": "Windows"
 			}
 		}
@@ -210,35 +177,41 @@
 		"/C/Users/andrija/xampp/htdocs/andor/app/Http",
 		"/C/Users/andrija/xampp/htdocs/andor/app/Http/Controllers",
 		"/C/Users/andrija/xampp/htdocs/andor/app/Repositories",
+		"/C/Users/andrija/xampp/htdocs/andor/database",
+		"/C/Users/andrija/xampp/htdocs/andor/database/migrations",
 		"/C/Users/andrija/xampp/htdocs/andor/resources",
 		"/C/Users/andrija/xampp/htdocs/andor/resources/views",
 		"/C/Users/andrija/xampp/htdocs/andor/resources/views/layouts"
 	],
 	"file_history":
 	[
-		"/C/Users/andrija/xampp/htdocs/andor/app/Http/Controllers/HomeController.php",
-		"/C/Users/andrija/xampp/htdocs/andor/app/Category.php",
+		"/C/Users/andrija/xampp/htdocs/tatamata/resources/views/index.blade.php",
+		"/C/Users/andrija/xampp/htdocs/andor/resources/views/categories.blade.php",
+		"/C/Users/andrija/xampp/htdocs/andor/resources/views/index.blade.php",
+		"/C/Users/andrija/xampp/htdocs/andor/app/Item.php",
+		"/C/Users/andrija/xampp/htdocs/andor/app/Repositories/ItemRepository.php",
 		"/C/Users/andrija/xampp/htdocs/andor/app/Repositories/CategoryRepository.php",
+		"/C/Users/andrija/xampp/htdocs/andor/app/Repositories/RepositoryInterface.php",
+		"/C/Users/andrija/xampp/htdocs/andor/composer.json",
+		"/C/Users/andrija/xampp/htdocs/andor/database/migrations/2016_05_19_163139_create_items_table.php",
+		"/C/Users/andrija/xampp/htdocs/andor/app/Category.php",
+		"/C/Users/andrija/xampp/htdocs/andor/app/Http/Controllers/CategoryController.php",
 		"/C/Users/andrija/xampp/htdocs/andor/app/Providers/AppServiceProvider.php",
 		"/C/Users/andrija/xampp/htdocs/andor/resources/views/home.blade.php",
+		"/C/Users/andrija/xampp/htdocs/andor/app/Http/Controllers/HomeController.php",
 		"/C/Users/andrija/xampp/htdocs/andor/app/Http/routes.php",
-		"/C/Users/andrija/xampp/htdocs/andor/resources/views/index.blade.php",
-		"/C/Users/andrija/xampp/htdocs/andor/app/Http/Controllers/CategoryController.php",
 		"/C/Users/andrija/xampp/htdocs/andor/public/assets/index.js",
-		"/C/Users/andrija/xampp/htdocs/andor/app/Item.php",
 		"/C/Users/andrija/xampp/htdocs/andor/database/migrations/2016_05_16_170419_create_categories_table.php",
 		"/C/Users/andrija/xampp/htdocs/andor/config/database.php",
 		"/C/Users/andrija/xampp/htdocs/andor/database/factories/ModelFactory.php",
 		"/C/Users/andrija/xampp/htdocs/tatamata/config/database.php",
 		"/C/Users/andrija/xampp/htdocs/andor/database/migrations/2016_05_16_171222_create_subcats_table.php",
-		"/C/Users/andrija/xampp/htdocs/andor/database/migrations/2016_05_19_163139_create_items_table.php",
 		"/C/Users/andrija/xampp/htdocs/andor/resources/views/auth/login.blade.php",
 		"/C/Users/andrija/xampp/htdocs/andor/.env",
 		"/C/Users/andrija/xampp/htdocs/tatamata/config/app.php",
 		"/C/Users/andrija/xampp/htdocs/andor/resources/views/layouts/app.blade.php",
 		"/C/Users/andrija/xampp/htdocs/tatamata/server.php",
 		"/C/Users/andrija/xampp/htdocs/tatamata/database/migrations/2016_05_18_213212_create_subcats_table.php",
-		"/C/Users/andrija/xampp/htdocs/tatamata/resources/views/index.blade.php",
 		"/C/Users/andrija/xampp/htdocs/tatamata/app/Http/Controllers/Auth/AuthController.php",
 		"/C/Users/andrija/xampp/htdocs/tatamata/app/Subcat.php",
 		"/C/Users/andrija/xampp/htdocs/tatamata/app/Http/Controllers/HomeController.php",
@@ -323,6 +296,18 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"user",
+			"items",
+			"users",
+			" }}{{",
+			"items",
+			"return",
+			"UserRepository",
+			"user",
+			"tasks",
+			"request",
+			").$(",
+			"main",
 			"Category",
 			"__toString",
 			"();",
@@ -389,19 +374,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "resources/views/index.blade.php",
+					"file": "app/Http/Controllers/ItemController.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3669,
+						"buffer_size": 1434,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1636,
-								1636
+								704,
+								704
 							]
 						],
 						"settings":
@@ -411,201 +396,55 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 486.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "resources/views/categories.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3674,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3674,
-								3674
-							]
-						],
-						"settings":
-						{
-							"auto_name": "categories.blade.php",
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 680.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/Http/Controllers/CategoryController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1343,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1124,
-								1124
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 108.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "app/Repositories/CategoryRepository.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 190,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								155,
-								155
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "app/Http/routes.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 847,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								663,
-								663
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "app/Repositories/ItemRepository.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 179,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								107,
-								107
-							]
-						],
-						"settings":
-						{
-							"auto_name": "ItemRepository.php",
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 270.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "resources/views/home.blade.php",
+					"buffer": 1,
+					"file": "app/Http/routes.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1831,
+						"buffer_size": 907,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								578,
-								578
+								716,
+								720
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 54.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "app/Http/Controllers/ItemController.php",
+					"buffer": 2,
+					"file": "resources/views/categories.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 861,
+						"buffer_size": 1765,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								602,
-								602
+								1752,
+								1752
 							]
 						],
 						"settings":
@@ -615,10 +454,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 36.0,
+						"translation.y": 324.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]

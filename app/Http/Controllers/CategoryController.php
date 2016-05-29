@@ -42,14 +42,6 @@ class CategoryController extends Controller
         return redirect('/#main');
     }
 
-    public function show(Request $request, CategoryRepository $categories, ItemRepository $items, Category $categories)
-    {   
-
-        $request = $category()->items()->get();
-
-        return view('/categories', ['items' => $items]);
-    }
-
     public function destroy(Request $request, Category $category)
     {
         $category->delete();

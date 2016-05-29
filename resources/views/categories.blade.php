@@ -9,7 +9,7 @@
     @if (count($categories) > 0)
         @foreach ($categories as $category)
             <li>
-                <a href="{{ action("ItemController@show", ['id' => $category->id]) }}">{{ $category->name }}</a>                
+                <a href="{{ url('categories') }}{{ $id = $category->id }}#main">{{ $category->name }}</a>                
                     <span >
                     <form action="{{ url('category/'.$category->id) }}" method="POST" id="delete" style="display:inline">
                         {{ csrf_field() }}
@@ -35,15 +35,15 @@
             </li>
         @endif
     </ul>
-</div>
+</div> 
 </div>
     <div class="main-content" id="main">
         <table>
             <tbody>
     @if(Auth::check())
-    <button type="button" href="{{ '#main' }}" class="btn btn-info">+ Dodaj predmet</button>
+    <button type="button" href="#main" class="btn btn-info">+ Dodaj predmet</button>
     @endif
-                @if (count($items) > 0)           
+            @if (count($items) > 0)           
                     @foreach ($items as $item)
                 <tr>
                     <td id="page">
@@ -81,5 +81,4 @@
     </div>
 </div>
 </section>
-   
 @endsection

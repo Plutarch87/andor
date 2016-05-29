@@ -9,6 +9,10 @@ class Item extends Model
 {
     protected $fillable = ['name'];
 
+    protected $casts = [
+        'category_id' => 'int',
+    ];
+
     public function category()
     {
     	return $this->belongsTo(Category::class);

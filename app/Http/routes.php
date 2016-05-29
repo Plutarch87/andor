@@ -19,7 +19,11 @@ Route::post('/category', 'CategoryController@post');
 
 Route::delete('/category/{category}', 'CategoryController@destroy');
 
-Route::get('/categories', 'CategoryController@show');
+
+
+Route::get('/categories', 'ItemController@index');
+
+Route::get('/categories{categories}', 'ItemController@show');
 
 Route::post('/item', 'ItemController@post');
 
