@@ -1,33 +1,114 @@
+
+
 body {
 	font-family: Verdana, sans-serif;
 }
 
-header { 
-  background: url(images/background.jpg) no-repeat center center fixed ;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  height: 100%;
-  position: relative;
-  height: 100vh;
+
+img {
+	width: 100%!important;
+	height: auto!important;
+	
 
 }
 
+/*#logo:hover {
+	
+	transform: rotate( 360deg);
+	transition: 3s;
+}*/
+
+h1 {
+	display: inline;
+}
+
+#wlch1 {
+	position: absolute;
+	left: 41%;
+	top: 6%;
+	text-shadow: 2px 2px 3px gray ;
+
+}
+
+header {
+   background-color: #EFB7A3; 
+/*  background: url(images/lips_1.svg);
+  background-position: right bottom;
+  background-repeat: repeat;
+    background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;*/
+  height: 100%;
+  position: relative;
+  height: 50vh;
+
+}
+
+/*header img {
+	width: 300px;
+	height: auto;
+}*/
+
+#kurac {
+	
+	overflow: none;
+	display: inline-block;
+	width: 300px;
+	height: auto;
+	background-color: #EFB7A3;
+}
+
+#kurac img {
+	z-index: 29392324;
+}
 
 a {
 	text-decoration: none!important;
 }
 
 #logo {
-	height: 50px;
+	height: 100px!important;
+	width: auto!important;
+	position: absolute;
+	top: 14%;
+	left: 13%;
+	/*transform: none;
+	transition: 0.8s;*/
+}
+
+.shopingwrapper {
+	position: relative;
+	width: 70px;
+	height: 71px;
+	left: 86%;
+	top: 38%;
+}
+
+.glyphicon.glyphicon-shopping-cart {
+	position: absolute;
+	font-size: 54px;
+}
+
+
+#shopcircle {
+	position: absolute;
+	left: 26%;
+	top: 13%;
+	z-index: 1;
+	width: 34.4%;
+	color: #fff;
+	background-color: #313131;
+	text-align: center;
+	vertical-align: middle;
+	border-radius: 50%;
+	border: solid 1px;
 }
 
 .nav {
 	width: 100%;
 	height: 55px;
-	background-color: #9C25A9;
-	opacity: 0.7;
 }
 
 .nav ul {
@@ -40,7 +121,6 @@ a {
 	display: inline;
 	list-style-type: none;
 	float: left;
-	margin-left: 77px;
 }
 
 .nav li a {
@@ -56,25 +136,135 @@ a {
 	transition: all 0.4s;
 }
 
-#welcome {
-	background-color: #9C25A9;
-	position: relative;
-	left: 50%;
-	width: 20%;
-	height: 20%;
-	bottom: 17.4%;
+.ncontent {
+	height: 122px;
+	width: 100%;
+	background-color: #F2A78C;
+	/*font-family: Pacifico;*/
+	font-family: 'Lobster';
+
 }
 
-#welcome h1 {
-	font-size: 3em;
-	color: white;
+.ncontent li {
+	display: inline;
+	text-transform: uppercase;
+		
 }
 
-#welcome img {
-	position: relative;
-	left: 12%;
+.nlistwrapper {
+	list-style: none;
+	position: absolute;
+	left: 34%;
+	top: 28%;
+	font-size: 19px;
+
 }
 
+.nlinew, .nlibestseller, .nlisale {
+	border: solid 1px #000;
+	padding: 5px;
+	margin-right: 74px;
+	transition: all 0.5s;
+}
+
+.nlinew:hover {
+	background-color: #2D7A1E;
+	color: #fff;
+	transition: all 0.7s;
+
+}
+
+.nlinew:after {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: 40px;
+    width: 0%;
+    height: 36px;
+    background-color: rgba(255,255,255,0.4);
+    -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+    -o-transition: none;
+    transition: none;
+    
+}
+
+.nlinew:hover:after {
+    width: 60px;
+    height: 35px;
+    background-color: rgba(255,255,255,0);
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+.nlibestseller:hover {
+	background-color: #3E62F5;
+	color: #fff;
+	transition: all 0.7s;
+}
+
+.nlibestseller:after {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: 181px;
+    width: 0%;
+    height: 36px;
+    background-color: rgba(255,255,255,0.4);
+    -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+    -o-transition: none;
+    transition: none;
+    
+}
+
+.nlibestseller:hover:after {
+    width: 150px;
+    background-color: rgba(255,255,255,0);
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+
+.nlisale:hover {
+	background-color: #F92424;
+	color: #fff;
+	transition: all 0.7s;
+}
+
+.nlisale:after {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: 427px;
+    width: 0%;
+    height: 36px;
+    background-color: rgba(255,255,255,0.4);
+    -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+    -o-transition: none;
+    transition: none;
+    
+}
+
+.nlisale:hover:after {
+    width: 59px;
+    background-color: rgba(255,255,255,0);
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
 
 .left-content ul li {
 	list-style-type: none;
@@ -93,16 +283,13 @@ a {
 
 .main-content {
 	overflow: hidden;
-	background-color: #FFFFFF;
-	height: 100vh;
-	border-style: solid;
-	border-color: #FFFFFF;
-	border-style: double;
-	border-radius: 5%;
+	background-color: #F0CCBF;
+	
+
 }
 
-td {
-	padding-left: 200px;
+/*td {
+	padding-left: 200px;*/
 }
 
 #Pcreme {
@@ -117,10 +304,7 @@ td {
 	height: 50%;
 }
 
-.navbar-form {
-	position:relative;
-	left: 90px;
-}
+
 
 .btn-group-vertical {
 	width: 100%;
@@ -140,7 +324,6 @@ td {
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
@@ -151,7 +334,7 @@ td {
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 27%;
 }
 
 /* The Close Button */
@@ -167,4 +350,169 @@ td {
     color: #000;
     text-decoration: none;
     cursor: pointer;
+}
+
+.modalImg {
+	margin-right: auto;
+	margin-left: auto;
+	display: block;
+	width: 50%!important;	
+}
+
+.sidecontent {
+	padding-left: 10px;
+}
+
+.sidecontent #primer1 {
+	position: absolute;
+	left: 6.5%;
+	width: 172px;
+	bottom: -63%;
+}
+
+.sidecontent #primer2 {
+	position: absolute;
+	left: 6.5%;
+	width: 172px;
+	bottom: -80%;
+}
+
+#myShoppingCart {
+	height: 34px;
+	width: 62px;
+	margin-right: 9px;
+	background-image: url('images/shopping-cart-icon-iua.png');
+	background-size: 59px 34px ;
+	background-repeat: no-repeat;
+	display: inline-block;
+	background-color: #fff;
+}
+
+#dodajk {
+	position: absolute;
+	left: 20%;
+	width: 9%;
+	margin-top: 6px;
+}
+
+#btnUP {
+	position: absolute;
+	bottom: -98.5%;
+	width: 80px;
+	height: 75px;
+	right: 13%;
+	background-image: url(images/up-circular-xxl.png);
+	background-color: #FFF
+}
+
+#korpa {
+	position: absolute;
+	bottom: -99.3%;	
+	width: 171px;
+	left: 6.5%;
+	background-color: #FFF;
+}
+
+#korpa img {
+	width: 171px;
+}
+
+#cartNumber {
+	background-color: #FFF;
+	color: #E32ACA;
+	border: solid #E32ACA;
+	position: absolute;
+	bottom: -92%;
+	left: 9.6%;
+	width: 62px;
+	border-radius: 50%;
+	text-align:center;
+	display: none;
+}
+
+/*#productTb {
+	position: absolute;
+	left: 13%;
+	top: 105%;
+} */
+
+/*body.modal-open {
+    overflow: hidden;
+    position: fixed;
+}
+body.viewport-lg {
+
+    position: absolute; 
+}*/
+
+.price-tag {
+	background: #F28F6B;
+	width: 38%;
+	height: 22%;
+	color: #fff;
+	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+	text-align: center;
+	line-height: 16%;
+	position: absolute;
+	top: 55%;
+	left: 52%;
+
+
+}
+.price-tag::before {
+	content: "";
+	display: block;
+	background: url('../assets/images/pricetag.svg') no-repeat center right;
+	position: absolute;
+	width: 15px;
+	height: 46px;
+	left: 100%;
+
+}
+
+#ptsvg1 {
+	position: absolute;
+	width: 20px;
+	height: 100%;
+	left: 99.7%;
+	top: 0%;
+
+}
+
+#ptsvg2 {
+	position: absolute;
+	width: 20px;
+	height: 100%;
+	left: 99.7%;
+	top: 0%;
+
+}
+
+
+.price-tag span {
+
+	visibility: inherit;
+	display: inline;	
+	margin-top: 20px;
+	top: 11px!important;
+	border: none;
+}
+
+#section2 {
+	padding-right: 20px;
+}
+
+.shopdiv {
+	background-color: #FFFFFF;
+}
+
+.shopdiv img {
+	width: 50%!important;
+	height: auto;
+}
+
+.carousel img {
+  min-width: 100%!important;
+  height: 270px!important;
+  max-width: none!important;
 }

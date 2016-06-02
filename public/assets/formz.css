@@ -73,7 +73,6 @@ a {
     /*border: solid #8330A1;*/
 }
 
-
 #name {
 	position: relative;
 	left: 8%;
@@ -109,3 +108,7 @@ textarea {
 	left: 23%;
 }
 
+.btnDelete {
+	position: absolute;
+	left: 83%;
+}

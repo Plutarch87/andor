@@ -24,4 +24,8 @@ var random = pozadine[Math.floor(Math.random()*pozadine.length)];
 
 $('header').css({'background-image': 'url(assets/images/' + random + ')'});
 
+ $("#orderTable").on('click', '.btnDelete', function () {
+        $(this).closest('tr').remove();
+    });
+
 });

@@ -18,7 +18,7 @@ class SubcatController extends Controller
     {
         $subcats = Subcat::all();
         $categories = Category::all();
-        $items = Item::all();
+        $items = Item::paginate(12);
 
         return view('categories', [
             'subcats' => $subcats,
@@ -44,17 +44,14 @@ class SubcatController extends Controller
     
     public function store(Request $request, $id)
     {
-
-        $category = Category::find($id)->categories;
-
+        $subcat = Category::find($id);
     	$this->validate($request, [
             'name' => 'required|max:255',
             ]);
-        $request->user()->subcats()->create([
-            'category_id' => $category,
+        $request->user()->categories()->subcats()->create([
             'name' => $request->name,]);
 
-        return redirect('/');
+        return redirect('/categories', ['category_id' => $subcat]);
     }
 
 

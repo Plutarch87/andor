@@ -23,16 +23,17 @@ class ItemController extends Controller
     }
 
     public function index()
-    {             
-        //  $items = DB::table('items')->orderBy('created_at', 'asc')->get();
-        //  $categories = DB::table('categories')->orderBy('created_at', 'asc')->get();
+    {    
+
+        $items = Item::paginate(12);
+        $categories = DB::table('categories')->orderBy('created_at', 'asc')->get();
          
 
-        // return view('categories', [
-        //     'items' => $items,
-        //     'categories' => $categories,
-        //     'subcats' => $subcats,
-        // ]);
+        return view('categories', [
+            'items' => $items,
+            'categories' => $categories,
+            'subcats' => $subcats,
+        ]);
     }
 
     public function store(Request $request)
@@ -47,10 +48,11 @@ class ItemController extends Controller
     }
 
     public function show($id)
-    {       
-        $items = Category::find($id)->items;
+    {
 
-        // $id = DB::table('items')->where('category_id', $id)->get();
+        $items = Item::paginate(12);
+
+        $id = DB::table('items')->where('category_id', $id)->get();
         $subcats = DB::table('subcats')->get();
         $categories = DB::table('categories')->get();
 

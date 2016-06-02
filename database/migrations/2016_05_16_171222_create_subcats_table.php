@@ -15,6 +15,7 @@ class CreateSubcatsTable extends Migration
         Schema::create('subcats', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('category_id')->index;
+            $table->integer('user_id')->index;
             $table->string('name');
             $table->rememberToken();
             $table->timestamps();
