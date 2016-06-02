@@ -1,6 +1,7 @@
 #menuwrapper {
     position: relative; 
     top: 5%;
+
 }
 
 
@@ -9,6 +10,7 @@
     margin:0;
     padding:0;
     list-style:none;
+    font-size: smaller;
 }
 
 /* We apply background color and border bottom white and width to 150px */

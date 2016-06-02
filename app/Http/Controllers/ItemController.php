@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Item;
 use App\Category;
+use App\Subcat;
 use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -23,13 +24,15 @@ class ItemController extends Controller
 
     public function index()
     {             
-         $items = DB::table('items')->orderBy('created_at', 'asc')->get();
-         $categories = DB::table('categories')->orderBy('created_at', 'asc')->get();
+        //  $items = DB::table('items')->orderBy('created_at', 'asc')->get();
+        //  $categories = DB::table('categories')->orderBy('created_at', 'asc')->get();
+         
 
-        return view('categories', [
-            'items' => $items,
-            'categories' => $categories,
-        ]);
+        // return view('categories', [
+        //     'items' => $items,
+        //     'categories' => $categories,
+        //     'subcats' => $subcats,
+        // ]);
     }
 
     public function store(Request $request)
@@ -45,12 +48,16 @@ class ItemController extends Controller
 
     public function show($id)
     {       
-        $id = DB::table('items')->where('category_id', $id)->get();
+        $items = Category::find($id)->items;
+
+        // $id = DB::table('items')->where('category_id', $id)->get();
+        $subcats = DB::table('subcats')->get();
         $categories = DB::table('categories')->get();
 
         return view('categories', [
-            'items' => $id,
+            'items' => $items,
             'categories' => $categories,
+            'subcats' => $subcats,            
         ]);
     }
 

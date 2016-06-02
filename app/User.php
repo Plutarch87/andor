@@ -31,6 +31,6 @@ class User extends Authenticatable
 
     public function subcats()
     {
-       return $this->hasMany(Subcat::class);
+        return $this->hasMany(Subcat::class);
     }
 }

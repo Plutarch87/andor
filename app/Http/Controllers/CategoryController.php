@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Item;
 use App\Category;
+use App\Subcat;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
@@ -24,10 +25,11 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $items = DB::table('items')->get();
-    	$categories = DB::table('categories')->get();
+        $items = Item::paginate(2);
+    	$categories = Category::all();
+        $subcats = Subcat::all();
 
-        return view('index', ['categories' => $categories, 'items' => $items]);
+        return view('index', ['categories' => $categories, 'items' => $items, 'subcats' => $subcats,]);
     }
 
     public function post(Request $request)

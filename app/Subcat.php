@@ -2,11 +2,12 @@
 
 namespace App;
 
+use App\Item;
 use Illuminate\Database\Eloquent\Model;
 
 class Subcat extends Model
 {
-	protected $fillable = ['name'];
+	protected $fillable = ['name', 'category_id', 'user_id'];
 
     public function user()
     {
@@ -16,5 +17,10 @@ class Subcat extends Model
     public function category()
     {
     	return $this->belongsTo(Category::class);
+    }
+
+    public function items()
+    {
+    	return $this->hasMany(Item::class);
     }
 }

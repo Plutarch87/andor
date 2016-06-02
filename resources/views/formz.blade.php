@@ -36,26 +36,17 @@
             </div>        
 
             <div id="formdiv">
-            <form action="/cgi-bin/mailinglist.pl" method="post">
+            <form action="{{ url('upload') }}" method="post" enctype="multipart/form-data">
                 <fieldset>
-                    <legend>bla b la ba laaa</legend>
-                        <p>blablabla</p>
+                    <legend>Upload image</legend>
+                        <p>Image upload</p>
                         <ol>
-                            <li><label for="name">Ime i prezime</label>
-                            <input type="text" name="name" id="name"></li><br><br>
-                            <li><label for="name">Adresa</label>
-                            <input type="text" name="name" id="adress"></li><br><br>                            
-                            <li><label for="name">Mesto</label>
-                            <input type="text" name="name" id="place"></li><br><br>
-                            <li><label for="name">Poštanski broj</label>
-                            <input type="text" name="name" id="postalcode"></li><br><br>                            
-                            <li><label for="name">Poruka</label>
-                            <textarea rows="4" cols="21"></textarea></li><br><br>
-                            <li><label for="name">Telefon</label>
-                            <input type="text" name="name" id="phone"></li><br><br>
-                            <li><label for="name">Email</label>
-                            <input type="text" name="email" id="email"></li><br><br>
-                            <input type="submit" value="Submit">
+                            <li>
+                                <label>Upload:</label>
+                                <input type="file" name="file" id="file"></input>
+                                <input type="submit" name="submit" value="Upload"></input>
+                                <input type="hidden" value="{{ csrf_token() }}" name="_token"></input>
+                            </li>
                         </ol>
                 </fieldset>
             </form>

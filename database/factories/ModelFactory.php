@@ -34,12 +34,25 @@ $factory->define(App\Item::class, function ($faker) {
     return [
         'name' => $faker->firstName($gender = null|'male'|'female'),
         'description' => $faker->paragraph,
-        'price' => 10,
-        'sifra' => 1,
+        'price' => $faker->numberBetween($min = 1000, $max = 9000),
+        'sifra' => $faker->numberBetween($min = 300, $max = 9999),
         'remember_token' =>str_random(10),
         'category_id' => function () {
             return factory(App\Category::class)->create()->id;
-        }
+        },
+        'subcat_id' => function(){
+            return factory(App\Subcat::class)->create()->id;
+        },
+    ];
+});
+
+$factory->define(App\Subcat::class, function ($faker) {
+    return [
+        'name' => $faker->firstName($gender =null|'male'|'female'),
+        'remember_token' => str_random(10),        
+        'category_id' => function(){
+            return factory(App\Category::class)->create()->id;
+        },
     ];
 });
 

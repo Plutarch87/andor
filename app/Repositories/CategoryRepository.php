@@ -6,8 +6,8 @@ use App\Category;
 
 class CategoryRepository 
 {
-	public function forCategory(Category $category)
+	public function forUser(User $user)
 	{
-		return $category->orderBy('name', 'asc')->get();
+		return $user->category->orderBy('name', 'asc')->get();
 	}
 }

@@ -8,16 +8,39 @@
     <ul>
     @if (count($categories) > 0)
         @foreach ($categories as $category)
-            <li>
-                <a href="{{ url('categories') }}{{ $id = $category->id }}#main">{{ $category->name }}</a>                
-                    <span >
-                    <form action="{{ url('category/'.$category->id) }}" method="POST" id="delete" style="display:inline">
-                        {{ csrf_field() }}
-                        {{ method_field('DELETE') }}
-                        <button type="submit" id="delete-category-{{ $category->id }}" style="float:right; margin-top:4%; margin-right:10%;" id="delete">&times;</button>
-                    </form>
-                    </span>
-            </li>
+                <li>
+                    <a href="{{ url('categories') }}{{ $id = $category->id }}#main">{{ $category->name }}</a>   
+                    
+                      @foreach($subcats as $subcat)
+                       
+                       @if($category->id == $subcat->category_id || Auth::check() && $category->id == $subcat->category_id )
+                       <ul>
+                           <li> <a href="{{ url('categories') }}{{ $id = $subcat->id }}cat#main">{{ $subcat->name }}</a>
+                           </li>                               
+                           <li>
+                               <form action="{{ url('subcat', ['category_id' => $category->id]) }}" method="POST" id="create">
+                                   {{ csrf_field() }}
+                                   <input style="width:95%; margin: 4% 10% 0 2%;" type="text" name="name" id="create">
+                           </li>
+                           <li>
+                                   <input style="float: right; margin-top: 4%; margin-right: 10%;" type="submit" name="submit" value="+ Dodaj potkategoriju">
+                               </form>
+                           </li>
+                        </ul>
+                            @endif
+                           
+                        @endforeach
+                    @if(Auth::check())             
+                        <span >
+                        <form action="{{ url('category/'.$category->id) }}" method="POST" id="delete" style="display:inline">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                            <button type="submit" id="delete-category-{{ $category->id }}" style="float:right; margin-top:4%; margin-right:10%;" id="delete">&times;</button>
+                        </form>
+                        </span>
+                    @endif
+                </li>
+            
         @endforeach
     @endif
     
@@ -25,7 +48,7 @@
            
             </li>
             <li>
-                <form action="{{ url('category') }}" method="POST" id="createE">
+                <form action="{{ url('category') }}" method="POST" id="create">
                     {{ csrf_field() }}
                     <input style="width:95%; margin: 4% 10% 0 2%" type="text" name="name" id="create">
             </li>
@@ -40,13 +63,42 @@
     <div class="main-content" id="main">
         <table>
             <tbody>
-    @if(Auth::check())
-    <button type="button" href="#main" class="btn btn-info">+ Dodaj predmet</button>
-    @endif
-            @if (count($items) > 0)           
-                    @foreach ($items as $item)
+            
+            @if(Auth::check())
+            <button type="button" id="myBtn" href="#main" class="btn btn-info">+ Dodaj predmet</button>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times;</span>
+                        <h4 class="modal-title">Napravi novi predmet</h4>
+
+                    </div>
+                    <div class="modal-body">
+                        <p></p>
+                        
+                    </div>
+                </div>  
+            </div>
+            @endif
+
+            
+
+            @foreach($categories as $category)
+               
+                        @foreach($items as $item)
+                            @if($category->id == $item->category_id)
+                    
+                                 <h1>{{ $category->name }}<h1>
+                            @endif
+                        @endforeach
+            @endforeach
+
+
                 <tr>
                     <td id="page">
+                       
+            @if (count($items) > 0)           
+                    @foreach ($items as $item)
                         <h3>{{ $item->name }}</h3>
                         <img src="assets/images/lubrikanti/v427.jpg" id="Slubrikant">
                         <h5>{{ $item->price}}</h5>

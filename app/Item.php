@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Category;
+use App\Subcat;
 use Illuminate\Database\Eloquent\Model;
 
 class Item extends Model
@@ -16,5 +17,10 @@ class Item extends Model
     public function category()
     {
     	return $this->belongsTo(Category::class);
+    }
+
+    public function subcat()
+    {
+    	return $this->belongsTo(Subcat::class);
     }
 }

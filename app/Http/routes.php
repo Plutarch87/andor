@@ -19,16 +19,24 @@ Route::post('/category', 'CategoryController@post');
 
 Route::delete('/category/{category}', 'CategoryController@destroy');
 
-
-
 Route::get('/categories', 'ItemController@index');
 
 Route::get('/categories{categories}', 'ItemController@show');
+
+
+Route::get('/categories', 'SubcatController@index');
+
+Route::get('/subcat/{subcat}', 'SubcatController@show');
+
+Route::post('/subcat', 'SubcatController@store');
+
 
 Route::post('/item', 'ItemController@post');
 
 Route::delete('/item/{item}', 'ItemController@destroy');
 
+
+Route::post('upload', 'UploadController@postFile');
 
 Route::get('/formz', function () {
 	return view('formz');

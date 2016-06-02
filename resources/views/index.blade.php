@@ -9,7 +9,7 @@
     @if (count($categories) > 0)
         @foreach ($categories as $category)
             <li>
-                <a href="{{ action("ItemController@show", ['id' => $category->id]) }}">{{ $category->name }}</a>                
+                <a href="{{ action("ItemController@show", ['id' => $category->id]) }}#main">{{ $category->name }}</a>                
                     <span >
                     <form action="{{ url('category/'.$category->id) }}" method="POST" id="delete" style="display:inline">
                         {{ csrf_field() }}
@@ -21,6 +21,7 @@
         @endforeach
     @endif
     
+    <!-- Dodaj kategoriju -->
         @if(Auth::check())
            
             </li>
@@ -34,19 +35,22 @@
                 </form>
             </li>
         @endif
+        
     </ul>
 </div>
 </div>
     <div class="main-content" id="main">
+                {!! $items->links() !!}
         <table>
             <tbody>
     @if(Auth::check())
     <button type="button" href="{{ '#main' }}" class="btn btn-info">+ Dodaj predmet</button>
     @endif
+                <tr>
                 @if (count($items) > 0)           
                     @foreach ($items as $item)
-                <tr>
                     <td id="page">
+                    
                         <h3>{{ $item->name }}</h3>
                         <img src="assets/images/lubrikanti/v427.jpg" id="Slubrikant">
                         <h5>{{ $item->price}}</h5>
@@ -72,14 +76,16 @@
                                     <p>{{ $item->description }}</p>
                                     <img src="assets/images/modal/v427.jpg" class="modalImg">
                                 </div>
-                            </div>  
-                        </div>
                     @endforeach
                 @endif
-            </tbody>
+                            </div>  
+                        </div>
+                 </div>
+</div>               
+
         </table>
-    </div>
-</div>
+            </tbody> {!! $items->links() !!}
+   
 </section>
    
 @endsection
