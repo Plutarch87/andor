@@ -9,7 +9,7 @@ class ItemRepository
 {
 	public function forCategory(Category $category)
 	{
-		return Item::where('category_id', '=', $category_id)
+		return Item::where('category_id', $category->id)
                     ->orderBy('created_at', 'asc')
                     ->get();
 	}

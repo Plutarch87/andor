@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-
-HELLO
-
+{{ 'yay' }}
 @endsection

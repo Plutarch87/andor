@@ -51,17 +51,7 @@ header {
 	height: auto;
 }*/
 
-#kurac {
-	
-	overflow: none;
-	display: inline-block;
-	width: 300px;
-	height: auto;
-	background-color: #EFB7A3;
-}
 
-#kurac img {
-	z-index: 29392324;
 }
 
 a {
@@ -515,4 +505,9 @@ body.viewport-lg {
   min-width: 100%!important;
   height: 270px!important;
   max-width: none!important;
+}
+
+#newItem input[type=text]:focus {
+	
+	background-color: lightblue;
 }

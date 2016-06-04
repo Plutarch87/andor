@@ -36,6 +36,7 @@
             </div>        
 
             <div id="formdiv">
+            {{ asset(storage_path())}}
             <form action="{{ url('upload') }}" method="post" enctype="multipart/form-data">
                 <fieldset>
                     <legend>Upload image</legend>

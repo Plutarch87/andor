@@ -36,6 +36,8 @@ $factory->define(App\Item::class, function ($faker) {
         'description' => $faker->paragraph,
         'price' => $faker->numberBetween($min = 1000, $max = 9000),
         'sifra' => $faker->numberBetween($min = 300, $max = 9999),
+        'akcija' => $faker->boolean($chanceOfGettingTrue = 50),
+        'popularno' =>$faker->boolean($chanceOfGettingTrue = 50),
         'remember_token' =>str_random(10),
         'category_id' => function () {
             return factory(App\Category::class)->create()->id;

@@ -28,10 +28,10 @@ Route::get('/categories', 'SubcatController@index');
 
 Route::get('/subcat/{subcat}', 'SubcatController@show');
 
-Route::post('/subcat', 'SubcatController@store');
+Route::post('/subcat{subcat}', 'SubcatController@post');
 
 
-Route::post('/item', 'ItemController@post');
+Route::post('/item', 'ItemController@store');
 
 Route::delete('/item/{item}', 'ItemController@destroy');
 

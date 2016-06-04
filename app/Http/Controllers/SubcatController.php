@@ -8,11 +8,11 @@ use App\Item;
 use App\Category;
 use DB;
 use App\Http\Requests;
+use App\Http\Controllers\Controller;
+
 
 class SubcatController extends Controller
 {
-    protected $subcats;
-
 
     public function index()
     {
@@ -42,16 +42,19 @@ class SubcatController extends Controller
         ]);
     }
     
-    public function store(Request $request, $id)
+    public function post(Request $request, $id)
     {
-        $subcat = Category::find($id);
+        
     	$this->validate($request, [
             'name' => 'required|max:255',
             ]);
-        $request->user()->categories()->subcats()->create([
-            'name' => $request->name,]);
 
-        return redirect('/categories', ['category_id' => $subcat]);
+        $subcat = Subcat::create([
+            'name' => $request->name,
+            'category_id' => $id,
+            ]);
+
+        return redirect('categories');
     }
 
 

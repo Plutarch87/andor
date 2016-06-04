@@ -9,6 +9,8 @@ class SubcatRepository
 {
 	public function forCategory(Category $category)
 	{
-		return $category->subcat->orderBy('name', 'asc')->get();
+		return Subcat::where('category_id', $category->id)
+		                    ->orderBy('created_at', 'asc')
+		                    ->get();
 	}
 }

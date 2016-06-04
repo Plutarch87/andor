@@ -38,13 +38,35 @@ class ItemController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required|max:255',
+         if(
+            $request->file->getClientMimeType() == 'image/jpg' ||
+            $request->file->getClientMimeType() == 'image/png' ||
+            $request->file->getClientMimeType() == 'image/jpeg'
+           )
+            {
+             $desPath = storage_path(). '/andor';
+             $name = date("his"). "-". $request->file->getClientOriginalName();
+             if($request->file->isValid()) {
+                 $request->file->move($desPath, $name);
+             }
+
+            $this->validate($request, [
+                'name' => 'required|max:255',
+                'sifra' => 'required',
+                'price' => 'required',
+                // 'img' => 'required',           
             ]);
-        $request->items()->create([
+         } else {
+             return response()->json("File must be in image format(.jpeg, .jpg, .png)", 405);
+         }
+
+        $items = Item::create([
             'name' => $request->name,
+            'sifra' => $request->sifra,
+            'price' => $request->price,
+            'img' => $name,
             ]);
-        return redirect('/item');
+        return redirect('categories');
     }
 
     public function show($id)
@@ -52,14 +74,15 @@ class ItemController extends Controller
 
         $items = Item::paginate(12);
 
-        $id = DB::table('items')->where('category_id', $id)->get();
+       
+
         $subcats = DB::table('subcats')->get();
         $categories = DB::table('categories')->get();
 
         return view('categories', [
             'items' => $items,
             'categories' => $categories,
-            'subcats' => $subcats,            
+            'subcats' => $subcats,
         ]);
     }
 
