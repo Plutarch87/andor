@@ -30,6 +30,8 @@ Route::get('/subcat/{subcat}', 'SubcatController@show');
 
 Route::post('/subcat{subcat}', 'SubcatController@post');
 
+Route::delete('/subcat/{subcat}', 'SubcatController@destroy');
+
 
 Route::post('/item', 'ItemController@store');
 

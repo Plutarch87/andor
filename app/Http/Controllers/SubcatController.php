@@ -57,5 +57,11 @@ class SubcatController extends Controller
         return redirect('categories');
     }
 
+    public function destroy(Request $request, Subcat $subcat)
+    {
+        $subcat->delete();
+
+        return redirect('/categories#main');
+    }
 
 }

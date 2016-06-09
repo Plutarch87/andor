@@ -5,14 +5,15 @@ namespace App;
 use App\Category;
 use App\Subcat;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Item extends Model
 {
-    protected $fillable = ['name', 'price', 'sifra', 'img', 'akcija', 'popularno'];
+    use SoftDeletes;
 
-    protected $casts = [
-        'category_id' => 'int',
-    ];
+    protected $dates = ['deleted_at'];
+
+    protected $fillable = ['name', 'price', 'sifra', 'img', 'akcija', 'popularno'];
 
     public function category()
     {

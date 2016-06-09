@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"subc",
+				"subcat"
+			],
+			[
 				"bord",
 				"border-color"
 			],
@@ -115,46 +119,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "app/Http/routes.php",
-			"settings":
-			{
-				"buffer_size": 1133,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/Http/Controllers/ItemController.php",
-			"settings":
-			{
-				"buffer_size": 2323,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/Http/Controllers/SubcatController.php",
-			"settings":
-			{
-				"buffer_size": 1321,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/views/categories.blade.php",
-			"settings":
-			{
-				"buffer_size": 7694,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/Http/Controllers/UploadController.php",
-			"settings":
-			{
-				"buffer_size": 920,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -163,7 +127,7 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 353.0,
+		"height": 490.0,
 		"last_filter": "",
 		"selected_items":
 		[
@@ -176,7 +140,7 @@
 				"Set Syntax: JavaScript"
 			]
 		],
-		"width": 538.0
+		"width": 703.0
 	},
 	"console":
 	{
@@ -194,49 +158,30 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
-	"expanded_folders":
-	[
-		"/C/Users/andrija/xampp/htdocs/andor",
-		"/C/Users/andrija/xampp/htdocs/andor/app",
-		"/C/Users/andrija/xampp/htdocs/andor/app/Http",
-		"/C/Users/andrija/xampp/htdocs/andor/app/Http/Controllers",
-		"/C/Users/andrija/xampp/htdocs/andor/app/Http/Requests",
-		"/C/Users/andrija/xampp/htdocs/andor/app/Providers",
-		"/C/Users/andrija/xampp/htdocs/andor/config",
-		"/C/Users/andrija/xampp/htdocs/andor/database",
-		"/C/Users/andrija/xampp/htdocs/andor/database/factories",
-		"/C/Users/andrija/xampp/htdocs/andor/database/migrations",
-		"/C/Users/andrija/xampp/htdocs/andor/public",
-		"/C/Users/andrija/xampp/htdocs/andor/resources",
-		"/C/Users/andrija/xampp/htdocs/andor/resources/views",
-		"/C/Users/andrija/xampp/htdocs/andor/resources/views/layouts",
-		"/C/Users/andrija/xampp/htdocs/andor/vendor",
-		"/C/Users/andrija/xampp/htdocs/andor/vendor/fzaninotto",
-		"/C/Users/andrija/xampp/htdocs/andor/vendor/fzaninotto/faker",
-		"/C/Users/andrija/xampp/htdocs/andor/vendor/laravel",
-		"/C/Users/andrija/xampp/htdocs/andor/vendor/laravel/framework",
-		"/C/Users/andrija/xampp/htdocs/andor/vendor/laravel/framework/src",
-		"/C/Users/andrija/xampp/htdocs/andor/vendor/laravel/framework/src/Illuminate",
-		"/C/Users/andrija/xampp/htdocs/andor/vendor/laravel/framework/src/Illuminate/Auth",
-		"/C/Users/andrija/xampp/htdocs/andor/vendor/laravel/framework/src/Illuminate/Foundation",
-		"/C/Users/andrija/xampp/htdocs/andor/vendor/laravel/framework/src/Illuminate/Foundation/Auth",
-		"/C/Users/andrija/xampp/htdocs/andor/vendor/laravel/framework/src/Illuminate/Foundation/Http",
-		"/C/Users/andrija/xampp/htdocs/andor/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware"
-	],
 	"file_history":
 	[
+		"/C/Users/andrija/xampp/htdocs/andor/resources/views/index.blade.php",
+		"/C/Users/andrija/xampp/htdocs/andor/app/Http/Controllers/CategoryController.php",
+		"/C/Users/andrija/xampp/htdocs/andor/app/Http/Controllers/ItemController.php",
+		"/C/Users/andrija/xampp/htdocs/andor/app/Http/routes.php",
+		"/C/Users/andrija/xampp/htdocs/andor/app/Http/Controllers/SubcatController.php",
+		"/C/Users/andrija/xampp/htdocs/andor/resources/views/categories.blade.php",
+		"/C/Users/andrija/xampp/htdocs/andor/app/Item.php",
+		"/C/Users/andrija/xampp/htdocs/andor/config/auth.php",
+		"/C/Users/andrija/xampp/htdocs/andor/resources/views/auth/register.blade.php",
+		"/C/Users/andrija/xampp/htdocs/andor/app/Http/Controllers/Auth/AuthController.php",
+		"/C/Users/andrija/xampp/htdocs/tatamata/.env",
+		"/C/Users/andrija/xampp/htdocs/andor/app/Http/Controllers/HomeController.php",
+		"/C/Users/andrija/xampp/htdocs/andor/resources/views/layouts/app.blade.php",
+		"/C/Users/andrija/xampp/htdocs/andor/public/assets/index.js",
+		"/C/Users/andrija/xampp/htdocs/andor/public/index.php",
+		"/C/Users/andrija/xampp/htdocs/andor/database/migrations/2016_05_19_163139_create_items_table.php",
 		"/C/Users/andrija/xampp/htdocs/andor/resources/views/index4.html",
 		"/C/Users/andrija/xampp/htdocs/andor/app/Subcat.php",
-		"/C/Users/andrija/xampp/htdocs/andor/app/Http/Controllers/CategoryController.php",
-		"/C/Users/andrija/xampp/htdocs/andor/app/Item.php",
 		"/C/Users/andrija/xampp/htdocs/andor/public/assets/index.css",
 		"/C/Users/andrija/xampp/htdocs/andor/resources/views/formz.blade.php",
-		"/C/Users/andrija/xampp/htdocs/andor/database/migrations/2016_05_19_163139_create_items_table.php",
-		"/C/Users/andrija/xampp/htdocs/andor/config/auth.php",
 		"/C/Users/andrija/xampp/htdocs/andor/database/factories/ModelFactory.php",
 		"/C/Users/andrija/xampp/htdocs/andor/app/Category.php",
-		"/C/Users/andrija/xampp/htdocs/andor/resources/views/index.blade.php",
-		"/C/Users/andrija/xampp/htdocs/andor/app/Http/Controllers/SubcatController.php",
 		"/C/Users/andrija/xampp/htdocs/andor/config/database.php",
 		"/C/Users/andrija/xampp/htdocs/andor/resources/views/subcats.blade.php",
 		"/C/Users/andrija/xampp/htdocs/andor/app/Repositories/SubcatRepository.php",
@@ -245,9 +190,6 @@
 		"/C/Users/andrija/xampp/htdocs/andor/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/Authorize.php",
 		"/C/Users/andrija/xampp/htdocs/andor/vendor/laravel/framework/src/Illuminate/Foundation/Auth/Category.php",
 		"/C/Users/andrija/xampp/htdocs/andor/app/Http/Controllers/UploadController.php",
-		"/C/Users/andrija/xampp/htdocs/andor/app/Http/Controllers/ItemController.php",
-		"/C/Users/andrija/xampp/htdocs/andor/resources/views/categories.blade.php",
-		"/C/Users/andrija/xampp/htdocs/andor/app/Http/routes.php",
 		"/C/Users/andrija/xampp/htdocs/andor/app/Repositories/CategoryRepository.php",
 		"/C/Users/andrija/xampp/htdocs/andor/storage/app/public/file.txt",
 		"/C/Users/andrija/xampp/htdocs/andor/storage/app/public/file.jpg",
@@ -264,14 +206,11 @@
 		"/C/Users/andrija/xampp/htdocs/andor/composer.json",
 		"/C/Users/andrija/xampp/htdocs/andor/app/Providers/AppServiceProvider.php",
 		"/C/Users/andrija/xampp/htdocs/andor/resources/views/home.blade.php",
-		"/C/Users/andrija/xampp/htdocs/andor/app/Http/Controllers/HomeController.php",
-		"/C/Users/andrija/xampp/htdocs/andor/public/assets/index.js",
 		"/C/Users/andrija/xampp/htdocs/andor/database/migrations/2016_05_16_170419_create_categories_table.php",
 		"/C/Users/andrija/xampp/htdocs/tatamata/config/database.php",
 		"/C/Users/andrija/xampp/htdocs/andor/resources/views/auth/login.blade.php",
 		"/C/Users/andrija/xampp/htdocs/andor/.env",
 		"/C/Users/andrija/xampp/htdocs/tatamata/config/app.php",
-		"/C/Users/andrija/xampp/htdocs/andor/resources/views/layouts/app.blade.php",
 		"/C/Users/andrija/xampp/htdocs/tatamata/server.php",
 		"/C/Users/andrija/xampp/htdocs/tatamata/database/migrations/2016_05_18_213212_create_subcats_table.php",
 		"/C/Users/andrija/xampp/htdocs/tatamata/app/Http/Controllers/Auth/AuthController.php",
@@ -358,6 +297,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"contro",
+			"index",
+			"();\n",
+			"categories",
+			"Modal",
+			"<form",
+			"/fo",
+			"div",
 			"form",
 			"categories",
 			"left",
@@ -436,157 +383,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "app/Http/routes.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1133,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								939,
-								939
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/Http/Controllers/ItemController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2323,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1435,
-								1455
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 544.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/Http/Controllers/SubcatController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1321,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1156,
-								1270
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 255.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "resources/views/categories.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7694,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5830,
-								5830
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2019.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "app/Http/Controllers/UploadController.php",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 920,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								766,
-								790
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -638,6 +436,38 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"rou",
+				"app\\Http\\routes.php"
+			],
+			[
+				"home",
+				"app\\Http\\Controllers\\HomeController.php"
+			],
+			[
+				"cateie",
+				"resources\\views\\categories.blade.php"
+			],
+			[
+				"cate",
+				"app\\Http\\Controllers\\CategoryController.php"
+			],
+			[
+				"layou",
+				"resources\\views\\layouts\\app.blade.php"
+			],
+			[
+				"categos",
+				"resources\\views\\categories.blade.php"
+			],
+			[
+				"indeb",
+				"resources\\views\\index.blade.php"
+			],
+			[
+				"index",
+				"public\\index.php"
+			],
 			[
 				"subcac",
 				"app\\Http\\Controllers\\SubcatController.php"

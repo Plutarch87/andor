@@ -9,10 +9,7 @@
         @foreach ($categories as $category)
                 <li>
                     <a href="{{ url('categories') }}{{ $id = $category->id }}#main">{{ $category->name }}</a>    <ul>
-                    @if(count($subcats) > 0)
                     @if(Auth::check())
-                        
-                        
                            <li>
                                <form action="{{ url('subcat') }}{{ $id = $category->id }}" method="POST" id="create">
                                    {{ csrf_field() }}
@@ -24,14 +21,21 @@
                                    <input style="margin-top: 4%; margin-right: 10%;" type="submit" name="submit" value="+ Dodaj potkategoriju">
                                </form>
                            </li>
-                        
-                        
                         @endif                      
+                    @if(count($subcats) > 0)
                       @foreach($subcats as $subcat)
                        @if($category->id == $subcat->category_id)
                       
                            <li> 
                                 <a href="{{ url('categories') }}{{ $id = $subcat->id }}Cat#main">{{ $subcat->name }}</a>
+
+                                <span >
+                                <form action="{{ url('subcat/'.$subcat->id) }}" method="POST" id="delete" style="display:inline">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <button type="submit" id="delete-subcat-{{ $subcat->id }}" style="float:left; margin-top:4%; margin-right:10%;" id="delete">&times;</button>
+                                </form>
+                                </span>
                            </li>        
                      
                        
@@ -70,7 +74,7 @@
         @endif
     </ul>
     </div>
-<div class="col-sm-9 col-xs-7">
+<div class="col-sm-9 col-xs-7" id="main">
     <div class="main-content" id="elementtoScrollToID">
         {{ $items->links() }}
 
@@ -115,7 +119,7 @@
                 </div>
             @endif
 
-        <div class="container-fluid" id="myModal">
+        <div class="container-fluid" >
             @if (count($items) > 0)           
                     @foreach ($items as $item)
                     <div class="col-md-3 col-sm-3">
@@ -133,10 +137,10 @@
                         <button type="button" class="btn btn-success" id="myBtn">Sifra: {{ $item->sifra }}</button>
                         @if(Auth::check())
                             <button type="button" class="btn btn-info">Izmeni</button>
-                            <form action="{{ url('item/'.$item->category_id) }}" method="POST" id="delete">
+                            <form action="{{ url('item/'.$item->id) }}" method="POST" id="delete">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
-                                <button type="submit" id="delete-item-{{ $item->category_id }}" class="btn btn-danger">Izbrisi</button>
+                                <button type="submit" id="delete-item-{{ $item->id }}" class="btn btn-danger">Izbrisi</button>
                             </form>
                         @endif
                     </div>

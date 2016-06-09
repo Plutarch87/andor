@@ -35,6 +35,23 @@ class ItemController extends Controller
             'subcats' => $subcats,
         ]);
     }
+    
+    public function show($id)
+    {
+
+        $items = Item::paginate(12);
+
+       
+
+        $subcats = DB::table('subcats')->get();
+        $categories = DB::table('categories')->get();
+
+        return view('categories', [
+            'items' => $items,
+            'categories' => $categories,
+            'subcats' => $subcats,
+        ]);
+    }
 
     public function store(Request $request)
     {
@@ -69,22 +86,6 @@ class ItemController extends Controller
         return redirect('categories');
     }
 
-    public function show($id)
-    {
-
-        $items = Item::paginate(12);
-
-       
-
-        $subcats = DB::table('subcats')->get();
-        $categories = DB::table('categories')->get();
-
-        return view('categories', [
-            'items' => $items,
-            'categories' => $categories,
-            'subcats' => $subcats,
-        ]);
-    }
 
     public function destroy(Request $request, Item $item)
     {
