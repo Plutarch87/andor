@@ -57,7 +57,7 @@ return [
             'port' => env('DB_PORT', '3306'),
             'database' => ('sexshop'),
             'username' => ('root'),
-            'password' => ('spawn87'),
+            'password' => ('spawn1987'),
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',
