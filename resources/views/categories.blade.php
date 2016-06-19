@@ -8,6 +8,7 @@
     @if (count($categories) > 0)
         @foreach ($categories as $category)
                 <li>
+
                     <a href="{{ url('categories') }}{{ $id = $category->id }}#main">{{ $category->name }}</a>    <ul>
                     @if(Auth::check())
                            <li>
@@ -27,7 +28,7 @@
                        @if($category->id == $subcat->category_id)
                       
                            <li> 
-                                <a href="{{ url('categories') }}{{ $id = $subcat->id }}Cat#main">{{ $subcat->name }}</a>
+                                <a href="{{ url('subcats') }}/{{ $id = $subcat->id }}/{{  $category_id = $category->id }}#main">{{ $subcat->name }}</a>
 
                                 <span >
                                 <form action="{{ url('subcat/'.$subcat->id) }}" method="POST" id="delete" style="display:inline">
@@ -76,7 +77,6 @@
     </div>
 <div class="col-sm-9 col-xs-7" id="main">
     <div class="main-content" id="elementtoScrollToID">
-        {{ $items->links() }}
 
         <!-- Napravi novi predmet -->
             @if(Auth::check())
@@ -112,7 +112,8 @@
                                 <input type="submit" name="submit" value="Unesi"></input>
                                 </form>
                             </div>
-                                
+                            
+                                 
 
                         </div>
                     </div>  
@@ -120,47 +121,43 @@
             @endif
 
         <div class="container-fluid" >
-            @if (count($items) > 0)           
-                    @foreach ($items as $item)
-                    <div class="col-md-3 col-sm-3">
-                    <div class="shopdiv">
-                        <h4>{{ $item->name }}</h4>
-                        <img src="{{ asset('/storage/'.$item->img) }}" alt="{{ $item->name }}" >
-                        <div class="price-tag">
-                            <span>
-                                <h4>{{ $item->price }}</h4>
-                            </span>
-
+                        <div style="float:right">   
+                        <label for="repeatSelect"> Sortiraj: </label>
+                            <select name="repeatSelect" id="repeatSelect" ng-model="data.items">
+                              <option ng-repeat="item in items | orderBy:item.price" >Jeftino</option>
+                            </select>
+                          <hr>
+                        </div>  
+            <div class="container-fluid">
+                                <div class="col-md-3 col-sm-3" ng-repeat="item in items | orderBy:item.created_at">
+                                <div class="shopdiv">
+                                    <h4><% item.name %></h4>
+                                        <img src="{{ asset('/storage') }}/<% item.img %>" alt="<% item.name %>" >
+                                        <div class="price-tag">
+                                        <span>
+                                            <h4><% item.price %></h4>
+                                        </span>
+                                        <button class="btn btn-success myShoppingCart" 
+                                        ng-click="addItem(item.price, item.name)"></button>
+                                    </div>
+                                        <button type="button" class="btn btn-danger"><% item.sifra %></button>
+                                        <button type="button"  class="btn btn-success">Detalji</button>
+                                    </div>
+                                    </div>
                         </div>
-                        <button type="button" id="myBtn" class="btn btn-success">Detalji</button>
-                        
-                        <button type="button" class="btn btn-success" id="myBtn">Sifra: {{ $item->sifra }}</button>
-                        @if(Auth::check())
-                            <button type="button" class="btn btn-info">Izmeni</button>
-                            <form action="{{ url('item/'.$item->id) }}" method="POST" id="delete">
-                                {{ csrf_field() }}
-                                {{ method_field('DELETE') }}
-                                <button type="submit" id="delete-item-{{ $item->id }}" class="btn btn-danger">Izbrisi</button>
-                            </form>
-                        @endif
-                    </div>
-                    </div>
                     <div id="myModal" class="modal">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <span class="close">&times;</span>
-                                <h4 class="modal-title">{{ $item->name }}</h4>
+                                <h4 class="modal-title"><% item.name %></h4>
                             </div>
                             <div class="modal-body">
-                                <p>{{ $item->description }}</p>
+                                <p><% item.description %></p>
                                 <img src="assets/images/modal/v427.jpg" class="modalImg">
                             </div>
                         </div>  
                     </div>
-                @endforeach
-            @endif
         </div>
-        {{ $items->links() }}
     </div>
 </div>
 </section>

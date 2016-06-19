@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8 ">
 <!-- <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'type='text/css'> -->
 <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-<script type="text/javascript" src="assets/jquery-1.12.0.min.js"></script>
-<script type="text/javascript" src="assets/index.js"></script>
-<script type="text/javascript" src="assets/bootstrap.js"></script>
-<link rel="stylesheet" type="text/css" href="assets/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="css_flyoutverticalmenu.css">
-<link rel="stylesheet" type="text/css" href="assets/index.css">
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script type="text/javascript" src="{{ url(asset('assets/jquery-1.12.0.min.js')) }}"></script>
+<script type="text/javascript" src="{{ url(asset('assets/angular.js')) }}"></script>
+<script type="text/javascript" src="{{ url(asset('assets/index.js')) }}"></script>
+<script type="text/javascript" src="{{ url(asset('assets/bootstrap.js')) }}"></script>
+<!-- angular -->
+<script type="text/javascript" src="{{ url(asset('assets/app/app.js')) }}"></script>
 
+<link rel="stylesheet" type="text/css" href="{{ url(asset('assets/bootstrap.css')) }}">
+<link rel="stylesheet" type="text/css" href="{{ url(asset('css_flyoutverticalmenu.css')) }}">
+<link rel="stylesheet" type="text/css" href="{{ url(asset('assets/index.css')) }}">
 
 </head>
-<body>
-<div class="main" id="elementtoScrollToID2">        
+<body ng-app="app" ng-controller="mainController">
+<div class="main">        
 <section>       
         <header>
             <nav class="navbar navbar-default">
@@ -49,7 +53,7 @@
             </nav>            
             <div class="ncontent">
                 <h1 id="wlch1">Welcome to Hexor</h1>
-                <a href="#"><img src="assets/images/hd.png" id="logo"></a>
+                <a class="logo-wrapper" href="#"><img src="{{ url(asset("assets/images/hd.png")) }}" id="logo"></a>
                 <ul class="nlistwrapper">
                     <a class="nlinew"href="#"><li>Novo</li></a>
                   <a class="nlibestseller"href="#"><li>Najprodavanije</li></a>    
@@ -57,8 +61,8 @@
                     
                 </ul>
                 <div class="shopingwrapper">
-                    <span id="shopcircle">1</span>
-                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                    <span id="shopcircle"><% carts.length %></span>
+                    <a href="#"id="myShopBtn"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
                 </div>
 
             </div>
@@ -73,6 +77,7 @@
 
 
 
+<div class="carousel-wrapper">
 
 <div id="theCarousel" class="carousel slide" data-ride="carousel">
   <ul class="carousel-indicators">
@@ -84,15 +89,15 @@
 
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <img src="assets/images/carousel/choc-sex-01.jpg" alt="a">
+      <img src="{{ url(asset("assets/images/carousel/choc-sex-01.jpg")) }}" alt="a">
     </div>
 
     <div class="item">
-      <img src="assets/images/carousel/afp-photo_1376375469901-1-HD.jpg" alt="a">
+      <img src="{{ url(asset("assets/images/carousel/afp-photo_1376375469901-1-HD.jpg")) }}" alt="a">
     </div>
 
     <div class="item">
-      <img src="assets/images/carousel/160310-sex-pop-up.png" alt="a">
+      <img src="{{ url(asset("assets/images/carousel/160310-sex-pop-up.png")) }}" alt="a">
     </div>
 
   </div>
@@ -106,16 +111,12 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
+</div>
 
         </header>
-
-
-
-
 </section>
 
-@yield('content')       
-
+@yield('content')
 </body>
 
 </html>

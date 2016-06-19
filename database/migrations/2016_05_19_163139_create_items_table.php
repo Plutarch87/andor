@@ -22,7 +22,7 @@ class CreateItemsTable extends Migration
             $table->integer('sifra'); 
             $table->boolean('akcija');
             $table->boolean('popularno');
-            $table->binary('img');
+            $table->string('img');
             $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();

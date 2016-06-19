@@ -10,9 +10,6 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('/home', 'HomeController@index');
-
-
 Route::get('/', 'CategoryController@index');
 
 Route::post('/category', 'CategoryController@post');
@@ -26,7 +23,7 @@ Route::get('/categories{categories}', 'ItemController@show');
 
 Route::get('/categories', 'SubcatController@index');
 
-Route::get('/subcat/{subcat}', 'SubcatController@show');
+Route::get('/subcats/{categories}/{subcat}', 'SubcatController@show');
 
 Route::post('/subcat{subcat}', 'SubcatController@post');
 
@@ -43,5 +40,11 @@ Route::post('upload', 'UploadController@postFile');
 Route::get('/formz', function () {
 	return view('formz');
 });
+
+Route::get('api/v1/get-items', 'CategoryController@showAll');
+
+Route::post('api/v1/solditem', 'SoldItemController@store');
+
+
 
 Route::auth();

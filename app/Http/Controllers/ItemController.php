@@ -63,6 +63,7 @@ class ItemController extends Controller
             {
              $desPath = storage_path(). '/andor';
              $name = date("his"). "-". $request->file->getClientOriginalName();
+
              if($request->file->isValid()) {
                  $request->file->move($desPath, $name);
              }
@@ -76,11 +77,14 @@ class ItemController extends Controller
          } else {
              return response()->json("File must be in image format(.jpeg, .jpg, .png)", 405);
          }
-
+        $cat_id = (int)$request->category_id;
+        $sub_id = (int)$request->subcat_id;
         $items = Item::create([
             'name' => $request->name,
             'sifra' => $request->sifra,
             'price' => $request->price,
+            'category_id' => $cat_id,
+            'subcat_id' => $sub_id,
             'img' => $name,
             ]);
         return redirect('categories');

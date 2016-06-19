@@ -14,7 +14,7 @@
 
 /* We apply background color and border bottom white and width to 150px */
 #menuwrapper ul li{
-    background-color:#9518AB;
+    background-color:#CD69F8!important;
     border-bottom:solid 1px white;
     width:171px;
     cursor:pointer;

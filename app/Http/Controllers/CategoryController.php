@@ -25,7 +25,7 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $items = Item::paginate(2);
+        $items = Item::paginate(9);
     	$categories = Category::all();
         $subcats = Subcat::all();
 
@@ -49,5 +49,11 @@ class CategoryController extends Controller
         $category->delete();
 
         return redirect('/#main');
+    }
+
+    public function showAll() {
+        $items = Item::all();
+
+        return response()->json($items);
     }
 }

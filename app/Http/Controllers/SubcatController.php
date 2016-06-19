@@ -27,18 +27,23 @@ class SubcatController extends Controller
             ]);
     }
 
-    public function show(Request $request, $id)
+    public function show(Request $request, $subcat_id, $category_id)
     {
-        $subcats = Subcat::find($id)->subcats;
+        //$subcats = Subcat::find($subcat_id)->subcats;
 
-        // $id = DB::table('items')->where('category_id', $id)->get();
-        $items = DB::table('items')->get();
+        $subcats = DB::table('subcats')->where('id', $subcat_id)->get();
+        $items = DB::table('items')
+            ->where('category_id', $category_id)
+            ->where('subcat_id', $subcat_id)
+            ->get();
         $categories = DB::table('categories')->get();
 
-        return view('categories', [
+        return view('subcats', [
             'items' => $items,
             'categories' => $categories,
-            'subcats' => $subcats,            
+            'subcats' => $subcats,
+            'subcat_id' => $subcat_id,
+            'category_id' => $category_id, 
         ]);
     }
     

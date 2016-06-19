@@ -1,0 +1,1 @@
+// izvadi sve 'items' -> 'akcija';
