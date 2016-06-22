@@ -10,7 +10,12 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('/', 'CategoryController@index');
+Route::get('/', function()
+	{[
+		'as' => 'index',
+		'uses' => 'CategoryController@index',
+	];
+});
 
 Route::post('/category', 'CategoryController@post');
 
