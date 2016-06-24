@@ -4,15 +4,9 @@
 
 <div class="col-sm-9 col-xs-7" id="main">
     <div class="main-content" id="elementtoScrollToID">
-        <!-- Napravi novi predmet -->
-            @if(Auth::check())
-            	
-            	<button type="button" id="myBtn" href="#main" class="btn btn-info">+ Dodaj predmet</button>
-                
-            @endif
-
+       
             <div class="container-fluid">
-                <div class="col-md-3 col-sm-3" ng-repeat="item in items | orderBy:item.category_id">
+                <div class="col-md-3 col-sm-3" ng-repeat="item in items | orderBy:item.name">
                 	<div class="shopdiv">
                     	<h4><% item.name %></h4>
                         <img src="{{ asset('/storage/andor') }}/<% item.img %>" alt="<% item.name %>" >

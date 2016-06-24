@@ -27,7 +27,7 @@ class SubcatController extends Controller
             ]);
     }
 
-    public function show(Request $request, $subcat_id, $category_id)
+    public function show(Request $request, $category_id, $subcat_id)
     {
         //$subcats = Subcat::find($subcat_id)->subcats;
 

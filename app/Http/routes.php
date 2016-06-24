@@ -10,27 +10,28 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('/', function()
-	{[
+Route::get('/', [
 		'as' => 'index',
 		'uses' => 'CategoryController@index',
-	];
-});
+	]);
 
 Route::post('/category', 'CategoryController@post');
 
 Route::delete('/category/{category}', 'CategoryController@destroy');
 
-Route::get('/categories', 'ItemController@index');
+Route::get('/categories', [
+		'as' => 'categories.index',
+		'uses' => 'ItemController@index',
+	]);
 
-Route::get('/categories{categories}', 'ItemController@show');
+Route::get('/categories/{categories}', 'ItemController@show');
 
 
-Route::get('/categories', 'SubcatController@index');
+// Route::get('/categories', 'SubcatController@index');
 
 Route::get('/subcats/{categories}/{subcat}', 'SubcatController@show');
 
-Route::post('/subcat{subcat}', 'SubcatController@post');
+Route::post('/subcat/{subcat}', 'SubcatController@post');
 
 Route::delete('/subcat/{subcat}', 'SubcatController@destroy');
 

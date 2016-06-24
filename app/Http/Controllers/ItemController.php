@@ -26,10 +26,11 @@ class ItemController extends Controller
     {    
 
         $items = Item::paginate(12);
+        $subcats = Subcat::all();
         $categories = DB::table('categories')->orderBy('created_at', 'asc')->get();
          
 
-        return view('categories', [
+        return view('categories.index', [
             'items' => $items,
             'categories' => $categories,
             'subcats' => $subcats,
@@ -39,7 +40,7 @@ class ItemController extends Controller
     public function show($id)
     {
 
-        $items = Item::paginate(12);
+        $items = Item::where('category_id', $id)->get();
 
        
 

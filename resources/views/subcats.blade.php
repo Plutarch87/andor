@@ -1,5 +1,29 @@
 @extends ('layouts.app')
 @section('content')
+
+<section class="shit">
+
+
+<div class="col-sm-9 col-xs-7" id="main">
+    <div class="main-content" id="elementtoScrollToID">
+    	<div class="container-fluid">
+	    	@if(count($items) > 0)
+	    		@foreach($items as $item)
+    				<div class="col-md-3 col-sm-3">
+	    				{{ $item->name }}
+	    				<button class="btn btn-success myShoppingCart" 
+	    				ng-click="addItem(item.price, item.name)"></button>
+	    		@endforeach
+	    	@endif
+	    	</div>
+    	</div>
+    </div>
+</div>
+
+
+
+</section>
+<hr>
 <section class="subcats">
 	
 	@foreach($subcats as $subcat)

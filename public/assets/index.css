@@ -354,7 +354,6 @@ a {
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 5; /* Sit on top */
     padding-top: 100px; /* Location of the box */
     left: 0;
     top: 0;
@@ -373,6 +372,14 @@ a {
     border: 1px solid #888;
     width: 27%;
 
+}
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 4px solid #000;
+    width: 27%;
 }
 
 .modal-content2 {
@@ -429,14 +436,6 @@ a {
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-/* Modal Content */
-.modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 4px solid #000;
-    width: 27%;
-}
 
 /* The Close Button */
 .close {
