@@ -54,6 +54,15 @@ class ItemController extends Controller
         ]);
     }
 
+    public function showAll()
+    {
+        $items = Item::all();
+        $categories = Category::all();
+        $subcats = Subcat::all();
+
+        return response()->json(['items' => $items, 'categories' => $categories, 'subcats' => $subcats]);
+    }
+
     public function store(Request $request)
     {
          if(

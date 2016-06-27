@@ -138,9 +138,14 @@
         <div class="col-sm-9 col-xs-7">
             <div class="main-content">
                 <div class="container-fluid">
-                    
-                    <div class="col-md-3 col-sm-3" ng-repeat="item in items | orderBy:'-created_at' | limitTo:'category_id'">
-                        <div class="shopdiv">
+                    <div class="row">
+                        
+                    <div class="col-md-3 col-sm-3"  ng-repeat="item in categories.items" 
+                    ng-if="item.category_id == <?php foreach ($categories as $category) {
+                        foreach ($items as $item) {
+                        if($category->id == $item->category_id )
+                            { echo ($category->id); break; }}} ?>">
+                        <div class="shopdiv" >
                             <h4><% item.name %></h4>
                             <img src="{{ asset('/storage/andor') }}/<% item.img %>" alt="<% item.name %>" >
                             <div class="price-tag">
@@ -155,6 +160,7 @@
                         </div>
                     </div>
                 
+                    </div>
                 </div>
             </div>
         </div>

@@ -79,7 +79,7 @@
             <div class="main-content">
 
             <div class="container-fluid">
-                <div class="col-md-3 col-sm-3" ng-repeat="item in items | orderBy:'-created_at'">
+                <div class="col-md-3 col-sm-3" ng-repeat="item in items.items">
                     <div class="shopdiv">
                         <h4><% item.name %></h4>
                         <img src="{{ asset('/storage/andor') }}/<% item.img %>" alt="<% item.name %>" >

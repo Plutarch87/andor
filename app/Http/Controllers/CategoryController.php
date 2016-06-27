@@ -41,19 +41,22 @@ class CategoryController extends Controller
             'name' => $request->name,
             ]);
         
-        return redirect('/#main');
+        return back();
     }
 
     public function destroy(Request $request, Category $category)
     {
         $category->delete();
 
-        return redirect('/#main');
+        return back();
     }
 
-    public function showAll() {
-        $items = Item::all();
 
-        return response()->json($items);
+    public function showAll($id) {
+        $categories = Item::where('category_id', $id)->get();
+
+        return response()->json_decode(['categories' => $categories, 'items' => $items]);
+
     }
+
 }

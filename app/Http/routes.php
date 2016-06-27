@@ -47,10 +47,12 @@ Route::get('/formz', function () {
 	return view('formz');
 });
 
-Route::get('api/v1/get-items', 'CategoryController@showAll');
+Route::get('api/v1/get-items', 'ItemController@showAll');
+
+Route::get('categories/api/v1/get-items', 'ItemController@showAll');
+
+Route::get('categories/subcats/api/v1/get-items', 'ItemController@showAll');
 
 Route::post('api/v1/solditem', 'SoldItemController@store');
-
-
 
 Route::auth();

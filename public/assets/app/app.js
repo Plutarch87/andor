@@ -3,9 +3,11 @@ var app = angular.module('app', [], function($interpolateProvider) {
         $interpolateProvider.endSymbol('%>');
 });
 
-app.controller('mainController', ['$scope', '$http', function($scope, $http) {
+app.controller('mainController', ['$scope', '$http', 'filterFilter', function($scope, $http, filterFilter) {
     
-    $scope.items = [];
+   
+    $scope.categories = [$scope.subcats = [ $scope.items = []]];
+    
     $scope.carts = [];
     $scope.sum = 0;
     $scope.price = 0;
@@ -60,11 +62,16 @@ app.controller('mainController', ['$scope', '$http', function($scope, $http) {
     // });
 
     $http({
-  		method: 'GET',
-  		url: 'api/v1/get-items'
-		}).then(function successCallback(response) {
-    		$scope.items = response.data;			
-	  	}, function errorCallback(response) {
-	  		
-  	});
+        method: 'GET',
+        url: 'api/v1/get-items',
+        }).then(function successCallback(response) {
+            $scope.items = response.data;
+            $scope.categories = response.data;
+            $scope.subcats = response.data;
+        }, function errorCallback(response) {
+    });
+
+
+
+        
 }]);

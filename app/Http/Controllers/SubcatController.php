@@ -59,7 +59,7 @@ class SubcatController extends Controller
             'category_id' => $id,
             ]);
 
-        return redirect('categories');
+        return back();
     }
 
     public function destroy(Request $request, Subcat $subcat)
@@ -67,6 +67,13 @@ class SubcatController extends Controller
         $subcat->delete();
 
         return redirect('/categories#main');
+    }
+
+    public function showSubcats()
+    {
+        $subcats = Subcat::all();
+
+        return response()->json($subcats);
     }
 
 }
