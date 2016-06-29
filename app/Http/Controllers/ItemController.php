@@ -93,11 +93,13 @@ class ItemController extends Controller
             'name' => $request->name,
             'sifra' => $request->sifra,
             'price' => $request->price,
+            'akcija' => $request->akcija,
+            'popularno' => $request->popularno,
             'category_id' => $cat_id,
             'subcat_id' => $sub_id,
             'img' => $name,
             ]);
-        return redirect('categories');
+        return back();
     }
 
 

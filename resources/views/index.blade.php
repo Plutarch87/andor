@@ -12,7 +12,7 @@
             @if (count($categories) > 0)
                 @foreach ($categories as $category)
                     <li>
-                        <a href="{{ url('categories', $id = $category->id) }}#main">{{ $category->name }}</a>
+                        <a href="{{ url('categories', str_slug($id = $category->id)) }}">{{ $category->name }}</a>
                         <ul style="z-index:51; overflow:auto;">
                                             @if(Auth::check())
                                                     <li>
@@ -28,21 +28,21 @@
                                             @endif                      
                                          
                                             @if(count($subcats) > 0)
-                                                    @foreach($subcats as $subcat)
-                                                            @if($category->id == $subcat->category_id)
-                                                                    <li> 
-                                                                            <a href="{{ url('subcats', $category_id = $category->id) }}/{{ $id = $subcat->id}}#main">{{ $subcat->name }}</a>
+                                                @foreach($subcats as $subcat)
+                                                    @if($category->id == $subcat->category_id)
+                                                        <li> 
+                                                            <a href="{{ url('categories', $category_id = $category->id) }}/{{ 'subcats/'. $subcat->id }}#main">{{ $subcat->name }}</a>
 
-                                                                            <span >
-                                                                            <form action="{{ url('subcat', $subcat->id) }}" method="POST" id="delete" style="display:inline">
-                                                                            {{ csrf_field() }}
-                                                                            {{ method_field('DELETE') }}
-                                                                            <button type="submit" id="delete-subcat-{{ $subcat->id }}" style="float:left; margin-top:4%; margin-right:10%;" id="delete">&times;</button>
-                                                                            </form>
-                                                                            </span>
-                                                                    </li>        
-                                                            @endif
-                                                    @endforeach
+                                                            <span >
+                                                            <form action="{{ url('subcat', $subcat->id) }}" method="POST" id="delete" style="display:inline">
+                                                            {{ csrf_field() }}
+                                                            {{ method_field('DELETE') }}
+                                                            <button type="submit" id="delete-subcat-{{ $subcat->id }}" style="float:left; margin-top:4%; margin-right:10%;" id="delete">&times;</button>
+                                                            </form>
+                                                            </span>
+                                                        </li>        
+                                                    @endif
+                                                @endforeach
                                             @endif 
                                             </ul>
                                                          

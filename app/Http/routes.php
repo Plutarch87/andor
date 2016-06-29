@@ -29,7 +29,7 @@ Route::get('/categories/{categories}', 'ItemController@show');
 
 // Route::get('/categories', 'SubcatController@index');
 
-Route::get('/subcats/{categories}/{subcat}', 'SubcatController@show');
+Route::get('categories/{categories}/subcats/{subcats}', 'SubcatController@show');
 
 Route::post('/subcat/{subcat}', 'SubcatController@post');
 
@@ -51,7 +51,7 @@ Route::get('api/v1/get-items', 'ItemController@showAll');
 
 Route::get('categories/api/v1/get-items', 'ItemController@showAll');
 
-Route::get('categories/subcats/api/v1/get-items', 'ItemController@showAll');
+Route::get('categories/{categories}/subcats/api/v1/get-items', 'ItemController@showAll');
 
 Route::post('api/v1/solditem', 'SoldItemController@store');
 

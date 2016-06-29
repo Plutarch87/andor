@@ -54,7 +54,7 @@
                             </div>
                         @endif
                         <a href="{{ url('categories', $id = $category->id) }}#main">{{ $category->name }}</a>
-                        <ul>
+                        <ul style="z-index:51; overflow:auto;">
                             @if(Auth::check())
                                 <li>
                                     <form action="{{ url('subcat', $id = $category->id ) }}" method="POST" id="create">
@@ -69,7 +69,7 @@
                                     @foreach($subcats as $subcat)
                                         @if($category->id == $subcat->category_id)
                                             <li> 
-                                                <a href="{{ url('subcats', $category_id = $category->id) }}/{{ $id = $subcat->id }}#main">{{ $subcat->name }}</a>
+                                                <a href="{{ url('categories', $category_id = $category->id) }}/{{ 'subcats/'. $subcat->id }}#main">{{ $subcat->name }}</a>
 
                                                 <span >
                                                     <button type="button" data-toggle="modal" data-target="#myModal{{$category->id}}-{{$subcat->id}}" href="#main" class="btn btn-info" style="float:left; width:15%; height:90%;">&plus;</button>
