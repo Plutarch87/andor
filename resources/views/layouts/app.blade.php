@@ -4,9 +4,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8 ">
 <!-- <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'type='text/css'> -->
+<script type="text/javascript" src="{{ url(asset('assets/jquery-1.12.0.min.js')) }}"></script>
 <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 <script src="https://maps.googleapis.com/maps/api/js"></script>
-<script type="text/javascript" src="{{ url(asset('assets/jquery-1.12.0.min.js')) }}"></script>
 <script type="text/javascript" src="{{ url(asset('assets/angular.js')) }}"></script>
 <script type="text/javascript" src="{{ url(asset('assets/index.js')) }}"></script>
 <script type="text/javascript" src="{{ url(asset('assets/bootstrap.js')) }}"></script>
@@ -34,10 +34,10 @@
 				
 								</div>
 
-						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" ng-click="openKontaktModal();">
 								<ul class="nav navbar-nav">                    
 										<!-- <li><a href="#"><img src="assets/images/hd.png" id="logo"><span class="sr-only"> (current)</span></a></li> -->
-										<li><a href="#">Kontakt</a></li> 
+										<li><a href="#" >Kontakt</a></li> 
 										<form class="navbar-form navbar-right" role="search">
 										<div class="form-group">
 												<input type="text" class="form-control" placeholder="Search">
@@ -62,7 +62,7 @@
 								</ul>
 								<div class="shopingwrapper">
 										<span id="shopcircle"><% carts.length %></span>
-										<a href="#"id="myShopBtn"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+										<a href="#" ng-click="openBasket();"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
 								</div>
 
 						</div>
@@ -80,7 +80,7 @@
 
 	<div class="carousel-inner" role="listbox">
 		<div class="item active">
-			<img src="{{ url(asset("assets/images/carousel/choc-sex-01.jpg")) }}" alt="a">
+			<img src="{{ url(asset("assets/images/carousel/triple_x_1.jpg")) }}" alt="a">
 		</div>
 
 		<div class="item">
@@ -111,17 +111,41 @@
 
 @section('modals')
 
-<!-- Item modal -->
-
-<div id="myModal2" class="modal">
+<!-- Dodaj predmet -->
+<div id="myModal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
             <span class="close">&times;</span>
-            <h4 class="modal-title"><% item.name %></h4>
+            <h4 class="modal-title">Napravi novi predmet</h4>
         </div>
+        
         <div class="modal-body">
-            <p><% item.description %></p>
-            <img src="assets/images/modal/v427.jpg" class="modalImg">
+            <form action="{{ url('item') }}" method="POST" enctype="multipart/form-data" id="newItem">
+                <label for="name">Ime:</label>
+                <input type="text" name="name"  id="newItem"  ></input>
+                <label for="sifra">Sifra:</label>
+                <input type="text" name="sifra"  id="newItem"  ></input>
+                <label for="price">Cena:</label>
+                <input type="text" name="price"  id="newItem"  ></input>
+                <label for="name">Opis:</label>
+                <textarea rows="4" cols="18"></textarea>
+                <br />
+                <label for="akcija">Akcija</label>
+                <input type="checkbox" name="akcija"></input>
+                <br />
+                <label for="popularno">Najprodavanije</label>
+                <input type="checkbox" name="popularno"></input>
+                <hr>
+                <label>Izaberi sliku:</label>
+                <input type="file" name="file" id="newItem"></input>
+                <input type="hidden" value="{{ csrf_token() }}" name="_token"></input>
+                <hr>
+                <input type="hidden"  name="id"  />
+            <div class="modal-footer">
+                <input type="submit" name="submit" value="Unesi"></input>
+                </form>
+            </div>
+
         </div>
     </div>  
 </div>
@@ -129,7 +153,7 @@
 <!-- Cart modal -->
 <div id="myCartModal">
     <div class="modal-content2">
-        <span id="close2">
+        <span id="close2" ng-click="closeBasketModal();">
             &times;
         </span>
         <div class="korpawrapper">
@@ -193,8 +217,7 @@
                 <span class="ukupno">
                     
                 </span>
-                <button ng-click="promeniModal()" id="narucibtn" ng-if="promeni == 0">Naruči</button>
-                
+                <button ng-click="promeniModal()" id="narucibtn" ng-if="carts.length > 0">Naruči</button>
             </div>
             
         </div>
@@ -202,7 +225,7 @@
 </div>
 
 <!-- Kontakt modal -->
-<div id="openModal" class="modalDialog">
+<div id="kontakt" class="modalDialog">
  <div>
     <a href="#closee" title="Closee" class="closee">X</a>
     <div id="map">
@@ -223,6 +246,7 @@
         <p>hexor@sezampro.rs</p>
     </span>
     </div>
+</div>
 </div>
 
 @show

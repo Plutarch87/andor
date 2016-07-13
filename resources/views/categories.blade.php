@@ -18,8 +18,9 @@
                             </span>
                             <!-- Modal -->
                             <div id="myModal{{$category->id}}" class="modal">
+                            <div class="container">
                                 <div class="modal-content">
-                                    <div class="modal-header">
+                                    <div class="modal-header">                                        
                                         <span class="close">&times;</span>
                                         <h4 class="modal-title">Napravi novi predmet</h4>
                                     </div>
@@ -51,6 +52,7 @@
                                         </div>
                                     </div>
                                 </div>  
+                            </div>
                             </div>
                         @endif
                         <a href="{{ url('categories', $id = $category->id) }}#main">{{ $category->name }}</a>

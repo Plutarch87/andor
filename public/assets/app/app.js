@@ -71,6 +71,32 @@ app.controller('mainController', ['$scope', '$http', 'filterFilter', function($s
         }, function errorCallback(response) {
     });
 
+    $scope.openItemModal = function(item) {
+        $scope.item = {
+            'name': item.name,
+            'price': item.price,
+            'description': item.description,
+            'img': item.img
+        };
+        angular.element('#item-modal').css('display', 'block');
+    }
+
+    $scope.closeItemModal = function() {
+        angular.element('#item-modal').css('display', 'none');
+    }
+
+    $scope.openBasket = function() {
+        angular.element('#myCartModal').css('display', 'block');
+    }
+
+    $scope.closeBasketModal = function() {
+        angular.element('#myCartModal').css('display', 'none');
+    }
+
+    $scope.openKontaktModal = function() {
+        angular.element('#kontakt').css('display', 'block');
+    }
+
 
 
         

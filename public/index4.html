@@ -5,8 +5,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8 ">
 <!-- <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'type='text/css'> -->
 <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+<script src="https://maps.googleapis.com/maps/api/js"></script>
 <script type="text/javascript" src="assets/jquery-1.12.0.min.js"></script>
 <script type="text/javascript" src="assets/index.js"></script>
+
 <script type="text/javascript" src="assets/bootstrap.js"></script>
 <link rel="stylesheet" type="text/css" href="assets/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="css_flyoutverticalmenu.css">
@@ -15,7 +17,7 @@
 
 </head>
 <body>
-<div class="main" id="elementtoScrollToID2">        
+<div class="main">        
 <section>       
         <header>
             <nav class="navbar navbar-default">
@@ -33,7 +35,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">                    
                     <!-- <li><a href="#"><img src="assets/images/hd.png" id="logo"><span class="sr-only"> (current)</span></a></li> -->
-                    <li><a href="#">Kontakt</a></li> 
+                    <li><a href="#openModal" id="kontakt">Kontakt</a></li> 
                     <form class="navbar-form navbar-right" role="search">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Search">
@@ -49,7 +51,7 @@
             </nav>            
             <div class="ncontent">
                 <h1 id="wlch1">Welcome to Hexor</h1>
-                <a href="#"><img src="assets/images/hd.png" id="logo"></a>
+                <a class="logo-wrapper" href="#"><img src="assets/images/hd.png" id="logo"></a>
                 <ul class="nlistwrapper">
                     <a class="nlinew"href="#"><li>Novo</li></a>
                   <a class="nlibestseller"href="#"><li>Najprodavanije</li></a>    
@@ -57,8 +59,8 @@
                     
                 </ul>
                 <div class="shopingwrapper">
-                    <span id="shopcircle">1</span>
-                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                    <span id="shopcircle">2</span>
+                    <a href="#"id="myShopBtn"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
                 </div>
 
             </div>
@@ -71,9 +73,7 @@
 
 
 
-
-
-
+<div class="carousel-wrapper">
 <div id="theCarousel" class="carousel slide" data-ride="carousel">
   <ul class="carousel-indicators">
     <li data-target="#theCarousel" data-slide-to="0" class="active"></li>
@@ -84,8 +84,8 @@
 
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <img src="assets/images/carousel/choc-sex-01.jpg" alt="a">
-    </div>
+      <img src="assets/images/carousel/triple_x_1.jpg" alt="a">
+    </div>    
 
     <div class="item">
       <img src="assets/images/carousel/afp-photo_1376375469901-1-HD.jpg" alt="a">
@@ -106,6 +106,8 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
+<!-- <img src="assets/images/carousel/shadow5.png" id="carousel-shadow"> -->
+</div>
 
         </header>
 
@@ -114,12 +116,12 @@
 
 </section>
 
-<section style="background-color: #F0CCBF;" id="section2">
+<section style="background-color: #EDD9F6;" id="section2">
 <div class="row">
 <div class="col-sm-3 col-xs-5" id="menuwrapper">
     <ul>
-        <li><a href="#">Vibratori</a>
-        <span class="flatline"></span>
+        <li><a href="#">Vibratori</a><span class="flatline"></span>
+        
             <ul>
                 <li><a href="#">Potkategorija</a></li>
                 <li><a href="#">Potkategorija</a></li>
@@ -157,183 +159,227 @@
                    <a type="button" class="btn btn-warning" id="btnNaruci" href="formz.html">Naruči</a>
     </div>    
     </div> -->
-    <div class="main-content" id="elementtoScrollToID">
+    <div class="main-content">
                     <div class="container-fluid">
-                    <div class="row">
+                    <div class="row" id="shoprow1">
                     <div class="col-md-3 col-sm-3">
                     <div class="shopdiv">
-                        <h4>Superglide lubrikant 100ml</h4>
-                        <img src="assets/images/v533.jpg" id="Slubrikant">
+                        <h4 class="testklasa">Superglide lubrikant 100ml</h4>
+                        <img src="assets/images/novoandor/EGG040.jpg" class="shopimg" id="mojBtn">
+                        <span class="glyphicon glyphicon-zoom-in shopimg" aria-hidden="true"></span>
                         <div class="price-tag">
                             <span>
-                                <h4>1.490,00 rsd</h4>
+                                <h4>1490</h4>
                             </span>
 
                         </div>
-                        
+                        <div class="buttonwrapper">
                         <button type="button" class="btn btn-success" id="myBtn">Šifra: 427</button>
-                        <button id="myShoppingCart" class="btn btn-success"></button>
+                        <button class="btn btn-success myShoppingCart"></button>
+                            
+
+                        </div>
                     </div>
                     </div><!--end of column--> 
                     <div class="col-md-3 col-sm-3">
                     <div class="shopdiv">
                         <h4>Superglide lubrikant 100ml</h4>
-                        <img src="assets/images/v533.jpg" id="Slubrikant">
+                        <img src="assets/images/novoandor/RAB133.jpg" class="shopimg" id="mojBtn">
+                        <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
                         <div class="price-tag">
                             <span>
-                                <h4>1.490,00 rsd</h4>
+                                <h4>1490</h4>
                             </span>
 
                         </div>
-                        
+                        <div class="buttonwrapper">
                         <button type="button" class="btn btn-success" id="myBtn">Šifra: 427</button>
-                        <button id="myShoppingCart" clasv533.jpg></button>
+                        <button class="btn btn-success myShoppingCart"></button>
+                        </div>
                     </div>
                     </div><!--end of column-->
                     <div class="col-md-3 col-sm-3">
-                    <div class="shopdiv">
+                    <div class="shopdiv" id="hideme4">
                         <h4>XXL Penis Creme</h4>
-                        <img src="assets/images/v533.jpg" id="Pcreme">
+                        <img src="assets/images/novoandor/VIB1062.jpg" class="shopimg" id="mojBtn">
+                        <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
                         <div class="price-tag">
                             <span>
-                                <h4>1.490,00 rsd</h4>
+                                <h4>1490</h4>
                             </span>
 
                         </div>
+                        <div class="buttonwrapper">
                         <button type="button" class="btn btn-success">Šifra: 201</button>
-                        <button id="myShoppingCart" class="btn btn-success"></button>
+                        
+                        <button class="btn btn-success myShoppingCart"></button>
+                        </div>
                     </div>
                     </div><!--end of column-->
                     <div class="col-md-3 col-sm-3">
-                    <div class="shopdiv">
+                    <div class="shopdiv" id="hideme1">
                         <h4>Jelly Amazing Vibratori</h4>
-                        <img src="assets/images/v533.jpg" id="AVibrator">
+                        <img src="assets/images/novoandor/VIB1101.jpg" class="shopimg" id="mojBtn">
+                        <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
                         <div class="price-tag">
                             <span>
-                                <h4>1.490,00 rsd</h4>
+                                <h4>1490</h4>
                             </span>
 
                         </div>
+                        <div class="buttonwrapper">
                         <button type="button" class="btn btn-success">Šifra 9690</button>
-                        <button id="myShoppingCart" class="btn btn-success"></button>
+                        <button class="btn btn-success myShoppingCart"></button>
+                        </div>
                     </div>
                     </div> <!--end of column-->
-                    </div> <!--e of row--> 
+                    </div> <!--e of row-->
+                    <div class="row" id="shoprow2"> 
                     <div class="col-md-3 col-sm-3">
                     <div class="shopdiv">
                         <h4>Superglide lubrikant 100ml</h4>
-                        <img src="assets/images/v533.jpg" id="Slubrikant">
+                        <img src="assets/images/novoandor/VIB1124n.jpg" class="shopimg" id="mojBtn">
+                        <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
                         <div class="price-tag">
                             <span>
-                                <h4>1.490,00 rsd</h4>
+                                <h4>1490</h4>
                             </span>
 
                         </div>
-                        
+                        <div class="akcijatag">
+                            <span>Akcija</span>
+                        </div>
+                        <div class="buttonwrapper">
                         <button type="button" class="btn btn-success" id="myBtn">Šifra: 427</button>
-                        <button id="myShoppingCart" class="btn btn-success"></button>
+                        <button class="btn btn-success myShoppingCart"></button>
+                        </div>
                     </div>
                     </div><!--end of column-->
-                    <div class="row">
+                    
                     <div class="col-md-3 col-sm-3">
                     <div class="shopdiv">
                         <h4>UniPlug</h4>
-                        <img src="assets/images/v533.jpg">
+                        <img src="assets/images/novoandor/VIB1132.jpg" class="shopimg" id="mojBtn">
+                        <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
                         <div class="price-tag">
                             <span>
-                                <h4>1.490,00 rsd</h4>
+                                <h4>1490</h4>
                             </span>
 
                         </div>
+                        <div class="buttonwrapper">
                         <button type="button" class="btn btn-success">Šifra: 7667</button>
-                        <button id="myShoppingCart" class="btn btn-success"></button>
+                        
+                        <button class="btn btn-success myShoppingCart"></button>
+                        </div>
                     </div>
                     </div><!--end of column-->
                     <div class=" col-md-3 col-sm-3">
-                    <div class="shopdiv">
+                    <div class="shopdiv" id="hideme5">
                         <h4>H<sub>2</sub>O waterproof Patriot</h4>
-                        <img src="assets/images/v533.jpg">
+                        <img src="assets/images/v533.jpg" class="shopimg" id="mojBtn">
+                        <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
                         <div class="price-tag">
                             <span>
-                                <h4>1.490,00 rsd</h4>
+                                <h4>1490</h4>
                             </span>
 
                         </div>
+                        <div class="novotag">
+                            <span>Novo</span>
+                        </div>
+                        <div class="buttonwrapper">
                         <button type="button" class="btn btn-success">Šifra: 9876</button>
-                        <button id="myShoppingCart" class="btn btn-success"></button>
+                        <button class="btn btn-success myShoppingCart"></button>
+                        </div>
                     </div>
                     </div><!--end of column-->
                     <div class="col-md-3 col-sm-3">
-                    <div class="shopdiv">
+                    <div class="shopdiv" id="hideme2">
                         <h4>Magic Jumbing Rabbit</h4>
-                        <img src="assets/images/v533.jpg">
+                        <img src="assets/images/v533.jpg" class="shopimg" id="mojBtn">
+                        <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
                         <div class="price-tag">
                             <span>
-                                <h4>1.490,00 rsd</h4>
+                                <h4>1490</h4>
                             </span>
 
                         </div>
+                        <div class="buttonwrapper">
                         <button type="button" class="btn btn-success">Šifra: 4421</button>
-                        <button id="myShoppingCart" class="btn btn-success"></button>
+                        <button class="btn btn-success myShoppingCart"></button>
+                        </div>
                     </div>
                     </div><!--end of column-->
                     </div><!-- e of row--> 
+                    <div class="row" id="shoprow3">
                     <div class="col-md-3 col-sm-3">
                     <div class="shopdiv">
                         <h4>Superglide lubrikant 100ml</h4>
-                        <img src="assets/images/v533.jpg" id="Slubrikant">
+                        <img src="assets/images/v533.jpg" class="shopimg" id="mojBtn">
+                        <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
                         <div class="price-tag">
                             <span>
-                                <h4>1.490,00 rsd</h4>
+                                <h4>1490</h4>
                             </span>
 
                         </div>
-                        
+                        <div class="buttonwrapper">
                         <button type="button" class="btn btn-success" id="myBtn">Šifra: 427</button>
-                        <button id="myShoppingCart" class="btn btn-success"></button>
+                        <button class="btn btn-success myShoppingCart"></button>
+                        </div>
                     </div>
                     </div><!--end of column-->
-                    <div class="row">
+                    
                     <div class="col-md-3 col-sm-3">
                     <div class="shopdiv">                     
                         <h4>Big Boss lila</h4>
-                        <img src="assets/images/v533.jpg">
+                        <img src="assets/images/v533.jpg" class="shopimg" id="mojBtn">
+                        <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
                         <div class="price-tag">
                             <span>
-                                <h4>1.490,00 rsd</h4>
+                                <h4>1490</h4>
                             </span>
 
                         </div>
+                        <div class="buttonwrapper">
                         <button type="button" class="btn btn-success">Šifra: 4157</button>
-                        <button id="myShoppingCart" class="btn btn-success"></button>
+                        <button class="btn btn-success myShoppingCart"></button>
+                        </div>
                     </div>
                     </div><!--end of column-->
                     <div class="col-md-3 col-sm-3">
-                    <div class="shopdiv">    
+                    <div class="shopdiv" id="hideme6">    
                         <h4>So Real dildo</h4>
-                        <img src="assets/images/v533.jpg">
+                        <img src="assets/images/v533.jpg" class="shopimg" id="mojBtn">
+                        <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
                         <div class="price-tag">
                             <span>
-                                <h4>1.490,00 rsd</h4>
+                                <h4>1490</h4>
                             </span>
 
                         </div>
+                        <div class="buttonwrapper">
                         <button type="button" class="btn btn-success">Šifra: 7428</button>
-                        <button id="myShoppingCart" class="btn btn-success"></button>
+                        <button class="btn btn-success myShoppingCart"></button>
+                        </div>
                     </div>
                     </div><!--end of column-->
                     <div class="col-md-3 col-sm-3">
-                    <div class="shopdiv">
+                    <div class="shopdiv" id="hideme3">
                         <h4>Bionic Green Glitter</h4>
-                        <img src="assets/images/v533.jpg">
+                        <img src="assets/images/v533.jpg" class="shopimg" id="mojBtn">
+                        <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
                         <div class="price-tag">
                             <span>
-                                <h4>1.490,00 rsd</h4>
+                                <h4>1490</h4>
                             </span>
 
                         </div>
+                        <div class="buttonwrapper">
                         <button type="button" class="btn btn-success">Šifra: 4735</button>
-                        <button id="myShoppingCart" class="btn btn-success"></button>
+                        <button class="btn btn-success myShoppingCart"></button>
+                        </div>
                     </div>
                     </div><!--end of column-->
                     </div><!--end of row--> 
@@ -350,16 +396,104 @@
                                     &times;
                                 </span>
                                 <h1>Superglide lubrikant 100ml</h1>
+                                <div class="modal-info-wrapper">
                                 <p>
                                     Superglide je lubrikant na vodenoj bazi. Potpuno siguran za upotrebu sa kondomima, igračkama, latexom ili gumom. Pakovanje 100 ml.
                                 </p>
-                                <img src="assets/images/modal/v427.jpg" class="modalImg">
+                                </div>
+                                <img src="assets/images/modal/EGG040.jpg" class="modalImg">
+                                <div class="modal-price-wrapper">
                                 <p>Cena: 1.490,00 rsd</p>
                                 <p>Šifra 427</p>
+                                </div>
                                 
                             </div>
                             
-                        </div>       
+                        </div>
+                        <div id="myCartModal">
+                            <div class="modal-content2">
+                                <span id="close2">
+                                    &times;
+                                </span>
+                                <div class="korpawrapper">
+                                <p class="Korpa">
+                                    <h1>Korpa</h1>
+                                </p>
+                                </div>
+                                <ul class="lista-korpe">
+                                    <li class="korpa-predmet">
+                                        <div class="predmet-info">
+                                        </div>
+                                        
+                                        <div class="kolicina-info">
+                                        Količina: 1
+                                        </div>
+                                        <div class="cena-info">
+                                            <span class="cena">
+                                                1490,00 rsd
+                                            </span>
+                                            
+                                        </div>
+                                        
+                                    </li>     
+                                    <li class="korpa-predmet">
+                                        <div class="predmet-info">
+                                            XXL Penis Creme
+                                        </div>
+                                        
+                                        <div class="kolicina-info">
+                                        Količina: 1
+                                        </div>
+                                        <div class="cena-info">
+                                            <span class="cena">
+                                                1200,00 rsd
+                                            </span>
+                                            
+                                        </div>
+                                        
+                                    </li>
+                                    
+                                </ul>
+                                <div class="korpa-footer">
+                                    <div class="korpa-total">
+                                        <span>
+                                            Ukupno:
+                                        </span>
+                                        <span class="ukupno">
+                                            2690,00  rsd
+                                        </span>
+                                        <a href="forms.html" id="narucibtn">Naruči</a>
+                                        
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+        
+                        <div id="openModal" class="modalDialog">
+                         <div>
+                            <a href="#closee" title="Closee" class="closee">X</a>
+                            <div id="map">
+                                <script>
+                                    var mapCanvas = document.getElementById("map");
+                                    var mapOptions = {
+                                    center: new google.maps.LatLng(45.252481, 19.838341), zoom: 20}
+                                    var map = new google.maps.Map(mapCanvas, mapOptions);
+                                </script>
+                            </div>
+                            <span id="kmodal-info" style="display:block; position:absolute; top:-4%; right:1%;">
+                                <h3>Adresa:</h3>
+                                <p>Novi Sad, Jevrejska 23 pasaž.</p>
+                                <h3>Telefon:</h3>
+                                <p>021 / 661 - 9056; 063 / 536 - 488</p>
+                                <h3>Radno vreme:</h3>
+                                <p>10h - 21h; Od ponedeljka do subote.</p>
+                                <p>hexor@sezampro.rs</p>
+                            </span>
+                            </div>
+                        </div>
+                    </div>    
 </body>
 
 </html>

@@ -17,11 +17,18 @@
 
 /* We apply background color and border bottom white and width to 150px */
 #menuwrapper ul li{
-    background-color: #F0A388;    
+    background-image:
+    linear-gradient(
+    #DA90F9, #D070F9
+    );
+    /*margin-bottom: 10px;*/
+    border-radius: 10%;
     border-bottom:solid 1px white;
     width: 171px;
-    height: 40px; 
+    height: 55px; 
     cursor:pointer;
+    text-align: center;
+    padding-top: 8px;
     /*transition: all 1s;*/
 }
 
@@ -29,7 +36,7 @@
 #menuwrapper ul li:hover{
     background-image:
     linear-gradient(
-      #F46C3A, #F15219
+      #BD2EFA,#CC63F9 
     );
     position:relative;
     /*transition: all 1s;*/
@@ -65,18 +72,23 @@
     left:150px;
     top:0px;
     display:block;
+    z-index: 5;
 }
 
 /* we apply different background color to 2nd level menu items*/
 #menuwrapper ul li ul li{
-    background-color:#F0A388;
+    background-image:
+    linear-gradient(
+    #D070F9,#DA90F9 
+    );    
+    padding-right: 20px;
 }
 
 /* We change the background color for the level 2 submenu when hovering the menu */
 #menuwrapper ul li:hover ul li:hover{
-       background-image:
+    background-image:
     linear-gradient(
-      #F46C3A, #F15219
+     #CC63F9 , #BD2EFA
     );
 }
 
@@ -126,7 +138,7 @@
     position: relative;
     left: 0;
     top: -2px;
-    border-top: 3px solid #6F260C;
+    border-top: 3px solid #FFF;
     width: 0px;
     visibility: hidden;
     display: block;
@@ -138,7 +150,7 @@
     left: 0;
     top: -2px;
     padding-bottom: 2px;
-    border-top: 2px solid #6F260C;
+    border-top: 3px solid #8700C1;
     width: 65%;
     visibility: visible;
     transition: all 0.5s;

@@ -19,9 +19,9 @@ class CreateItemsTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->decimal('price', 6, 2);
-            $table->integer('sifra'); 
-            $table->boolean('akcija');
-            $table->boolean('popularno');
+            $table->integer('sifra')->nullable();
+            $table->boolean('akcija')->nullable();
+            $table->boolean('popularno')->nullable();
             $table->string('img');
             $table->softDeletes();
             $table->rememberToken();
