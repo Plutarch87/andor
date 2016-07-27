@@ -5,7 +5,7 @@
 @section('content')
 
 @section('sidebar')
-<section id="section3">
+<section style="background-color: #EDD9F6;" id="section3">
     <div class="row">
         <div class="col-sm-3 col-xs-5" id="menuwrapper">
             <ul>

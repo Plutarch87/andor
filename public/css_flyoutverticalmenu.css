@@ -64,7 +64,7 @@
 /* We make the position to absolute for flyout menu and hidden the ul until the user hover the parent li item */
 #menuwrapper ul li ul{
     position:relative;
-    left: 104%!important;  /* OVO JE ZA ANDORA PRIVREMENOO */
+    left: 103%!important;  /* OVO JE ZA ANDORA PRIVREMENOO */
     display:none;
     bottom: 87%;
 }
