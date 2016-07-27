@@ -7,7 +7,7 @@ app.controller('mainController', ['$scope', '$http', 'filterFilter', function($s
     
    
     $scope.categories = [$scope.subcats = [ $scope.items = []]];
-    
+    $scope.items = [];
     $scope.carts = [];
     $scope.sum = 0;
     $scope.price = 0;
@@ -97,7 +97,9 @@ app.controller('mainController', ['$scope', '$http', 'filterFilter', function($s
         angular.element('#kontakt').css('display', 'block');
     }
 
+$scope.delete = function(deletingId, index){
 
-
-        
+    $http.delete("item/"+deletingId);
+         
+}   
 }]);

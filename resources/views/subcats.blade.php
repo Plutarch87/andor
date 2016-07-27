@@ -136,11 +136,11 @@
     <div class="main-content">
     	<div class="container-fluid">
 	    	<div class="row">
-	    		<div class="col-md-3 col-sm-3"  ng-repeat="item in categories.items" 
+	    		<div class="col-md-3 col-sm-3"  ng-repeat="item in categories.items|orderBy:'-created_at'" 
                     ng-if="item.subcat_id == <?php foreach ($subcats as $subcat) {
                         foreach ($items as $item) {
                         if($subcat->id == $item->subcat_id )
-                            { echo ($subcat->id); break; }}} ?>">
+                            { echo ($subcat->id); break; }}} ?>|orderBy:'age'">
                         <div class="shopdiv" >
                             <h4><% item.name %></h4>
                             <img src="{{ asset('/storage/andor') }}/<% item.img %>" alt="<% item.name %>" >
@@ -151,6 +151,9 @@
                                 <button class="btn btn-success myShoppingCart" 
                                 ng-click="addItem(item.price, item.name)"></button>
                             </div>
+				@if(Auth::check())
+				<a href="#" class="btn" ng-click="delete(item)">Izbrisi</a>
+				@endif	
                             <button type="button" class="btn btn-danger"><% item.sifra %></button>
                             <button type="button"  class="btn btn-success">Detalji</button>
                         </div>

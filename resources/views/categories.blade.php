@@ -14,7 +14,7 @@
                     <li>
                         @if(Auth::check())             
                             <span >
-                                <button type="button" data-toggle="modal" data-target="#myModal{{$category->id}}" href="#main" class="btn btn-info" style="float:right; width:15%; height:90%;">&plus;</button>
+                                <button type="button" data-toggle="modal" data-target="#myModal{{$category->id}}" href="#main" class="btn btn-info" style="float:right; height:90%;">&plus;</button>
                             </span>
                             <!-- Modal -->
                             <div id="myModal{{$category->id}}" class="modal">
@@ -74,7 +74,7 @@
                                                 <a href="{{ url('categories', $category_id = $category->id) }}/{{ 'subcats/'. $subcat->id }}#main">{{ $subcat->name }}</a>
 
                                                 <span >
-                                                    <button type="button" data-toggle="modal" data-target="#myModal{{$category->id}}-{{$subcat->id}}" href="#main" class="btn btn-info" style="float:left; width:15%; height:90%;">&plus;</button>
+                                                    <button type="button" data-toggle="modal" data-target="#myModal{{$category->id}}-{{$subcat->id}}" href="#main" class="btn btn-info" style="float:left; width:15%" >&plus;</button>
                                                 </span>
                                                 <div id="myModal{{$category->id}}-{{$subcat->id}}" class="modal">
                                                     <div class="modal-content">
@@ -142,7 +142,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         
-                    <div class="col-md-3 col-sm-3"  ng-repeat="item in categories.items" 
+                    <div class="col-md-3 col-sm-3"  ng-repeat="item in categories.items|orderBy:'-created_at'" 
                     ng-if="item.category_id == <?php foreach ($categories as $category) {
                         foreach ($items as $item) {
                         if($category->id == $item->category_id )
@@ -157,6 +157,9 @@
                                 <button class="btn btn-success myShoppingCart" 
                                 ng-click="addItem(item.price, item.name)"></button>
                             </div>
+				@if(Auth::check())
+				<button ng-click="delete(item.id, $index)">Izbrisi</button>
+				@endif
                             <button type="button" class="btn btn-danger"><% item.sifra %></button>
                             <button type="button"  class="btn btn-success">Detalji</button>
                         </div>

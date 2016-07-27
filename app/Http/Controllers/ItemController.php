@@ -105,8 +105,19 @@ class ItemController extends Controller
 
     public function destroy(Request $request, Item $item)
     {
-    	$item->delete();
+    	if($item->trashed())
+		{$item->restore();}
+	else{$item->delete();}
 
-    	return redirect('/#main');
+    	return back();
     }
+    public function showTrashed(Request $request, Item $item){
+	$items = Item::onlyTrashed()->orderBy('deleted_at')->paginate(8);
+	return view('inactive', ['items' => $items]);
+}
+    public function restoreTrashed(Request $request, $id){
+	$item = Item::onlyTrashed()->find($id);
+	$item->restore();
+	return redirect('inactive');
+}
 }

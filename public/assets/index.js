@@ -74,9 +74,9 @@ var btn = document.getElementById("mojBtn");
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
-btn.onclick = function() {
-    modal.style.display = "block";
-}
+//btn.onclick = function() {
+//    modal.style.display = "block";
+//}
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
@@ -98,19 +98,12 @@ var modal2 = document.getElementById('myCartModal');
 
 var span2 = document.getElementById("close2");
 
-btn2.onclick = function() {
-  modal2.style.display = "block";
-
-}
+//btn2.onclick = function() {
+//  modal2.style.display = "block";
+//}
 
 span2.onclick = function() {
     modal2.style.display = "none";
-}
-
-window.onclick = function(event) {
-    if (event.target == modal2) {
-        modal2.style.display = "none";
-    }
 }
 
 
@@ -124,9 +117,9 @@ window.onclick = function(event) {
 //   })
 // }
 
-// $('.btn').click(function(){
-//   var index = $(this).index();
-//   console.log($('.shopdiv').eq(index));
+$('#kontaktM').click(function(){
+   $('#kontakt').modal();
+});
  
 // $('.myShoppingCart').click(function(){
 //  $.ajax({

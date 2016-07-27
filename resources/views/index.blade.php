@@ -48,7 +48,7 @@
                                                          
                                             @if(Auth::check())             
                                                     <span >
-                                                    <form action="{{ url('category', $category->id) }}" method="POST" id="delete" style="display:inline">
+                                                    <form action="{{ url('category', $category->id) }}" method="POST" id="delete" onclick="return confirm('Delete entry?')" style="display:inline">
                                                             {{ csrf_field() }}
                                                             {{ method_field('DELETE') }}
                                                             <button type="submit" id="delete-category-{{ $category->id }}" style="float:right; margin-top:4%; margin-right:10%;" id="delete">&times;</button>
@@ -80,7 +80,7 @@
 
 
             <div class="container-fluid">
-                <div class="col-md-3 col-sm-3" ng-repeat="item in items.items">
+                <div class="col-md-3 col-sm-3" ng-repeat="item in items.items | orderBy: '-created_at'">
 
 
                     <div class="shopdiv">
@@ -90,10 +90,13 @@
                                 <span>
                                     <h4><% item.price %></h4>
                                 </span>
-                                <button class="btn btn-success myShoppingCart" 
+                                <button class="btn btn-success myShoppingCart"
                                 ng-click="addItem(item.price, item.name)"></button>
                             </div>
                         <button type="button" class="btn btn-danger"><% item.sifra %></button>
+ 			@if(Auth::check())
+			<button type="button" ng-click="delete(item.id, $index)">Izbrisi</button>
+			@endif
                         <button type="button" data-toggle="modal" data-target="#item-modal<% item.id %>" ng-click="openItemModal(item);" class="btn btn-success">Detalji</button>
 
                     </div>

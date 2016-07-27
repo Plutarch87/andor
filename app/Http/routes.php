@@ -40,6 +40,9 @@ Route::post('/item', 'ItemController@store');
 
 Route::delete('/item/{item}', 'ItemController@destroy');
 
+Route::get('/inactive', ['as' => 'inactive', 'uses' => 'ItemController@showTrashed']);
+
+Route::get('/inactive/{item}', ['as' => 'inactive.item', 'uses' => 'ItemController@restoreTrashed']);
 
 Route::post('upload', 'UploadController@postFile');
 

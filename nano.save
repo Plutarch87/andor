@@ -1,0 +1,6 @@
+<VirtualHost *:80>
+    DocumentRoot "/var/www/andor/public/"
+    ServerName andor.xample.com
+
+    # Other directives here
+</VirtualHost>

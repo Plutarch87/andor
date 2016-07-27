@@ -3,19 +3,19 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8 ">
-<!-- <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'type='text/css'> -->
-<script type="text/javascript" src="{{ url(asset('assets/jquery-1.12.0.min.js')) }}"></script>
-<link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-<script src="https://maps.googleapis.com/maps/api/js"></script>
-<script type="text/javascript" src="{{ url(asset('assets/angular.js')) }}"></script>
-<script type="text/javascript" src="{{ url(asset('assets/index.js')) }}"></script>
-<script type="text/javascript" src="{{ url(asset('assets/bootstrap.js')) }}"></script>
-<!-- angular -->
-<script type="text/javascript" src="{{ url(asset('assets/app/app.js')) }}"></script>
 
 <link rel="stylesheet" type="text/css" href="{{ url(asset('assets/bootstrap.css')) }}">
 <link rel="stylesheet" type="text/css" href="{{ url(asset('css_flyoutverticalmenu.css')) }}">
 <link rel="stylesheet" type="text/css" href="{{ url(asset('assets/index.css')) }}">
+
+<script type="text/javascript" src="{{ url(asset('assets/jquery-1.12.0.min.js')) }}"></script>
+<script type="text/javascript" src="{{ url(asset('assets/angular.js')) }}"></script>
+<script type="text/javascript" src="{{ url(asset('assets/bootstrap.js')) }}"></script>
+<script type="text/javascript" src="{{ url(asset('assets/app/app.js')) }}"></script>
+<script type="text/javascript" src="{{ url(asset('assets/index.js')) }}"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhu-orOCU7_qwFx5zr-M4nnGbWrue0PJI" type="text/javascript"></script>
+
+
 	<title>Hexor - @yield('title')</title>
 </head>
 <body ng-app="app" ng-controller="mainController">
@@ -37,11 +37,14 @@
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" ng-click="openKontaktModal();">
 								<ul class="nav navbar-nav">                    
 										<!-- <li><a href="#"><img src="assets/images/hd.png" id="logo"><span class="sr-only"> (current)</span></a></li> -->
-										<li><a href="#" >Kontakt</a></li> 
+										<li><a data-toggle="modal" href="#kontakt">Kontakt</button></li> 
 										<form class="navbar-form navbar-right" role="search">
 										<div class="form-group">
-												<input type="text" class="form-control" placeholder="Search">
-												
+                                        <!-- LOGOUT -->
+                                        @if(Auth::check())
+                                            <a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a>
+                                        @endif
+                                            <input type="text" class="form-control" placeholder="Search">									
 										</div>
 										<button type="submit" class="btn btn-default">Submit</button>
 										</form>
@@ -53,14 +56,17 @@
 						</nav>            
 						<div class="ncontent">
 								<h1 id="wlch1">Welcome to Hexor</h1>
-								<a class="logo-wrapper" href="#"><img src="{{ url(asset("assets/images/hd.png")) }}" id="logo"></a>
+								<a class="logo-wrapper" href="{!! route('index') !!}"><img src="{{ url(asset("assets/images/hd.png")) }}" id="logo"></a>
 								<ul class="nlistwrapper">
 										<a class="nlinew"href="#"><li>Novo</li></a>
 									<a class="nlibestseller"href="#"><li>Najprodavanije</li></a>    
 									<a class="nlisale"href="#"><li>Akcija</li></a>
+									@if(Auth::check())
+									<a class="nlinew"href="inactive"<li>Neaktivni</li></a>
+									@endif
 										
 								</ul>
-								<div class="shopingwrapper">
+                                <div class="shopingwrapper">
 										<span id="shopcircle"><% carts.length %></span>
 										<a href="#" ng-click="openBasket();"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
 								</div>
@@ -224,18 +230,21 @@
 
 </div>
 
-<!-- Kontakt modal -->
-<div id="kontakt" class="modalDialog">
- <div>
-    <a href="#closee" title="Closee" class="closee">X</a>
-    <div id="map">
-        <script>
-            var mapCanvas = document.getElementById("map");
-            var mapOptions = {
-            center: new google.maps.LatLng(45.252481, 19.838341), zoom: 20}
-            var map = new google.maps.Map(mapCanvas, mapOptions);
-        </script>
-    </div>
+	<!-- Kontakt modal -->
+<div class="modal fade" id="kontakt" role="dialog">
+ <div class="modal-dialog>
+	<!-- Modal content -->
+	<div class="modal-content">
+	 <div class="modal-header">
+	  <button type="button" class="close" data-dismiss="modal">&times;</button>
+	  <h4 class="modal-title">Kontakt</h4>
+	 </div>
+	<div class="modal-body">
+	 <div id="map">
+          <script>
+	   var mapCanvas = document.getElementById("map");
+          </script>
+	 </div>	
     <span id="kmodal-info" style="display:block; position:absolute; top:-4%; right:1%;">
         <h3>Adresa:</h3>
         <p>Novi Sad, Jevrejska 23 pasaž.</p>
