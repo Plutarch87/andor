@@ -7,7 +7,7 @@ app.controller('mainController', ['$scope', '$http', 'filterFilter', function($s
     
    
     $scope.categories = [$scope.subcats = [ $scope.items = []]];
-    
+    $scope.items = [];
     $scope.carts = [];
     $scope.sum = 0;
     $scope.price = 0;
@@ -97,6 +97,19 @@ app.controller('mainController', ['$scope', '$http', 'filterFilter', function($s
         angular.element('#kontakt').css('display', 'block');
     }
 
-
-        
-}]);
+    $scope.delete = function(data){
+    $http({
+        method: 'DELETE',
+        data: data,
+        url: 'item/'+data.id,
+        }).then(function successCallback(response) {
+          var index = function(item){ 
+            $scope.items.items.indexOf(item);
+            $scope.items.items.splice(index, 1)
+        };
+        }, function errorCallback(response) {
+            console.log(response);
+    });
+  };
+ }]);
+    

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section id="section3">
+<section style="background-color: #EDD9F6;" id="section2">
     <div class="row">
         <div class="col-sm-3 col-xs-5" id="menuwrapper">
             <ul>
@@ -11,7 +11,7 @@
                     <li>
                         @if(Auth::check())             
                             <span >
-                                <button type="button" data-toggle="modal" data-target="#myModal{{$category->id}}" href="#main" class="btn btn-info" style="float:right; width:15%; height:90%;">&plus;</button>
+                                <button type="button" data-toggle="modal" data-target="#myModal{{$category->id}}" href="#main" class="btn btn-info" style="float:right; height:90%;">&plus;</button>
                             </span>
                             <!-- Modal -->
                             <div id="myModal{{$category->id}}" class="modal">
@@ -62,16 +62,19 @@
                                     <input style="margin-top: 4%; margin-right: 10%;" type="submit" name="submit" value="+ Dodaj potkategoriju">
                                     </form>
                                 </li>
+				@endif
                                 @if(count($subcats) > 0)
                                     @foreach($subcats as $subcat)
                                         @if($category->id == $subcat->category_id)
                                             <li> 
                                                 <a href="{{ url('categories', $category_id = $category->id) }}/{{ 'subcats/'. $subcat->id }}#main">{{ $subcat->name }}</a>
-
+						@if(Auth::check())
                                                 <span >
-                                                    <button type="button" data-toggle="modal" data-target="#myModal{{$category->id}}-{{$subcat->id}}" href="#main" class="btn btn-info" style="float:left; width:15%; height:90%;">&plus;</button>
+                                                    <button type="button" data-toggle="modal" data-target="#myModal{{$category->id}}-{{$subcat->id}}" href="#main" class="btn btn-info" style="float:left; height:90%;">&plus;</button>
                                                 </span>
-                                                <div id="myModal{{$category->id}}-{{$subcat->id}}" class="modal">
+						@endif
+                                                <div id="myModal{{$category->id}}-{{$subcat->id}}" class="modal" style="z-index:123908; position:fixed">
+						   <div class="container">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <span class="close">&times;</span>
@@ -106,12 +109,13 @@
                                                             </div>
                                                         </div>
                                                     </div>  
+						  </div>
                                                 </div>
                                             </li>        
                                         @endif
                                     @endforeach
                                 @endif 
-                             @endif 
+                             
                         </ul>
                     </li>
                 @endforeach
@@ -136,11 +140,11 @@
     <div class="main-content">
     	<div class="container-fluid">
 	    	<div class="row">
-	    		<div class="col-md-3 col-sm-3"  ng-repeat="item in categories.items|orderBy:'-created_at'" 
+	    		<div class="col-md-3 col-sm-3"  ng-repeat="item in items.items|orderBy:'-created_at'" 
                     ng-if="item.subcat_id == <?php foreach ($subcats as $subcat) {
                         foreach ($items as $item) {
                         if($subcat->id == $item->subcat_id )
-                            { echo ($subcat->id); break; }}} ?>|orderBy:'age'">
+                            { echo ($subcat->id); break; }}} ?>">
                         <div class="shopdiv" >
                             <h4><% item.name %></h4>
                             <img src="{{ asset('/storage/andor') }}/<% item.img %>" alt="<% item.name %>" >
@@ -151,9 +155,6 @@
                                 <button class="btn btn-success myShoppingCart" 
                                 ng-click="addItem(item.price, item.name)"></button>
                             </div>
-				@if(Auth::check())
-				<a href="#" class="btn" ng-click="delete(item)">Izbrisi</a>
-				@endif	
                             <button type="button" class="btn btn-danger"><% item.sifra %></button>
                             <button type="button"  class="btn btn-success">Detalji</button>
                         </div>

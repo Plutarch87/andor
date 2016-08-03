@@ -57,8 +57,8 @@
                         @endif
                         <a href="{{ url('categories', $id = $category->id) }}#main">{{ $category->name }}</a>
                         <ul style="z-index:51; overflow:auto;">
-                            @if(Auth::check())
-                                <li>
+                                @if(Auth::check())
+				<li>
                                     <form action="{{ url('subcat', $id = $category->id ) }}" method="POST" id="create">
                                     {{ csrf_field() }}
                                     <input style="width:95%; margin: 4% 10% 0 2%;" type="text" name="name" id="create">
@@ -67,16 +67,19 @@
                                     <input style="margin-top: 4%; margin-right: 10%;" type="submit" name="submit" value="+ Dodaj potkategoriju">
                                     </form>
                                 </li>
+				@endif
                                 @if(count($subcats) > 0)
                                     @foreach($subcats as $subcat)
                                         @if($category->id == $subcat->category_id)
                                             <li> 
-                                                <a href="{{ url('categories', $category_id = $category->id) }}/{{ 'subcats/'. $subcat->id }}#main">{{ $subcat->name }}</a>
-
+                                                
+						@if(Auth::check())
                                                 <span >
-                                                    <button type="button" data-toggle="modal" data-target="#myModal{{$category->id}}-{{$subcat->id}}" href="#main" class="btn btn-info" style="float:left; width:15%" >&plus;</button>
+                                                    <button data-toggle="modal" type="button" class="btn btn-info" data-target="#myModal{{$category->id}}" style="float:left; width:15%" >&plus;</button>
                                                 </span>
-                                                <div id="myModal{{$category->id}}-{{$subcat->id}}" class="modal">
+						<!-- Modal -->
+                                                <div id="myModal{{$category->id}}" class="modal" style="z-index:123908; position:fixed">
+						  <div class="container">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <span class="close">&times;</span>
@@ -110,13 +113,16 @@
                                                                 </form>
                                                             </div>
                                                         </div>
-                                                    </div>  
+                                                    </div>
+						  </div>
                                                 </div>
+						                      @endif
+                                              <a href="{{ url('categories', $category_id = $category->id) }}/{{ 'subcats/'. $subcat->id }}#main">{{ $subcat->name }}</a>
                                             </li>        
                                         @endif
                                     @endforeach
                                 @endif 
-                             @endif 
+                             
                         </ul>
                     </li>
                 @endforeach
@@ -157,9 +163,6 @@
                                 <button class="btn btn-success myShoppingCart" 
                                 ng-click="addItem(item.price, item.name)"></button>
                             </div>
-				@if(Auth::check())
-				<button ng-click="delete(item.id, $index)">Izbrisi</button>
-				@endif
                             <button type="button" class="btn btn-danger"><% item.sifra %></button>
                             <button type="button"  class="btn btn-success">Detalji</button>
                         </div>

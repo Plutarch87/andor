@@ -18,7 +18,7 @@
                                 <form action="{{ url('category', $category->id) }}" method="POST" id="delete" style="display:inline">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
-                                        <button type="submit" id="delete-category-{{ $category->id }}" class="btn btn-danger" style="position:inherit; float:right; width: 15%" id="delete" class="deletebtn">&times;</button>
+                                        <button type="submit" id="delete-category-{{ $category->id }}" onclick="return confirm('Are you sure?')"  class="btn btn-danger" style="position:inherit; float:right; width: 15%" id="delete" class="deletebtn">&times;</button>
                                 </form>
                                 </span>
                         @endif
@@ -84,7 +84,7 @@
 
 
             <div class="container-fluid">
-                <div class="col-md-3 col-sm-3" ng-repeat="item in items.items">
+                <div class="col-md-3 col-sm-3" ng-repeat="item in items.items|orderBy:'-created_at'">
 
 
                     <div class="shopdiv">
@@ -97,6 +97,9 @@
                                 <button class="btn btn-success myShoppingCart" 
                                 ng-click="addItem(item.price, item.name)"></button>
                             </div>
+			@if(Auth::check())
+                        <button ng-click="delete(item)" onClick="confirm('Siguran?')">Izbrisi</button>
+                        @endif
                         <button type="button" class="btn btn-danger"><% item.sifra %></button>
                         <button type="button" data-toggle="modal" data-target="#item-modal<% item.id %>" ng-click="openItemModal(item);" class="btn btn-success">Detalji</button>
 
@@ -127,3 +130,4 @@
 @show
 
 @endsection
+  

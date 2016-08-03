@@ -9,7 +9,7 @@
 
 @if(count($items)>0)
 
-@foreach($items as $item)
+@foreach($items->sortByDesc('deleted_at') as $item)
 <div class="col-md-3 col-xs-6">
 
 <div class="shopdiv">

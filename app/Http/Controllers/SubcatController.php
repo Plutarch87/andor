@@ -66,7 +66,7 @@ class SubcatController extends Controller
     {
         $subcat->delete();
 
-        return redirect('/categories#main');
+        return back();
     }
 
     public function showSubcats()

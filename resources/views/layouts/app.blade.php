@@ -52,12 +52,14 @@
 						</nav>            
 						<div class="ncontent">
 								<h1 id="wlch1">Welcome to Hexor</h1>
-								<a class="logo-wrapper" href="#"><img src="{{ url(asset("assets/images/hd.png")) }}" id="logo"></a>
+								<a class="logo-wrapper" href="{{ url(asset('/')) }}"><img src="{{ url(asset("assets/images/hd.png")) }}" id="logo"></a>
 								<ul class="nlistwrapper">
 										<a class="nlinew"href="#"><li>Novo</li></a>
 									<a class="nlibestseller"href="#"><li>Najprodavanije</li></a>    
 									<a class="nlisale"href="#"><li>Akcija</li></a>
-										
+									@if(Auth::check())
+									<a class= "nlibestseller" href="{{ url('/inactive') }}"><li>Neaktivne</li></a>
+									@endif
 								</ul>
 								<div class="shopingwrapper">
 										<span id="shopcircle"><% carts.length %></span>
@@ -67,7 +69,7 @@
 						</div>
 						</div>
 
-<div class="carousel-wrapper">
+<!--<div class="carousel-wrapper">
 
 <div id="theCarousel" class="carousel slide" data-ride="carousel">
 	<ul class="carousel-indicators">
@@ -101,7 +103,7 @@
 		<span class="sr-only">Next</span>
 	</a>
 </div>
-</div>
+</div>-->
 
 				</header>
 </section>
