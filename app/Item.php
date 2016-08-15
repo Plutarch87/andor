@@ -13,7 +13,7 @@ class Item extends Model
 
     protected $dates = ['deleted_at'];
 
-    protected $fillable = ['name', 'price', 'sifra', 'img', 'akcija', 'popularno', 'category_id', 'subcat_id'];
+    protected $fillable = ['name', 'price', 'sifra', 'description', 'img', 'akcija', 'popularno', 'category_id', 'subcat_id'];
 
     // protected $casts = [
     // 'category_id' => 'integer',

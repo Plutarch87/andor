@@ -39,11 +39,7 @@ class ItemController extends Controller
     
     public function show($id)
     {
-
         $items = Item::where('category_id', $id)->get();
-
-       
-
         $subcats = DB::table('subcats')->get();
         $categories = DB::table('categories')->get();
 
@@ -102,22 +98,53 @@ class ItemController extends Controller
         return back();
     }
 
+    public function edit(Item $item)
+    {  
+        return view('edit', compact('item'));
+    }
+
+    public function update(Request $request, Item $item)
+    {
+
+        $item->update($request->except('img'));
+
+        return back();
+    }
 
     public function destroy(Request $request, Item $item)
     {
     	if($item->trashed())
-		{$item->restore();}
-	else{$item->delete();}
+		{
+            $item->restore();
+        } 
+        else
+        {
+            $item->delete();
+        }
 
     	return back();
     }
-    public function showTrashed(Request $request, Item $item){
-	$items = Item::onlyTrashed()->orderBy('deleted_at')->paginate(8);
-	return view('inactive', ['items' => $items]);
-}
-    public function restoreTrashed(Request $request, $id){
-	$item = Item::onlyTrashed()->find($id);
-	$item->restore();
-	return redirect('inactive');
-}
+
+    public function showTrashed(Item $item)
+    {        
+    	$items = Item::onlyTrashed()->orderBy('deleted_at')->paginate(8);
+
+    	return view('inactive', ['items' => $items]);
+    }
+
+    public function restoreTrashed($id)
+    {
+    	$item = Item::onlyTrashed()->find($id);
+    	$item->restore();
+
+    	return redirect('inactive');
+    }
+
+    public function deleteTrashed($id)
+    {
+       $item = Item::onlyTrashed()->find($id);
+       $item->forceDelete();
+
+       return redirect('inactive'); 
+    }
 }

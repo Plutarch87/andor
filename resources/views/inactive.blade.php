@@ -2,33 +2,28 @@
 
 @section('content')
 
- <div class="container-fluid">
+<div class="container-fluid">
 {{ $items->links() }}
-
-              <div class="row">
-
+	<div class="row">
 @if(count($items)>0)
-
 @foreach($items->sortByDesc('deleted_at') as $item)
-<div class="col-md-3 col-xs-6">
-
-<div class="shopdiv">
-{!! $item->name !!}
-<div>
- <img src="storage/andor/{!! $item->img !!}" alt="{!! $item->img !!}" >
-</div>
-<form action="{!! url('inactive', $id = $item->id) !!}">
-
-<input type="submit" value="Aktiviraj">
-</form>
-
-</div>
-</div>
+	<div class="col-md-3 col-xs-6">
+		<div class="shopdiv">
+			{!! $item->name !!}
+			<div>
+ 				<img src="storage/andor/{!! $item->img !!}" alt="{!! $item->img !!}" >
+			</div>
+			<form action="{!! url('inactive', $id = $item->id) !!}">
+				<input type="submit" value="Aktiviraj">
+			</form>
+			{{ Form::open(['method' => 'DELETE', 'route' => ['inactive.delete', $item]]) }}
+			{{ Form::submit('Obrisi Zauvek', ['onclick' => 'confirm("SIGURAN? Predmet ce biti ZAUVEK obrisan?")']) }}
+			{{ Form::close() }}
+		</div>
+	</div>
 @endforeach
 @endif
-
-
-</div>
+	</div>
 </div>
 {{ $items->links() }}
 

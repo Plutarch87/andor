@@ -35,14 +35,21 @@ Route::post('/subcat/{subcat}', 'SubcatController@post');
 
 Route::delete('/subcat/{subcat}', 'SubcatController@destroy');
 
-
+// ITEMS
 Route::post('/item', 'ItemController@store');
+
+Route::get('item/{item}/edit', 'ItemController@edit');
+
+Route::patch('item/{item}', ['as' => 'item.update', 'uses' => 'ItemController@update']);
 
 Route::delete('/item/{item}', 'ItemController@destroy');
 
+// INACTIVE
 Route::get('/inactive', ['as' => 'inactive', 'uses' => 'ItemController@showTrashed']);
 
 Route::get('/inactive/{item}', ['as' => 'inactive.item', 'uses' => 'ItemController@restoreTrashed']);
+
+Route::delete('/inactive/{item}', ['as' => 'inactive.delete', 'uses' => 'ItemController@deleteTrashed']);
 
 Route::post('upload', 'UploadController@postFile');
 
