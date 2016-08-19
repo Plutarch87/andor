@@ -108,7 +108,7 @@ class ItemController extends Controller
 
         $item->update($request->except('img'));
 
-        return back();
+        return redirect('/');
     }
 
     public function destroy(Request $request, Item $item)
