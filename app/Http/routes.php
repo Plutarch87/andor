@@ -15,34 +15,37 @@ Route::get('/', [
 		'uses' => 'CategoryController@index',
 	]);
 
-Route::post('/category', 'CategoryController@post');
-
-Route::delete('/category/{category}', 'CategoryController@destroy');
-
-Route::get('/categories', [
-		'as' => 'categories.index',
-		'uses' => 'ItemController@index',
+Route::resource('categories', 'CategoryController', [
+		'only' => ['index', 'show', 'store', 'destroy'],
 	]);
 
-Route::get('/categories/{categories}', 'ItemController@show');
+Route::delete('subcats/{subcats}', [
+	'uses' => 'SubcatController@destroy',
+	'as' => 'subcats.destroy'
+	]);
+
+Route::resource('categories.subcats', 'Categories\SubcatController');
+
+// Route::post('/category', 'CategoryController@post');
+
+// Route::delete('/category/{category}', 'CategoryController@destroy');
+
+// Route::get('/categories', [
+// 		'as' => 'categories.index',
+// 		'uses' => 'ItemController@index',
+// 	]);
+
+// Route::get('/categories/{categories}', 'ItemController@show');
 
 
 // Route::get('/categories', 'SubcatController@index');
 
-Route::get('categories/{categories}/subcats/{subcats}', 'SubcatController@show');
+// Route::get('categories/{categories}/subcats/{subcats}', 'SubcatController@show');
 
-Route::post('/subcat/{subcat}', 'SubcatController@post');
 
-Route::delete('/subcat/{subcat}', 'SubcatController@destroy');
 
 // ITEMS
-Route::post('/item', 'ItemController@store');
-
-Route::get('item/{item}/edit', 'ItemController@edit');
-
-Route::patch('item/{item}', ['as' => 'item.update', 'uses' => 'ItemController@update']);
-
-Route::delete('/item/{item}', 'ItemController@destroy');
+Route::resource('items', 'ItemController');
 
 // INACTIVE
 Route::get('/inactive', ['as' => 'inactive', 'uses' => 'ItemController@showTrashed']);

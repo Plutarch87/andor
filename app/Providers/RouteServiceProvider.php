@@ -23,10 +23,10 @@ class RouteServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot(Router $router)
-    {
-        //
-
+    {       
         parent::boot($router);
+
+        $router->model('categories', 'App\Category');
     }
 
     /**
@@ -37,9 +37,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map(Router $router)
     {
-        $this->mapWebRoutes($router);
+        $this->mapWebRoutes($router);       
 
-        //
     }
 
     /**
