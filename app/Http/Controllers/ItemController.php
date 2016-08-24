@@ -59,43 +59,45 @@ class ItemController extends Controller
         return response()->json(['items' => $items, 'categories' => $categories, 'subcats' => $subcats]);
     }
 
-    public function store(Request $request)
-    {
-         if(
-            $request->file->getClientMimeType() == 'image/jpg' ||
-            $request->file->getClientMimeType() == 'image/png' ||
-            $request->file->getClientMimeType() == 'image/jpeg'
-           )
-            {
-             $desPath = storage_path(). '/andor';
-             $name = date("his"). "-". $request->file->getClientOriginalName();
+    public function store(Request $request, Category $category)
+    {   
+        Item::create($request->all());
+        //  if(
+        //     $request->file->getClientMimeType() == 'image/jpg' ||
+        //     $request->img->getClientMimeType() == 'image/png' ||
+        //     $request->img->getClientMimeType() == 'image/jpeg'
+        //    )
+        //     {
+        //      $desPath = storage_path(). '/andor';
+        //      $name = date("his"). "-". $request->file->getClientOriginalName();
 
-             if($request->file->isValid()) {
-                 $request->file->move($desPath, $name);
-             }
+        //      if($request->file->isValid()) {
+        //          $request->file->move($desPath, $name);
+        //      }
 
-            $this->validate($request, [
-                'name' => 'required|max:255',
-                'sifra' => 'required',
-                'price' => 'required',
-                // 'img' => 'required',           
-            ]);
-         } else {
-             return response()->json("File must be in image format(.jpeg, .jpg, .png)", 405);
-         }
-        $cat_id = (int)$request->category_id;
-        $sub_id = (int)$request->subcat_id;
-        $items = Item::create([
-            'name' => $request->name,
-            'sifra' => $request->sifra,
-            'price' => $request->price,
-            'akcija' => $request->akcija,
-            'popularno' => $request->popularno,
-            'category_id' => $cat_id,
-            'subcat_id' => $sub_id,
-            'img' => $name,
-            ]);
-        return back();
+        //     $this->validate($request, [
+        //         'name' => 'required|max:255',
+        //         'sifra' => 'required',
+        //         'price' => 'required',
+        //         // 'img' => 'required',           
+        //     ]);
+        //  } else {
+        //      return response()->json("File must be in image format(.jpeg, .jpg, .png)", 405);
+        //  }
+        // $cat_id = (int)$request->category_id;
+        // $sub_id = (int)$request->subcat_id;
+        // $items = Item::create([
+        //     'name' => $request->name,
+        //     'sifra' => $request->sifra,
+        //     'price' => $request->price,
+        //     'akcija' => $request->akcija,
+        //     'popularno' => $request->popularno,
+        //     'category_id' => $cat_id,
+        //     'subcat_id' => $sub_id,
+        //     'img' => $name,
+        //     ]);
+
+        return redirect()->route('categories.show', $category->id);
     }
 
     public function edit(Item $item)

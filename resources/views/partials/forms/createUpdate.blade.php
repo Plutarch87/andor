@@ -14,23 +14,19 @@
 	{{ Form::label('name', 'Opis:') }}
 	{{ Form::textarea('description', old('description'), ['cols' => 20, 'rows' => 4, 'class' => 'form-control']) }}
 </div>
-<div>
-	{{ Form::label('akcija', 'Akcija') }}
-</div>
-<div>
-	{{ Form::checkbox('akcija') }}
-</div>
-<div>
-	{{ Form::label('popularno', 'Najprodavanije') }}
-</div>
-<div>
-	{{ Form::checkbox('popularno') }}
-</div>
+<div class="form-group"></div>
+	<div>
+		{{ Form::label('akcija', 'Akcija') }}
+		{{ Form::checkbox('akcija') }}
+
+		{{ Form::label('popularno', 'Najprodavanije') }}
+		{{ Form::checkbox('popularno') }}
+	</div>
 <hr>
 <div class="form-group">
-	{{ Form::label('name', 'Izaberi sliku:') }}
-	{{ Form::file('img', ['id' => 'newItem']) }}
+	{{ Form::label('img', 'Izaberi sliku:') }}
+	{{ Form::file('img') }}
 </div>
 	
 <hr>
-	{{ Form::submit('Unesi') }}
+	{{ Form::submit($submitButton) }}

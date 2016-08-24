@@ -22,7 +22,7 @@
                     <button class="btn btn-success myShoppingCart">Dodaj u korpu</button>
                 </div>
             @if(Auth::check())
-                @include('partials.deleteForm', ['route' => 'items.destroy', 'id' => $item->id])
+                @include('partials.forms.delete', ['route' => 'items.destroy', 'id' => $item->id])
                 <a href="{!! route('items.edit', $item->id) !!}">Izmeni</a>
             @endif
             <button type="button" class="btn btn-danger">{{ $item->sifra }}</button>

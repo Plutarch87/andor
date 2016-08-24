@@ -22,15 +22,14 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $items = Item::orderBy('created_at', 'desc')->paginate(9);
-    	$categories = Category::all();
+        $items = Item::orderBy('created_at', 'desc')->paginate(12);    	
 
-        return view('index', compact('categories', 'items'));
+        return view('index', compact('items'));
     }
 
     public function show(Category $category)
     {
-        $items = $category->items()->orderBy('created_at', 'desc')->paginate(8);
+        $items = $category->items()->orderBy('created_at', 'desc')->paginate(12);
 
         return view('categories.show', compact('category', 'items'));
     }

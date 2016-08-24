@@ -148,7 +148,7 @@
                         </ul>
                     {{-- DELETE CATEGORY --}}
                         @if(Auth::check())
-                            @include('partials.deleteForm', ['route' => 'categories.destroy', 'id' => $category->id])                                  
+                            @include('partials.forms.delete', ['route' => 'categories.destroy', 'id' => $category->id])                                  
                         @endif
                     </li>
                 @endforeach

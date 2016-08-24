@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Item;
 
 
 class Category extends Model
@@ -24,5 +25,10 @@ class Category extends Model
     public function items()
     {
     	return $this->hasMany(Item::class);
+    }
+
+    public function getItems(Category $category)
+    {
+        return $this->items->orderBy('created_at', 'desc')->paginate(12);
     }
 }

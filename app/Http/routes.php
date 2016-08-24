@@ -26,6 +26,9 @@ Route::delete('subcats/{subcat}', [
 
 Route::resource('categories.subcats', 'Categories\SubcatController');
 
+// ITEMS
+Route::resource('items', 'ItemController');
+
 // Route::post('/category', 'CategoryController@post');
 
 // Route::delete('/category/{category}', 'CategoryController@destroy');
@@ -44,8 +47,6 @@ Route::resource('categories.subcats', 'Categories\SubcatController');
 
 
 
-// ITEMS
-Route::resource('items', 'ItemController');
 
 // INACTIVE
 Route::get('/inactive', ['as' => 'inactive', 'uses' => 'ItemController@showTrashed']);
