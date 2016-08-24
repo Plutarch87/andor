@@ -64,18 +64,8 @@ class SubcatController extends Controller
 
     public function destroy(Subcat $subcat)
     {
-        $subcat = Subcat::find($subcat->id);
-
         $subcat->delete();
 
         return back();
     }
-
-    public function showSubcats()
-    {
-        $subcats = Subcat::all();
-
-        return response()->json($subcats);
-    }
-
 }

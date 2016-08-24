@@ -19,7 +19,7 @@ Route::resource('categories', 'CategoryController', [
 		'only' => ['index', 'show', 'store', 'destroy'],
 	]);
 
-Route::delete('subcats/{subcats}', [
+Route::delete('subcats/{subcat}', [
 	'uses' => 'SubcatController@destroy',
 	'as' => 'subcats.destroy'
 	]);
