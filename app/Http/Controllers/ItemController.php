@@ -50,54 +50,45 @@ class ItemController extends Controller
         ]);
     }
 
-    public function showAll()
-    {
-        $items = Item::all();
-        $categories = Category::all();
-        $subcats = Subcat::all();
-
-        return response()->json(['items' => $items, 'categories' => $categories, 'subcats' => $subcats]);
-    }
-
     public function store(Request $request, Category $category)
     {   
-        Item::create($request->all());
-        //  if(
-        //     $request->file->getClientMimeType() == 'image/jpg' ||
-        //     $request->img->getClientMimeType() == 'image/png' ||
-        //     $request->img->getClientMimeType() == 'image/jpeg'
-        //    )
-        //     {
-        //      $desPath = storage_path(). '/andor';
-        //      $name = date("his"). "-". $request->file->getClientOriginalName();
+        if(
+            $request->file('img')->getClientMimeType() == 'image/jpg' ||
+            $request->file('img')->getClientMimeType() == 'image/png' ||
+            $request->file('img')->getClientMimeType() == 'image/jpeg'
+           )
+            {
+             $desPath = 'storage/andor';
+             $name = date("his"). "-". $request->file('img')->getClientOriginalName();
+             if($request->file('img')->isValid()) {
+                 $request->file('img')->move($desPath, $name);
+             }
 
-        //      if($request->file->isValid()) {
-        //          $request->file->move($desPath, $name);
-        //      }
+            $this->validate($request, [
+                'name' => 'required|max:255',
+                'sifra' => 'required',
+                'price' => 'required',
+                'description' => 'required_without'
+                // 'img' => 'required',           
+            ]);
+         } else {
+             return response()->json("File must be in image format(.jpeg, .jpg, .png)", 405);
+         }
+        $cat_id = (int)$request->category_id;
+        $sub_id = (int)$request->subcat_id;
+        $items = Item::create([
+            'name' => $request->name,
+            'sifra' => $request->sifra,
+            'price' => $request->price,
+            'akcija' => $request->akcija,
+            'popularno' => $request->popularno,
+            'description' => $request->description,
+            'category_id' => $cat_id,
+            'subcat_id' => $sub_id,
+            'img' => $name,
+            ]);
 
-        //     $this->validate($request, [
-        //         'name' => 'required|max:255',
-        //         'sifra' => 'required',
-        //         'price' => 'required',
-        //         // 'img' => 'required',           
-        //     ]);
-        //  } else {
-        //      return response()->json("File must be in image format(.jpeg, .jpg, .png)", 405);
-        //  }
-        // $cat_id = (int)$request->category_id;
-        // $sub_id = (int)$request->subcat_id;
-        // $items = Item::create([
-        //     'name' => $request->name,
-        //     'sifra' => $request->sifra,
-        //     'price' => $request->price,
-        //     'akcija' => $request->akcija,
-        //     'popularno' => $request->popularno,
-        //     'category_id' => $cat_id,
-        //     'subcat_id' => $sub_id,
-        //     'img' => $name,
-        //     ]);
-
-        return redirect()->route('categories.show', $category->id);
+        return back();
     }
 
     public function edit(Item $item)
@@ -107,10 +98,26 @@ class ItemController extends Controller
 
     public function update(Request $request, Item $item)
     {
+        $request->akcija ? $item->akcija = true : $item->akcija = false;
+        $request->popularno ? $item->popularno = true : $item->popularno = false;
+        if(isset($request->img)) {
+            if(
+                $request->file('img')->getClientMimeType() == 'image/jpg' ||
+                $request->file('img')->getClientMimeType() == 'image/png' ||
+                $request->file('img')->getClientMimeType() == 'image/jpeg'
+            )
+            {
+             $desPath = 'storage/andor';
+             $name = date("his"). "-". $request->file('img')->getClientOriginalName();
+                if($request->file('img')->isValid()) {
+                    $request->file('img')->move($desPath, $name);
+                }
+            }
+        }
 
-        $item->update($request->except('img'));
+        $item->update($request->all());
 
-        return redirect('/');
+        return back();
     }
 
     public function destroy(Request $request, Item $item)
@@ -129,7 +136,7 @@ class ItemController extends Controller
 
     public function showTrashed(Item $item)
     {        
-    	$items = Item::onlyTrashed()->orderBy('deleted_at')->paginate(8);
+    	$items = Item::onlyTrashed()->orderBy('deleted_at')->paginate(12);
 
     	return view('inactive', ['items' => $items]);
     }

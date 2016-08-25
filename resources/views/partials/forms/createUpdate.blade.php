@@ -23,6 +23,10 @@
 		{{ Form::checkbox('popularno') }}
 	</div>
 <hr>
+{{ Form::hidden('category_id', $category->id) }}
+@if(isset($subcat->id))
+	{{ Form::hidden('subcat_id', $subcat->id) }}
+@endif
 <div class="form-group">
 	{{ Form::label('img', 'Izaberi sliku:') }}
 	{{ Form::file('img') }}

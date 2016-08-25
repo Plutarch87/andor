@@ -13,6 +13,9 @@ class CategoryController extends Controller
     
     protected $categories;
 
+    /**
+     * Construct
+     */
     public function __construct(CategoryRepository $categories)
     {
         $this->middleware('auth');
@@ -20,6 +23,9 @@ class CategoryController extends Controller
         $this->categories = $categories;
     }
 
+    /**
+     * Index
+     */
     public function index()
     {
         $items = Item::orderBy('created_at', 'desc')->paginate(12);    	
@@ -27,6 +33,9 @@ class CategoryController extends Controller
         return view('index', compact('items'));
     }
 
+    /**
+     * Show
+     */
     public function show(Category $category)
     {
         $items = $category->items()->orderBy('created_at', 'desc')->paginate(12);
@@ -34,6 +43,9 @@ class CategoryController extends Controller
         return view('categories.show', compact('category', 'items'));
     }
 
+    /**
+     * Store
+     */
     public function store(Request $request)
     {
     	$this->validate($request, [
@@ -46,6 +58,9 @@ class CategoryController extends Controller
         return back();
     }
 
+    /**
+     * Delete
+     */
     public function destroy(Category $category)
     {
         $category->delete();
