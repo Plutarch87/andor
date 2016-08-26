@@ -23,12 +23,7 @@
                 <div class="popularnotag">
                     <span>Popular</span>
                 </div>
-            @endif
-            @if($item->created_at > Carbon\Carbon::today(-4))
-                <div class="novotag">
-                    <span>Novo</span>
-                </div>
-            @endif
+            @endif            
                 <button type="button" class="btn btn-danger">{{ $item->sifra }}</button>
         </div>
     </div>    

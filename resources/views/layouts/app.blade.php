@@ -14,8 +14,6 @@
 <!-- SCRIPTS -->
 {!! Html::script('assets/jquery-1.12.0.min.js') !!}
 {!! Html::script('assets/bootstrap.js') !!}
-{!! Html::script('assets/angular.js') !!}
-{!! Html::script('assets/app/app.js') !!}
 @stack('scripts')
 	<title>Hexor - @yield('title')</title>
 </head>
@@ -66,7 +64,7 @@
 				@endif
 			</ul>
 			<div class="shopingwrapper">
-				<span id="shopcircle">KORPA</span>
+				<span id="shopcircle" class="badge">2</span>
 				<a data-toggle="modal" href="#myCartModal"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
                 @include('partials.modals.cart')
 			</div>
