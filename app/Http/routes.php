@@ -14,11 +14,12 @@ Route::get('/', [
 		'as' => 'index',
 		'uses' => 'CategoryController@index',
 	]);
-
+// KATEGORIJE
 Route::resource('categories', 'CategoryController', [
 		'only' => ['index', 'show', 'store', 'destroy'],
 	]);
 
+// POTKATEGORIJE
 Route::delete('subcats/{subcat}', [
 	'uses' => 'SubcatController@destroy',
 	'as' => 'subcats.destroy'
@@ -29,7 +30,15 @@ Route::resource('categories.subcats', 'SubcatController');
 // ITEMS
 Route::resource('items', 'ItemController');
 
-// INACTIVE
+// ITEMS - PONUDE
+
+Route::group(['prefix' => 'ponude'], function(){
+	Route::get('novo', 'ItemController@novo');
+	Route::get('popular', 'ItemController@popular');
+	Route::get('akcija', 'ItemController@akcija');
+});
+
+// ITEMS - INACTIVE
 Route::get('/inactive', ['as' => 'inactive', 'uses' => 'ItemController@showTrashed']);
 
 Route::get('/inactive/{item}', ['as' => 'inactive.item', 'uses' => 'ItemController@restoreTrashed']);

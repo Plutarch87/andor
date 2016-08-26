@@ -11,13 +11,13 @@
 		<div class="shopdiv">
 			{!! $item->name !!}
 			<div>
- 				<img src="storage/andor/{!! $item->img !!}" alt="{!! $item->img !!}" >
+ 				{!! Html::image('storage/andor/'.$item->img, $item->name) !!}
 			</div>
-			<form action="{!! url('inactive', $id = $item->id) !!}">
-				<input type="submit" value="Aktiviraj">
-			</form>
+			{{ Form::open(['method' => 'GET', 'route' => ['inactive.item', $item]]) }}
+				{{ Form::submit('Aktiviraj', ['class' => 'btn btn-info pull-left']) }}
+			{{ Form::close() }}
 			{{ Form::open(['method' => 'DELETE', 'route' => ['inactive.delete', $item]]) }}
-			{{ Form::submit('Obrisi Zauvek', ['onclick' => 'confirm("SIGURAN? Predmet ce biti ZAUVEK obrisan?")']) }}
+				{{ Form::submit('Obrisi Zauvek', ['onclick' => 'confirm("SIGURAN? Predmet ce biti ZAUVEK obrisan?")', 'class' => 'btn btn-danger pull-right']) }}
 			{{ Form::close() }}
 		</div>
 	</div>

@@ -126,6 +126,22 @@ class ItemController extends Controller
     	return back();
     }
 
+    // PONUDE
+    public function akcija()
+    {
+        $items = Item::where('akcija', true)->orderBy('created_at', 'desc')->get();
+
+        return view('ponude/akcija', compact('items'));
+    }
+
+    public function popular()
+    {
+        $items = Item::where('popularno', true)->orderBy('created_at', 'desc')->get();
+
+        return view('ponude/popular', compact('items'));
+    }
+
+    // NEAKTIVNE
     public function showTrashed(Item $item)
     {        
     	$items = Item::onlyTrashed()->orderBy('deleted_at')->paginate(12);

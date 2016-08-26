@@ -9,9 +9,12 @@
 @section('content')	
 
 <h4>{{ strtoupper($category->name) }}</h4>
+
+@if(Auth::check())
 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#createItem">
     Napravi Predmet Za Ovu Kategoriju
 </button>
+@endif
 
 <h5>{{ $items->links() }}</h5>
 

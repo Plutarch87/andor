@@ -12,9 +12,12 @@
 		&gt;
 		<a href="{!! route('categories.subcats.show', [$category->id, $subcat->id]) !!}">{{ strtoupper($subcat->name) }}</a>
 	</h4>
+
+	@if(Auth::check())
 	<button type="button" class="btn btn-default" data-toggle="modal" data-target="#createItem">
 	    Napravi Predmet Za Ovu Potkategoriju
 	</button>
+	@endif
 
 	<h5>{{ $items->links() }}</h5>
 

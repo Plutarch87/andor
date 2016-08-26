@@ -59,10 +59,10 @@
             </a>
 			<ul class="nlistwrapper">
 				<a class="nlinew"href="#"><li>Novo</li></a>
-				<a class="nlibestseller"href="#"><li>Najprodavanije</li></a>    
-				<a class="nlisale"href="#"><li>Akcija</li></a>
+				<a class="nlibestseller"href="{!! url('ponude/popular') !!}"><li>Najprodavanije</li></a>    
+				<a class="nlisale"href="{!! url('ponude/akcija') !!}"><li>Akcija</li></a>
 				@if(Auth::check())
-				<a class= "nlibestseller" href="{{ url('/inactive') }}"><li>Neaktivne</li></a>
+				<a class= "nlibestseller" href="{{ route('inactive') }}"><li>Neaktivne</li></a>
 				@endif
 			</ul>
 			<div class="shopingwrapper">
