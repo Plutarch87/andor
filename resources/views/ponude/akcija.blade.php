@@ -22,7 +22,7 @@
             @if(Auth::check())                
                 @include('partials.forms.delete', ['route' => 'items.destroy', 'id' => $item->id])
             @else
-                <button class="btn btn-success myShoppingCart">Dodaj u korpu</button>
+                <button class="btn btn-success myShoppingCart"></button>
             @endif            
                 <button type="button" class="btn btn-danger">{{ $item->sifra }}</button>
         </div>

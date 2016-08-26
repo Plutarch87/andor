@@ -112,20 +112,6 @@ class ItemController extends Controller
 
     }
 
-    public function destroy(Request $request, Item $item)
-    {
-    	if($item->trashed())
-		{
-            $item->restore();
-        } 
-        else
-        {
-            $item->delete();
-        }
-
-    	return back();
-    }
-
     // PONUDE
     public function akcija()
     {
@@ -140,6 +126,21 @@ class ItemController extends Controller
 
         return view('ponude/popular', compact('items'));
     }
+    
+    public function destroy(Request $request, Item $item)
+    {
+        if($item->trashed())
+        {
+            $item->restore();
+        } 
+        else
+        {
+            $item->delete();
+        }
+
+        return back();
+    }
+
 
     // NEAKTIVNE
     public function showTrashed(Item $item)

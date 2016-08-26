@@ -39,10 +39,10 @@ Route::group(['prefix' => 'ponude'], function(){
 });
 
 // ITEMS - INACTIVE
-Route::get('/inactive', ['as' => 'inactive', 'uses' => 'ItemController@showTrashed']);
-
-Route::get('/inactive/{item}', ['as' => 'inactive.item', 'uses' => 'ItemController@restoreTrashed']);
-
-Route::delete('/inactive/{item}', ['as' => 'inactive.delete', 'uses' => 'ItemController@deleteTrashed']);
+Route::group(['prefix' => 'inactive'], function(){
+	Route::get('/', ['as' => 'inactive', 'uses' => 'ItemController@showTrashed']);
+	Route::get('/{item}', ['as' => 'inactive.item', 'uses' => 'ItemController@restoreTrashed']);
+	Route::delete('/{item}', ['as' => 'inactive.delete', 'uses' => 'ItemController@deleteTrashed']);
+});
 
 Route::auth();

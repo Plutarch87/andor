@@ -35,7 +35,7 @@
     		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     			<ul class="nav navbar-nav">                    
     				<li>
-                        <button data-toggle="modal" data-target="#kontaktModal">Kontakt</button>
+                        <a data-toggle="modal" href="#kontaktModal">Kontakt</a>
                         
                     </li>
                     {!! Form::open(['class' => 'navbar-form navbar-right', 'role' => 'search']) !!}
