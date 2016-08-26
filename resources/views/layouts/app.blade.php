@@ -9,7 +9,7 @@
 {!! Html::style('assets/bootstrap.css') !!}
 {!! Html::style('https://fonts.googleapis.com/css?family=Lobster') !!}
 {!! Html::style('assets/index.css') !!}
-{!! Html::style('css_flyoutverticalmenu.css') !!}
+{!! Html::style('assets/css_flyoutverticalmenu.css') !!}
 @stack('styles')
 <!-- SCRIPTS -->
 {!! Html::script('assets/jquery-1.12.0.min.js') !!}

@@ -139,6 +139,35 @@ a {
 	transition: all 0.4s;
 }
 
+#kontaktM {
+	border: none;
+	background: none;
+	text-transform: uppercase;
+	color: #000;
+	font-size: 1.6em;
+	margin-top: 7px;
+}
+
+#kontaktM:active {
+	border: none!important;
+}
+
+#kontaktM:visited {
+	border: none!important;
+}
+
+button:active {
+	border: none!important;
+}
+
+button:visited {
+	border: none!important;
+}
+
+button #kontaktM:focus {
+	border: none!important;
+}
+
 .ncontent {
 	position: relative;
 	height: 122px;
@@ -177,7 +206,7 @@ a {
 }
 
 .nlinew:hover {
-	background-color: #2D7A1E;
+	background-color: #49C46A;
 	color: #fff;
 	transition: all 0.7s;
 
@@ -284,7 +313,7 @@ a {
 	position: relative;
 	height: 440px;
 	/*background-image: url('images/zy588QE.jpg');*/
-	background-color: #FCFCD4;
+	background-color: #fff;
 	/*margin-top: 30px;*/
 		background-image: url('images/bckground.jpg');
 	 background-size: 100% 100%;
@@ -649,7 +678,7 @@ body.viewport-lg {
 .novotag {
 	padding: 0;
 	margin: 0;
-	background-color: #2D7A1E;
+	background-color: #49C46A;
 	border-radius: 50%;
 	text-align: center;
 	color: #fff;
@@ -1574,15 +1603,15 @@ text-transform: uppercase;
     .nav li {
     	float: none;
     }
-    #kontakt {
-    	width: 10%;
-    	left: 40%;
-    }
+
     .form-control {
     	margin-left: 36%;
     }
     #search {
     	margin-left: 45%;
+    }
+    #kontaktM {
+    	margin-left: 43%;
     }
 }
 .deletebtn {

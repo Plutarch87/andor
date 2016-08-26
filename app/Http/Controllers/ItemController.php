@@ -35,20 +35,7 @@ class ItemController extends Controller
             'categories' => $categories,
             'subcats' => $subcats,
         ]);
-    }
-    
-    public function show($id)
-    {
-        $items = Item::where('category_id', $id)->get();
-        $subcats = DB::table('subcats')->get();
-        $categories = DB::table('categories')->get();
-
-        return view('categories', [
-            'items' => $items,
-            'categories' => $categories,
-            'subcats' => $subcats,
-        ]);
-    }
+    }  
 
     public function store(Request $request, Category $category)
     {   
@@ -91,33 +78,38 @@ class ItemController extends Controller
         return back();
     }
 
-    public function edit(Item $item)
-    {  
-        return view('edit', compact('item'));
-    }
-
     public function update(Request $request, Item $item)
     {
+
         $request->akcija ? $item->akcija = true : $item->akcija = false;
-        $request->popularno ? $item->popularno = true : $item->popularno = false;
-        if(isset($request->img)) {
+        $request->popularno ? $item->popularno = true : $item->popularno = false;        
+
+
+            $item->update($request->all());
+        if(!$request->hasFile('img')){
+
+            return back();
+        } 
+        else
+        {
             if(
                 $request->file('img')->getClientMimeType() == 'image/jpg' ||
                 $request->file('img')->getClientMimeType() == 'image/png' ||
                 $request->file('img')->getClientMimeType() == 'image/jpeg'
-            )
-            {
-             $desPath = 'storage/andor';
-             $name = date("his"). "-". $request->file('img')->getClientOriginalName();
-                if($request->file('img')->isValid()) {
+               )
+                {
+                 $desPath = 'storage/andor';
+                 $name = date("his"). "-". $request->file('img')->getClientOriginalName();
+                 if($request->file('img')->isValid()) {
                     $request->file('img')->move($desPath, $name);
-                }
+                    $item->update(['img' => $name]);
+                    
+                    return back();    
+                 }
             }
+
         }
 
-        $item->update($request->all());
-
-        return back();
     }
 
     public function destroy(Request $request, Item $item)
