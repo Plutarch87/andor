@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use App\Cart;
 use App\Item;
 use App\Category;
 use App\Subcat;
@@ -124,6 +126,28 @@ class ItemController extends Controller
         }
 
     	return back();
+    }
+
+    public function addToCart(Request $request, Item $item)
+    {
+        $oldCart = Session::has('cart') ? Session::get('cart') : '';
+        $cart = new Cart($oldCart);
+        $cart->add($item, $item->id);
+
+        $request->session()->put('cart', $cart);
+        return back();
+    }
+
+    public function showCart()
+    {
+        if (!Session::has('cart')) {
+
+            return view('shop.shopping-cart');
+        }
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+
+        return view('shop.shopping-cart', ['items' => $cart->items, 'totalPrice' => $cart->totalPrice]);
     }
 
     // PONUDE
