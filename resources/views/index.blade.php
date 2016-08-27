@@ -29,7 +29,7 @@
             @if(Auth::check())                
                 @include('partials.forms.delete', ['route' => 'items.destroy', 'id' => $item->id])
             @else
-                <button class="btn btn-success myShoppingCart"></button>
+                <a href="{{ route('item.addToCart', $item) }}" class="btn btn-success myShoppingCart"></a>
             @endif
             @if($item->popularno)                        
                 <div class="popularnotag">

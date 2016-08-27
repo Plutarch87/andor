@@ -64,8 +64,9 @@
 				@endif
 			</ul>
 			<div class="shopingwrapper">
-				<span id="shopcircle" class="badge">2</span>
-				<a data-toggle="modal" href="#myCartModal"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+				<span id="shopcircle" class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
+                <!-- <a data-toggle="modal" href="#myCartModal"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a> -->
+				<a href="{{ route('item.showCart') }}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
                 @include('partials.modals.cart')
 			</div>
 		</div>

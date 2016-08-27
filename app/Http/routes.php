@@ -10,6 +10,15 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('add-to-cart/{item}', [
+		'as' => 'item.addToCart',
+		'uses' => 'ItemController@addToCart'
+	]);
+Route::get('shopping-cart/', [
+	'as' => 'item.showCart',
+	'uses' => 'ItemController@showCart'
+	]);
+
 Route::get('/', [
 		'as' => 'index',
 		'uses' => 'CategoryController@index',
