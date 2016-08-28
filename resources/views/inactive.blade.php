@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Neaktivi')
+
 @section('content')
 
 <div class="container-fluid">
@@ -14,10 +16,10 @@
  				{!! Html::image('storage/andor/'.$item->img, $item->name) !!}
 			</div>
 			{{ Form::open(['method' => 'GET', 'route' => ['inactive.item', $item]]) }}
-				{{ Form::submit('Aktiviraj', ['class' => 'btn btn-info pull-left']) }}
+				{{ Form::submit('Aktiviraj', ['onclick' => 'return confirm("Potvrdite aktivaciju predmeta.")', 'class' => 'btn btn-info pull-left']) }}
 			{{ Form::close() }}
 			{{ Form::open(['method' => 'DELETE', 'route' => ['inactive.delete', $item]]) }}
-				{{ Form::submit('Obrisi Zauvek', ['onclick' => 'confirm("SIGURAN? Predmet ce biti ZAUVEK obrisan?")', 'class' => 'btn btn-danger pull-right']) }}
+				{{ Form::submit('Obrisi Zauvek', ['onclick' => 'return confirm("SIGURAN? Predmet ce biti ZAUVEK obrisan?")', 'class' => 'btn btn-danger pull-right']) }}
 			{{ Form::close() }}
 		</div>
 	</div>

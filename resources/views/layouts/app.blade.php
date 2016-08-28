@@ -62,7 +62,7 @@
 				<a class= "nlibestseller" href="{{ route('inactive') }}"><li>Neaktivne</li></a>
 				@endif
 			</ul>
-			<div class="shopingwrapper fixed">
+			<div class="shopingwrapper">
 				<span id="shopcircle" class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : '0' }}</span>
 				<a href="{{ route('item.showCart') }}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
                 <div>
@@ -70,31 +70,28 @@
 		</div>
 </div>
 <!-- NAVBAR -->
-        <nav class="navbar navbar-default hidden-lg hidden-md hidden-sm">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#meniMob" aria-expanded="false">
-                    <span class="sr-only"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse" id="meniMob">
-            <ul class="nav navbar-nav">
-                @foreach ($categories as $category)
-                    <li>
-                        <a href="{{ route('categories.show', $category->id) }}">{{ $category->name }}</a>
-                    </li>
-                    <hr>
-                @endforeach
-            </ul>
+    <nav class="navbar navbar-default hidden-lg hidden-md hidden-sm">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#meniMob" aria-expanded="false">
+                <span class="sr-only"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
         </div>
+        <div class="collapse navbar-collapse" id="meniMob">
+        <ul class="nav navbar-nav">
+            @foreach ($categories as $category)
+                <li>
+                    <a href="{{ route('categories.show', $category->id) }}">{{ $category->name }}</a>
+                </li>
+                <hr>
+            @endforeach
+        </ul>
+    </div>
 
-@show
-
-    
-        
+@show   
     
 </div>
 
@@ -152,7 +149,7 @@
                                     {!! Form::text('name') !!}
                                 </li>
                                 <li>
-                                    {!! Form::submit('Dodaj Potkategoriju') !!}
+                                    {!! Form::submit('Dodaj Potkategoriju', ['class' => 'btn-xs btn-danger']) !!}
                                     {!! Form::close() !!}
                                 </li>
                             @endif                      
@@ -164,7 +161,7 @@
                                     @if(Auth::check())
                                         <span >
                                             {!! Form::open(['method' => 'DELETE', 'route' => ['subcats.destroy', $subcat->id]]) !!}
-                                                {!! Form::submit('&times;', ['onclick' => 'confirm("Siguran?")']) !!}
+                                                {!! Form::submit('&times;', ['onclick' => 'return confirm("Siguran?")', 'class' => 'btn-xs btn-danger']) !!}
                                             {!! Form::close() !!}
                                         </span>
                                     @endif
@@ -184,7 +181,7 @@
                     {!! Form::text('name') !!}
                 </li>
                 <li>
-                    {!! Form::submit('Dodaj Kategoriju') !!}
+                    {!! Form::submit('Dodaj Kategoriju', ['class' => 'btn-xs btn-danger']) !!}
                     {!! Form::close() !!}
                 </li>                
             @endif

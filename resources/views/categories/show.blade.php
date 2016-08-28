@@ -11,9 +11,9 @@
 <h4>{{ strtoupper($category->name) }}</h4>
 
 @if(Auth::check())
-<button type="button" class="btn btn-default" data-toggle="modal" data-target="#createItem">
-    Napravi Predmet Za Ovu Kategoriju
-</button>
+    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#createItem">
+        Napravi Predmet Za Ovu Kategoriju
+    </button>
 @endif
 
 <h5>{{ $items->links() }}</h5>
@@ -26,7 +26,7 @@
     </div>
     <div class="modal-body">            
         {!! Form::open(['files' => true, 'class' => 'form-horizontal', 'role' => 'form', 'route' => ['items.store']]) !!}
-            @include('partials.forms.createUpdate', ['submitButton' => 'Napravi'])
+                @include('partials.forms.createUpdate', ['submitButton' => 'Napravi'])
         {!! Form::close() !!}
     </div>
 </div>
@@ -58,7 +58,7 @@
                     </div>
                     <div class="modal-body">            
                         {!! Form::model( $item, ['files' => true, 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'PUT', 'route' => ['items.update', $item->id]]) !!}
-                            @include('partials.forms.createUpdate', ['submitButton' => 'Unesi izmene'])
+                                @include('partials.forms.createUpdate', ['submitButton' => 'Unesi izmene'])
                         {!! Form::close() !!}
                     </div>
                 </div>

@@ -61,7 +61,7 @@
 	                </div>
 	                <div class="modal-body">            
 	                    {!! Form::model( $item, ['files' => true, 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'PATCH', 'route' => ['items.update', $item->id]]) !!}
-	                        @include('partials.forms.createUpdate', ['submitButton' => 'Unesi izmene'])
+	                        	@include('partials.forms.createUpdate', ['submitButton' => 'Unesi izmene'])
 	                    {!! Form::close() !!}
 	                </div>
 	            </div>

@@ -13,30 +13,29 @@
 	</ul>
 	<h1>Naruceni predmet(i)</h1>
 	<table>
-		<thead>
-			<tr>
-				<th><strong>Naziv: </strong></th>
-				<th><strong>Sifra: </strong></th>
-				<th><strong>Kolicina: </strong></th>
-				<th><strong>Cena: </strong></th>
-			</tr>
-		</thead>
+		<tr>
+			<th><strong>Naziv: </strong></th>
+			<th><strong>|Sifra: </strong></th>
+			<th><strong>|Kolicina: </strong></th>
+			<th><strong>|Cena: </strong></th>
+		</tr>
 		
 		<?php foreach($cart->items as $item) : ?>
+			
 			<tr>				
-				<td><?php echo $item['item']->name; ?></td>
-				<td><?php echo $item['item']->sifra; ?></td>
-				<td><?php echo $item['qty']; ?></td>
-				<td><?php echo $item['price']; ?></td>
+				<td>|<?php echo $item['item']->name; ?></td>
+				<td>|<?php echo $item['item']->sifra; ?></td>
+				<td>|<?php echo $item['qty']; ?></td>
+				<td>|<?php echo $item['price']; ?></td>
 			</tr>
 
 		<?php endforeach; ?>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td><b>Ukupno: <b><i><?php echo $order->total ?>din<i></td>
-		</tr>
+			<tr>
+				<td>|</td>
+				<td>|</td>
+				<td>|</td>
+				<th>|<b>Ukupno: <b><i><?php echo $order->total ?>din<i></th>
+			</tr>
 	</table>
 </body>
 </html>

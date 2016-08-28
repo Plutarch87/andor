@@ -414,7 +414,7 @@ button #kontaktM:focus {
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 100%;
+    width: 50%;
 
 }
 
@@ -1830,7 +1830,5 @@ text-transform: uppercase;
 
 	.navbar-nav {
 		text-align: center;
-		text-transform: uppercase;
-		
-
+		text-transform: uppercase;	
 	}
