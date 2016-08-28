@@ -192,9 +192,12 @@
         </div>
 
 @show
-        
-                    
-            {{ Session::has('success') ? Session::get('success') : null }}
+            @if(Session::has('success'))
+                <div class="alert alert-success col-lg-8 col-md-6 fade in">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>{{ Session::get('success') }}</strong>
+                </div>
+            @endif
              
         <div class="col-sm-9 col-xs-7">
             <div class="main-content">

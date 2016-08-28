@@ -102,11 +102,11 @@ class CartController extends Controller
         Mail::send('emails.order', ['request' => $request,'order' => $order, 'cart' => $cart], function ($m) use ($request, $order, $cart) { 
             $m->from('mrzi.me.87@gmail.com', 'Hexor');
 
-            $m->to('nikolastojanovic21@yahoo.com', 'Dzoni')->subject('Narudzbina Predmeta');
+            $m->to('mrzi.me.87@gmail.com', 'Dzoni')->subject('Narudzbina Predmeta');
         });
 
         Session::forget('cart');
 
-        return redirect()->route('index')->with('success', 'Narudzba uspesno izvrsena! Uskoro cemo vas kontaktirati');
+        return redirect()->route('index')->with('success', 'Narudzba uspesno izvrsena! Uskoro cemo vas kontaktirati.');
     }
 }

@@ -31,10 +31,11 @@
 			</tr>
 
 		<?php endforeach; ?>
-		<tr>			
-			<td>
-				<li>Ukupno: <?php echo $order->total ?>din</li>
-			</td>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><b>Ukupno: <b><i><?php echo $order->total ?>din<i></td>
 		</tr>
 	</table>
 </body>
