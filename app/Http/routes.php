@@ -15,31 +15,36 @@ Route::post('send-email', [
 		'uses' => 'ItemController@sendEmailReminder'
 	]);
 
+Route::get('narudzbine_statistika', function()
+{
+	return view('narudzbine_statistika');
+});
+//edit
 Route::get('add-to-cart/{id}', [
-		'as' => 'item.addToCart',
+		'as' => 'item.addToCart',	
 		'uses' => 'CartController@addToCart'
 	]);
-
+//update
 Route::get('reduce-one/{id}', [
 		'as' => 'item.reduceByOne',
 		'uses' => 'CartController@getReduceByOne'
 	]);
-
+//destroy
 Route::get('reduce-all/{id}', [
 		'as' => 'item.removeItem',
 		'uses' => 'CartController@getRemoveItem'
 	]);
-
+//index
 Route::get('shopping-cart', [
 	'as' => 'item.showCart',
 	'uses' => 'CartController@showCart'
 	]);
-
+//create
 Route::get('checkout', [
 		'as' => 'shop.checkout',
 		'uses' => 'CartController@getCheckout'
 	]);
-
+//store
 Route::post('checkout', [
 		'as' => 'shop.checkout',
 		'uses' => 'CartController@postCheckout'
