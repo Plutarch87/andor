@@ -2,10 +2,13 @@
 
 @section('title', 'Shopping Cart')
 
+@section('sidebar')
+@stop
+
 @section('content')
 	@if(Session::has('cart'))
 		<div class="row">
-			<div class="col-sm-6">
+			<div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
 				<ul class="list-group">
 					@foreach($items as $item)
 						<li class="list-group-item">
@@ -15,8 +18,8 @@
 							<div class="btn-group">
 								<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">Action<span class="caret"></span></button>
 								<ul class="dropdown-menu">
-									<li><a href="#">Reduce by 1</a></li>
-									<li><a href="#">Reduce All</a></li>
+									<li><a href="{{ route('item.reduceByOne', ['id' => $item['item']['id']]) }}">Reduce by 1</a></li>
+									<li><a href="{{ route('item.removeItem', ['id' => $item['item']['id']]) }}">Reduce All</a></li>
 								</ul>
 							</div>
 						</li>
@@ -25,18 +28,19 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm-6">
-				<strong>Total: {{ $totalPrice }}</strong>
+			<div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
+				<strong>Total: {{ $totalPrice }} din</strong>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm-6">
-				<button type="button" class="btn btn-success">Naruci</button>
+			<div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
+				<a href="{{ route('shop.checkout') }}" type="button" class="btn btn-success">Naruci</a>
+				@include('partials.forms.contact')
 			</div>
 		</div>
 	@else
 		<div class="row">
-			<div class="col-sm-6">
+			<div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
 				<h2>Nemate predmeta u korpi</h2>
 			</div>
 		</div>

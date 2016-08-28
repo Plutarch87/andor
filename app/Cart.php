@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Item;
 use Illuminate\Database\Eloquent\Model;
 
 class Cart
@@ -32,5 +33,25 @@ class Cart
     	$this->totalQty++;
     	$this->totalPrice += $item->price;
 
+    }
+
+    public function reduceByOne($id)
+    {
+        $this->items[$id]['qty']--;
+        $this->items[$id]['price'] -= $this->items[$id]['item']['price'];
+        $this->totalQty--;
+        $this->totalPrice -= $this->items[$id]['item']['price'];
+
+        if($this->items[$id]['qty'] <= 0)
+        {
+            unset($this->items[$id]);
+        }        
+    }
+
+    public function removeItem($id)
+    {
+        $this->totalQty -= $this->items[$id]['qty'];
+        $this->totalPrice -= $this->items[$id]['price'];
+        unset($this->items[$id]);
     }
 }

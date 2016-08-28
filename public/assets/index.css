@@ -22,6 +22,13 @@ h1 {
 	display: inline;
 }
 
+.shopfooter {
+	position: absolute;
+	bottom: 6%;
+	left: 16%;
+}
+
+
 #wlch1 {
     font-size: 4em;
     text-align: center;
@@ -127,16 +134,19 @@ a {
 }
 
 .nav li a {
-	font-size: 28px;
+	font-size: 1.5em;
 	font-weight: 600;
 	color: white;
-	opacity: 0.4;
+	opacity: 1;
 	transition: all 0.4s;
+	line-height: 20px!important;
+	display: inline!important;
 }
 
 .nav li a:hover {
 	opacity: 1;
 	transition: all 0.4s;
+
 }
 
 #kontaktM {
@@ -282,6 +292,7 @@ button #kontaktM:focus {
 	transition: all 0.7s;
 }
 
+
 /*.nlisale:after {
     content: "";
     position: absolute;
@@ -393,6 +404,7 @@ button #kontaktM:focus {
     height: 100%; /* Full height */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
 }
 
 /* Modal Content */
@@ -402,7 +414,7 @@ button #kontaktM:focus {
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 27%;
+    width: 100%;
 
 }
 
@@ -588,8 +600,8 @@ body.viewport-lg {
 	text-align: center;
 	line-height: 16%;
 	position: absolute;
-	top: 68%;
-	left: 58%;
+	top: 59%;
+	left: 69%;
 
 
 }
@@ -665,7 +677,7 @@ body.viewport-lg {
 .shopdiv img {
 	width: auto!important;
 	height: auto!important;
-	max-height: 181px;
+	/*max-height: 181px;*/
 	max-width: 100%;
 
 }
@@ -706,7 +718,7 @@ text-transform: uppercase;
 .popularnotag {
 	padding: 0;
 	margin: 0;
-	background-color: #3E62F5;
+	background-color: #FF9A26;
 	border-radius: 50%;
 	text-align: center;
 	color: #fff;
@@ -714,8 +726,9 @@ text-transform: uppercase;
 	height: 70px;
 	line-height: 16%;
 	position: absolute;
-	top: 15%;
-	left: 1%;
+	top: 31%;
+	left: -7%;
+	font-size: 1.3em;
 }
 
 .popularnotag span {
@@ -724,8 +737,9 @@ text-transform: uppercase;
 	display: inline;	
 	position: absolute;
 	top: 34px;
-	left: 7px;
+	left: 18px;
 	border: none;
+	font-weight: bold;
 	
 text-transform: uppercase;
 
@@ -741,8 +755,9 @@ text-transform: uppercase;
 	height: 70px;
 	line-height: 16%;
 	position: absolute;
-	top: 15%;
-	left: 1%;
+	top: 4%;
+	left: -7%;
+	font-weight: bold;
 }
 
 .akcijatag span {
@@ -751,7 +766,7 @@ text-transform: uppercase;
 	display: inline;	
 	position: absolute;
 	top: 34px;
-	left: 11px;
+	left: 9px;
 	border: none;
 	max-width: 100%;
 	
@@ -875,25 +890,6 @@ text-transform: uppercase;
 /*	background: -moz-linear-gradient(#fff, #999);
 	background: -webkit-linear-gradient(#fff, #999);
 	background: -o-linear-gradient(#fff, #999);*/
-}
-
-.closee {
-	background: #606061;
-	color: #FFFFFF;
-	line-height: 25px;
-	position: absolute;
-	right: -12px;
-	text-align: center;
-	top: -10px;
-	width: 24px;
-	text-decoration: none;
-	font-weight: bold;
-	-webkit-border-radius: 12px;
-	-moz-border-radius: 12px;
-	border-radius: 12px;
-	-moz-box-shadow: 1px 1px 3px #000;
-	-webkit-box-shadow: 1px 1px 3px #000;
-	box-shadow: 1px 1px 3px #000;
 }
 
 #map {
@@ -1489,6 +1485,7 @@ text-transform: uppercase;
 
 }
 
+
 @media screen and (max-width: 685px) {
 	
     .popularnotag {
@@ -1620,38 +1617,220 @@ text-transform: uppercase;
 	right: 76%;
 }
 
-/*@media screen and (max-width: 767px) {
-    #theCarousel {
-        display: none !important;
+@media screen and (max-width: 768px) {
+	
+    #menuwrapper ul li {
 
-    }
-    #carousel-shadow {
-    	display: none !important;
-    }
-    #hideme1, #hideme2, #hideme3 {
-    	display: none!important;
+    	width: 120%!important;
+    	height: 50px!important;
     }
 
-    #shoprow1, #shoprow2, #shoprow3 {
-    	width: 100% !important;
-    }
-}
-*/
-/*@media screen and (max-width: 998px) {
-    #theCarousel {
-        display: none !important;
-
-    }
-    #carousel-shadow {
-    	display: none !important;
-    }
-    #hideme1, #hideme2, #hideme3 {
-    	display: none!important;
+    .modal-content {
+    	text-align: left;
+    	font-size: 1.2em;
     }
 
-    #shoprow1, #shoprow2, #shoprow3 {
-    	width: 198%;
-    }
 }
 
-*/
+@media screen and (max-width: 414px) {
+
+	.logo-wrapper img {
+		height: 60px!important;
+	}
+
+	.logo-wrapper {
+	    position: absolute;
+	    left: 19%;
+	    top: 50%;
+	}
+
+	.shopingwrapper {
+		top: 50%;
+		right: 23%;
+	}
+
+	.pagination {
+		position: relative;
+		left: 60%;
+		width: 120%;
+	}
+
+	.shopdiv {
+		width: 250%;
+	}
+
+	.akcijatag {
+		width: 20%;
+	}
+
+	.novotag {
+		width: 20%;
+	}
+
+	.popularnotag {
+		width: 20%;
+	}
+
+	.modal-title{
+		text-align: center;
+	}
+
+	.footer {
+		text-align: center;
+	}
+
+	#kontaktM {
+		margin-left: 10%;
+	}
+
+	.navbar-form {
+		margin-right: 15%;
+	}
+
+}
+
+@media screen and (max-width: 375px) {
+
+		#hexor {
+			display: none;
+		}
+
+		.logo-wrapper {
+		    position: absolute;
+		    left: 27%;
+		    top: 40%;
+		}
+
+		.logo-wrapper img {
+		    height: 80px!important;
+		}
+
+		.shopingwrapper {
+		    top: 50%;
+		    right: 0%;
+		}
+
+		.pagination {
+			width: 140%;
+		}
+
+		.akcijatag {
+			width: 24%;
+		}
+
+		.novotag {
+			width: 24%;
+		}
+
+		.popularnotag {
+			width: 24%;
+		}
+
+
+}
+
+@media screen and (max-width: 320px) {
+
+	.shopingwrapper {
+		top: 45%;
+		right: 0%;
+	}
+
+	#hexor {
+		color: #E6BDF8;
+		text-shadow: none;
+	}
+
+
+	.logo-wrapper img {
+		height: 78px !important;
+		margin-left: -8%;
+	}
+
+	.carousel-indicators {
+		width: 33%;
+		left: 33%;
+	}
+
+	.form-control {
+	    margin-left: 23%;
+	}
+
+	.pagination {
+		position: relative;
+		left: 50%;
+		width: 170%!important;
+	}
+
+	.shopdiv {
+		width: 270%;
+		left: 20%;
+
+	}
+	.akcijatag {
+		width: 30%!important;
+	}
+
+	.popularnotag {
+		width: 30%;
+	}
+
+	.novotag {
+		width: 30%;
+	}
+
+	.nlistwrapper {
+		display: none;
+	}
+
+	.navbar-nav {
+		text-align: center;
+
+	}
+
+	.modal-content {
+		width: 100%;
+		padding: 0px;
+	}
+
+	.modal-header {
+		padding: 0px;
+	}
+
+	.modal-title {
+		margin: 0px;
+		margin-top: 27px;
+	}
+
+	.modal-header .close {
+		position: absolute;
+		top: 5%;
+	    right: 7%;
+	}
+
+	.modal-body img {
+		width: 100%!important;
+	}
+
+	.nav li a {
+		font-size: 1.5em;
+		display: inline;
+		text-transform: uppercase;
+		opacity: 1;
+
+	}
+
+
+	
+}
+
+	.pagination li a {
+		color: #E92FE3;
+	}
+
+	.navbar-nav {
+		text-align: center;
+		text-transform: uppercase;
+		
+
+	}

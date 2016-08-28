@@ -36,7 +36,7 @@
 	</div>
 
 @foreach($items as $item)
-	<div class="col-md-3 col-sm-3">
+	<div class="col-md-3 col-sm-3" id="{{ $item->name }}">
 	    <div class="shopdiv">
 	        <h4>{{ $item->name }}</h4>
 	        <a data-toggle="modal" data-target="#item-modal{{ $item->id }}">	        	
@@ -45,7 +45,7 @@
 	        @if($item->akcija)
 	            <div class="price-tag">
 	                <span>
-	                    <h4>{{ $item->price }}</h4>
+	                    <h4 id="{{ $item->name }}">{{ $item->price }}</h4>
 	                </span>
 	            </div>
 	        @endif
@@ -68,7 +68,7 @@
 	            </div>
 	            @include('partials.forms.delete', ['route' => 'items.destroy', 'id' => $item->id])
 	        @else
-                <a href="{{ route('item.addToCart', $item) }}" class="btn btn-success myShoppingCart"></a>
+                <a href="{{ route('item.addToCart', $item) }}#{{ $item->name }}" class="btn btn-success myShoppingCart"></a>
 	        @endif
 	        @if($item->popularno)
 		        <button type="button" class="btn btn-danger">{{ $item->sifra }}</button>

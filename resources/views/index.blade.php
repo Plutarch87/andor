@@ -13,27 +13,19 @@
 @foreach($items as $item)
     <div class="col-md-3 col-sm-3">
         <div class="shopdiv">
-            <h4>{{ $item->name }}</h4>
-                <div class="price-tag">
-                    <span>
-                        <h4>{{ $item->price }}</h4>
-                    </span>
-                </div>
+        <div class="shophead">
+            <h4 id="{{ $item->name }}">{{ $item->name }}</h4>
+        </div>
+        <div class="shopbody">       
             @if($item->akcija)
                 <div class="akcijatag">
                     <span>Akcija</span>
                 </div>
             @endif
-            <a data-toggle="modal" href="#item-modal{{ $item->id }}">{!! Html::image('storage/andor/'.$item->img, $item->name) !!}</a>
-                @include('partials.modals.item')            
-            @if(Auth::check())                
-                @include('partials.forms.delete', ['route' => 'items.destroy', 'id' => $item->id])
-            @else
-                <a href="{{ route('item.addToCart', $item) }}" class="btn btn-success myShoppingCart"></a>
-            @endif
+
             @if($item->popularno)                        
                 <div class="popularnotag">
-                    <span>Popular</span>
+                    <span>Hot</span>
                 </div>
             @endif
             @if($item->created_at > Carbon\Carbon::today(-4))
@@ -41,7 +33,22 @@
                     <span>Novo</span>
                 </div>
             @endif
-                <button type="button" class="btn btn-danger">{{ $item->sifra }}</button>
+            <a data-toggle="modal" href="#item-modal{{ $item->id }}">{!! Html::image('storage/andor/'.$item->img, $item->name) !!}</a>
+                @include('partials.modals.item')            
+            <div class="price-tag">
+                <span>
+                    <h4>{{ $item->price }}</h4>
+                </span>
+            </div>
+        </div>
+        <div class="shopfooter">
+            <button type="button" class="btn btn-default"><span class="btnSifra">{{ $item->sifra }}</span></button>
+            @if(Auth::check())                
+                @include('partials.forms.delete', ['route' => 'items.destroy', 'id' => $item->id])
+            @else
+                <a href="{{ route('item.addToCart', $item) }}#{{ $item->name }}" class="btn btn-success myShoppingCart"></a>
+            @endif
+        </div>        
         </div>
     </div>    
     

@@ -1,5 +1,5 @@
 <!-- Item modal -->
-<div id="item-modal{{ $item->id }}" class="modal">
+<div id="item-modal{{ $item->id }}" class="modal fade">
     <div class="modal-content">
         <div class="modal-header">
             <h4 class="modal-title">{{ $item->name }}</h4>
@@ -10,12 +10,6 @@
         </div>
         <div class="footer">
             <p>{{ $item->description }}</p>
-        @if($item->akcija)
-            <div class="price-tag"><span><h4>{{ $item->price }}</h4></span></div>            
-        @endif
-        @if($item->popularno)
-            <button type="button" class="btn btn-danger">{{ $item->sifra }}</button>            
-        @endif
         </div>
     </div>  
 </div>

@@ -17,7 +17,7 @@
 @stack('scripts')
 	<title>Hexor - @yield('title')</title>
 </head>
-<body ng-app="app" ng-controller="mainController">
+<body>
 <div class="main">        
 <section>       
 	<header>    
@@ -35,15 +35,14 @@
     		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     			<ul class="nav navbar-nav">                    
     				<li>
-                        <a data-toggle="modal" href="#kontaktModal">Kontakt</a>
-                        
+                        <a data-toggle="modal" href="#kontaktModal" id="kontaktM">Kontakt</a>
                     </li>
                     {!! Form::open(['class' => 'navbar-form navbar-right', 'role' => 'search']) !!}
                         <div class="form-group">
                             {!! Form::text('search', null, ['class' => 'form-control', 'placeholder' => 'Search']) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::submit('Search', ['class' => 'btn btn-default form-control', 'placeholder' => 'Search']) !!}
+                            {!! Form::submit('Search', ['class' => 'btn btn-default form-control']) !!}
                         </div>
                     {!! Form::close() !!}
     			</ul>						
@@ -51,28 +50,55 @@
 	    </div>
         </nav>            
 		<div class="ncontent">
-			<h1 id="wlch1">Welcome to Hexor</h1>
+			<h1 id="wlch1">Welcome to <span id="hexor">Hexor</span></h1>
 			<a class="logo-wrapper" href="{{ url(asset('/')) }}">
                 {!! Html::image('assets/images/hd.png', null, ['id' => 'logo']) !!}
             </a>
-			<ul class="nlistwrapper">
+			<ul class="nlistwrapper hidden-xs">
 				<a class="nlinew"href="#"><li>Novo</li></a>
-				<a class="nlibestseller"href="{!! url('ponude/popular') !!}"><li>Najprodavanije</li></a>    
+				<a class="nlibestseller"href="{!! url('ponude/popular') !!}"><li>Hot</li></a>    
 				<a class="nlisale"href="{!! url('ponude/akcija') !!}"><li>Akcija</li></a>
 				@if(Auth::check())
 				<a class= "nlibestseller" href="{{ route('inactive') }}"><li>Neaktivne</li></a>
 				@endif
 			</ul>
-			<div class="shopingwrapper">
-				<span id="shopcircle" class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
-                <!-- <a data-toggle="modal" href="#myCartModal"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a> -->
+			<div class="shopingwrapper fixed">
+				<span id="shopcircle" class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : '0' }}</span>
 				<a href="{{ route('item.showCart') }}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
-                @include('partials.modals.cart')
+                <div>
 			</div>
 		</div>
 </div>
+<!-- NAVBAR -->
+        <nav class="navbar navbar-default hidden-lg hidden-md hidden-sm">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#meniMob" aria-expanded="false">
+                    <span class="sr-only"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="meniMob">
+            <ul class="nav navbar-nav">
+                @foreach ($categories as $category)
+                    <li>
+                        <a href="{{ route('categories.show', $category->id) }}">{{ $category->name }}</a>
+                    </li>
+                    <hr>
+                @endforeach
+            </ul>
+        </div>
 
-<!--<div class="carousel-wrapper">
+@show
+
+    
+        
+    
+</div>
+
+<div class="carousel-wrapper hidden-xs">
 
 <div id="theCarousel" class="carousel slide" data-ride="carousel">
 	<ul class="carousel-indicators">
@@ -84,11 +110,11 @@
 
 	<div class="carousel-inner" role="listbox">
 		<div class="item active">
-			<img src="{{ url(asset("assets/images/carousel/triple_x_1.jpg")) }}" alt="a">
+			<img src="{{ url(asset("assets/images/carousel/akcija.png")) }}" alt="a">
 		</div>
 
 		<div class="item">
-			<img src="{{ url(asset("assets/images/carousel/afp-photo_1376375469901-1-HD.jpg")) }}" alt="a">
+			<img src="{{ url(asset("assets/images/carousel/How-a-Magic-Ritual-Can-Save-Your-Sex-Toys.jpg")) }}" alt="a">
 		</div>
 
 		<div class="item">
@@ -106,7 +132,7 @@
 		<span class="sr-only">Next</span>
 	</a>
 </div>
-</div>-->
+</div>
 
 	</header>
 </section>
@@ -114,7 +140,7 @@
 @section('sidebar')
 <section style="background-color: #EDD9F6;" id="section2">
     <div class="row">
-        <div class="col-sm-3 col-xs-5" id="menuwrapper">
+        <div class="col-sm-3 col-xs-5 hidden-xs" id="menuwrapper">
             <ul>
                 @foreach ($categories as $category)
                     <li>
@@ -166,7 +192,10 @@
         </div>
 
 @show
-
+        
+                    
+            {{ Session::has('success') ? Session::get('success') : null }}
+             
         <div class="col-sm-9 col-xs-7">
             <div class="main-content">
             <div class="container-fluid">

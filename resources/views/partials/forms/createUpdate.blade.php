@@ -11,7 +11,7 @@
 	{{ Form::text('price', old('price'), ['class' => 'form-control']) }}
 </div>
 <div class="form-group">
-	{{ Form::label('name', 'Opis:') }}
+	{{ Form::label('description', 'Opis:') }}
 	{{ Form::textarea('description', old('description'), ['cols' => 20, 'rows' => 4, 'class' => 'form-control']) }}
 </div>
 <div class="form-group"></div>

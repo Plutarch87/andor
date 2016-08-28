@@ -10,13 +10,39 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('add-to-cart/{item}', [
-		'as' => 'item.addToCart',
-		'uses' => 'ItemController@addToCart'
+Route::post('send-email', [
+		'as' => 'sendEmail',
+		'uses' => 'ItemController@sendEmailReminder'
 	]);
-Route::get('shopping-cart/', [
+
+Route::get('add-to-cart/{id}', [
+		'as' => 'item.addToCart',
+		'uses' => 'CartController@addToCart'
+	]);
+
+Route::get('reduce-one/{id}', [
+		'as' => 'item.reduceByOne',
+		'uses' => 'CartController@getReduceByOne'
+	]);
+
+Route::get('reduce-all/{id}', [
+		'as' => 'item.removeItem',
+		'uses' => 'CartController@getRemoveItem'
+	]);
+
+Route::get('shopping-cart', [
 	'as' => 'item.showCart',
-	'uses' => 'ItemController@showCart'
+	'uses' => 'CartController@showCart'
+	]);
+
+Route::get('checkout', [
+		'as' => 'shop.checkout',
+		'uses' => 'CartController@getCheckout'
+	]);
+
+Route::post('checkout', [
+		'as' => 'shop.checkout',
+		'uses' => 'CartController@postCheckout'
 	]);
 
 Route::get('/', [

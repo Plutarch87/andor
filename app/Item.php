@@ -29,4 +29,9 @@ class Item extends Model
     {
     	return $this->belongsTo(Subcat::class);
     }
+
+    public function cart()
+    {
+        return $this->belongsTo('App\Cart');
+    }
 }
