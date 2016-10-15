@@ -17,22 +17,7 @@
             <h4 id="{{ $item->name }}">{{ $item->name }}</h4>
         </div>
         <div class="shopbody">       
-            @if($item->akcija)
-                <div class="akcijatag">
-                    <span>Akcija</span>
-                </div>
-            @endif
-
-            @if($item->popularno)                        
-                <div class="popularnotag">
-                    <span>Hot</span>
-                </div>
-            @endif
-            @if($item->created_at > Carbon\Carbon::today(-4))
-                <div class="novotag">
-                    <span>Novo</span>
-                </div>
-            @endif
+            @include('partials.ponuda')
             <a data-toggle="modal" href="#item-modal{{ $item->id }}">{!! Html::image('storage/andor/'.$item->img, $item->name) !!}</a>
                 @include('partials.modals.item')            
             <div class="price-tag">

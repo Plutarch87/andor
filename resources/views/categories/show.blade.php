@@ -40,6 +40,7 @@
                 {!! Html::image('storage/andor/'.$item->img, $item->name) !!}
             </a>
                 @include('partials.modals.item')
+                @include('partials.ponuda')
                 <div class="price-tag">
                     <span>
                         <h4 id="{{ $item->name }}">{{ $item->price }}</h4>

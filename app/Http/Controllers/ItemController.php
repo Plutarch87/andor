@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Order;
@@ -77,6 +78,7 @@ class ItemController extends Controller
             'category_id' => $cat_id,
             'subcat_id' => $sub_id,
             'img' => $name,
+            'created_at' => Carbon::today()->addDays(-8),
             ]);
 
         return back();
@@ -84,12 +86,18 @@ class ItemController extends Controller
 
     public function update(Request $request, Item $item)
     {
-
         $request->akcija ? $item->akcija = true : $item->akcija = false;
-        $request->popularno ? $item->popularno = true : $item->popularno = false;        
+        $request->popularno ? $item->popularno = true : $item->popularno = false;
+        if($request->novo)
+        {
+            $item->created_at = Carbon::today()->addWeeks(1);
+        }
+        else
+        {
+            $item->created_at = Carbon::today()->addDays(-8);
+        }
+        $item->update($request->all());
 
-
-            $item->update($request->all());
         if(!$request->hasFile('img')){
 
             return back();
@@ -143,6 +151,13 @@ class ItemController extends Controller
         $items = Item::where('popularno', true)->orderBy('created_at', 'desc')->get();
 
         return view('ponude/popular', compact('items'));
+    }
+    
+    public function novo()
+    {
+        $items = Item::where('created_at', '>',  Carbon::today()->addWeeks(-1))->orderBy('created_at', 'desc')->get();
+
+        return view('ponude/novo', compact('items'));
     }
     
 
