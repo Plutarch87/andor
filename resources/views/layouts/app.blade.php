@@ -146,7 +146,7 @@
                             @if(Auth::check())
                                 <li>
                                     {!! Form::open(['route' => ['categories.subcats.store', $category->id]]) !!}
-                                    {!! Form::text('name') !!}
+                                    {!! Form::text('name', null, ['style' => 'width:100%']) !!}
                                 </li>
                                 <li>
                                     {!! Form::submit('Dodaj Potkategoriju', ['class' => 'btn-xs btn-danger']) !!}

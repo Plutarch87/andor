@@ -46,6 +46,7 @@ Route::post('checkout', [
 	]);
 
 Route::get('/', [
+'middleware' => 'auth',
 		'as' => 'index',
 		'uses' => 'CategoryController@index',
 	]);
