@@ -9,7 +9,7 @@ use App\Item;
 class Category extends Model
 {
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'slug'];
 
 
 	public function user()

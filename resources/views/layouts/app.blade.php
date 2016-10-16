@@ -84,7 +84,7 @@
         <ul class="nav navbar-nav">
             @foreach ($categories as $category)
                 <li>
-                    <a href="{{ route('categories.show', $category->id) }}">{{ $category->name }}</a>
+                    <a href="{{ route('kategorije.show', $category->id) }}">{{ $category->name }}</a>
                 </li>
                 <hr>
             @endforeach
@@ -96,7 +96,7 @@
 </div>
 {{-- CAROUSEL --}}
 @include('partials.carousel')
-
+{{-- END --}}
 @section('sidebar')
 <section style="background-color: #EDD9F6;" id="section2">
     <div class="row">
@@ -104,7 +104,7 @@
             <ul>
                 @foreach ($categories as $category)
                     <li>
-                        <a href="{{ route('categories.show', $category->id) }}">{{ $category->name }}</a>
+                        <a href="{{ route('kategorije.show', $category->slug) }}">{{ $category->name }}</a>
                         <ul>
                             @if(Auth::check())
                                 <li>
@@ -119,7 +119,7 @@
                          
                             @foreach($category->subcats as $subcat)
                                 <li> 
-                                    <a href="{{ route('categories.subcats.show', array($category->id, $subcat->id)) }}">{{ $subcat->name }}</a>
+                                    <a href="{{ route('kategorije.potkategorije.show', [$category->slug, $subcat->slug]) }}">{{ $subcat->name }}</a>
                                 {{-- DELETE SUBCATEGORY --}}
                                     @if(Auth::check())
                                         <span >

@@ -8,9 +8,9 @@
 
 @section('content')
 	<h4>
-		<a href="{!! route('categories.show', $category->id) !!}">{{ strtoupper($category->name) }}</a>
+		<a href="{!! route('kategorije.show', $category->slug) !!}">{{ strtoupper($category->name) }}</a>
 		&gt;
-		<a href="{!! route('categories.subcats.show', [$category->id, $subcat->id]) !!}">{{ strtoupper($subcat->name) }}</a>
+		<a href="{!! route('kategorije.potkategorije.show', [$category->slug, $subcat->slug]) !!}">{{ strtoupper($subcat->name) }}</a>
 	</h4>
 
 	@if(Auth::check())

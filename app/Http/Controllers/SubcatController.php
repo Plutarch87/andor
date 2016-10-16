@@ -17,16 +17,16 @@ class SubcatController extends Controller
         return view('subcats.index');
     }
 
-    public function store(Request $request, Category $category, Subcat $subcat)
+    public function store(Request $request,  $id)
     {
-        
-    	$this->validate($request, [
+        $this->validate($request, [
             'name' => 'required|max:255',
-            ]);
+        ]);
 
         $subcat = Subcat::create([
             'name' => $request->name,
-            'category_id' => $category->id,
+            'slug' => str_slug($request->name),
+            'category_id' => $id
             ]);
 
         return back();
@@ -36,7 +36,7 @@ class SubcatController extends Controller
     {        
         $items = $subcat->items()->orderBy('created_at', 'desc')->paginate(12);
         
-        return view('categories.subcats.show', compact('category', 'subcat', 'items'));
+        return view('kategorije.potkategorije.show', compact('category', 'subcat', 'items'));
     }
 
     public function destroy(Request $request, Subcat $subcat)

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Category;
+use App\Subcat;
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -26,8 +28,16 @@ class RouteServiceProvider extends ServiceProvider
     {       
         parent::boot($router);
 
-        $router->model('categories', 'App\Category');
-        $router->model('subcats', 'App\Subcat');
+        $router->bind('kategorije', function($value)
+        {
+            return Category::where('slug', $value)->first();
+        });
+
+        $router->bind('potkategorije', function($value)
+        {
+            return Subcat::where('slug', $value)->first();
+        });
+
         $router->model('items', 'App\Item');
         $router->model('order', 'App\Order');
         $router->model('cart', 'App\Cart');

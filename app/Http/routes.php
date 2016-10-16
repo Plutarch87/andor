@@ -51,14 +51,27 @@ Route::get('/', [
 		'uses' => 'CategoryController@index',
 	]);
 // KATEGORIJE
+Route::get('kategorije', [
+		'as' => 'kategorije.index',
+		'uses' => 'CategoryController@index'
+	]);
+Route::get('kategorije/{kategorije}', [
+		'as' => 'kategorije.show',
+		'uses' => 'CategoryController@show'
+	]);
 Route::resource('categories', 'CategoryController', [
-		'only' => ['index', 'show', 'store', 'destroy'],
+		'only' => [ 'store',  'destroy'],
 	]);
 
 // POTKATEGORIJE
 Route::delete('subcats/{subcat}', [
 	'uses' => 'SubcatController@destroy',
 	'as' => 'subcats.destroy'
+	]);
+
+Route::get('kategorije/{kategorije}/{potkategorije}', [
+		'as' => 'kategorije.potkategorije.show',
+		'uses' => 'SubcatController@show'
 	]);
 
 Route::resource('categories.subcats', 'SubcatController');

@@ -14,7 +14,7 @@ class CategoryController extends Controller
     protected $categories;
 
     /**
-     * Construct
+     * Constructor
      */
     public function __construct(CategoryRepository $categories)
     {
@@ -44,7 +44,7 @@ class CategoryController extends Controller
     {
         $items = $category->items()->orderBy('created_at', 'desc')->paginate(12);
 
-        return view('categories.show', compact('category', 'items'));
+        return view('kategorije.show', compact('category', 'items'));
     }
 
     /**
@@ -57,6 +57,7 @@ class CategoryController extends Controller
             ]);
         $request->user()->categories()->create([
             'name' => $request->name,
+            'slug' => str_slug($request->name)
             ]);
         
         return back();
@@ -65,8 +66,9 @@ class CategoryController extends Controller
     /**
      * Delete
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
+        $category = Category::find($id);
         $category->delete();
 
         return back();
