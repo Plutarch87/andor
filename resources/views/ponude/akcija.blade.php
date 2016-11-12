@@ -15,11 +15,9 @@
                         <h4>{{ $item->price }}</h4>
                     </span>
                 </div>
-            @if($item->akcija)
                 <div class="akcijatag">
                     <span>Akcija</span>
                 </div>
-            @endif
             <a data-toggle="modal" href="#item-modal{{ $item->id }}">{!! Html::image('storage/andor/'.$item->img, $item->name) !!}</a>
                 @include('partials.modals.item')            
             </div>

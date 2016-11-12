@@ -40,9 +40,12 @@
 		</div>
 	@else
 		<div class="row">
-			<div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
+			<div class="col-xs-12" style="text-align:center; text-transform:uppercase; position:relative; left:17%; margin-top:8%;">
 				<h2>Nemate predmeta u korpi</h2>
 			</div>
+		</div>
+		<div class="cockdiv">
+			
 		</div>
 
 	@endif

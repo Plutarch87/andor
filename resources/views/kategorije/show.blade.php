@@ -40,13 +40,12 @@
                 {!! Html::image('storage/andor/'.$item->img, $item->name) !!}
             </a>
                 @include('partials.modals.item')
-            @if($item->akcija)
+                @include('partials.ponuda')
                 <div class="price-tag">
                     <span>
                         <h4 id="{{ $item->name }}">{{ $item->price }}</h4>
                     </span>
-                </div>
-            @endif
+</div>
             @if(Auth::check())                         
                 <a class="btn-sm btn-default" data-toggle="modal" href="#updateItem{{ $item->id }}">Izmeni</a>
                 {{--MODAL--}}
@@ -67,9 +66,7 @@
             @else
                 <a href="{{ route('item.addToCart', $item) }}#{{ $item->name }}" class="btn btn-success myShoppingCart"></a>
             @endif
-            @if($item->popularno)
             <button type="button" class="btn btn-danger">{{ $item->sifra }}</button>
-            @endif
         </div>
     </div>
 @endforeach

@@ -140,7 +140,7 @@ a {
 	opacity: 1;
 	transition: all 0.4s;
 	line-height: 20px!important;
-	display: inline!important;
+	/*display: inline!important;*/
 }
 
 .nav li a:hover {
@@ -254,7 +254,7 @@ button #kontaktM:focus {
 }
 
 .nlibestseller:hover {
-	background-color: #3E62F5;
+	background-color: #FF9A26;
 	color: #fff;
 	transition: all 0.7s;
 }
@@ -677,8 +677,17 @@ body.viewport-lg {
 .shopdiv img {
 	width: auto!important;
 	height: auto!important;
-	/*max-height: 181px;*/
-	max-width: 100%;
+	max-height: 181px;
+	max-width: 80%;
+	cursor: -webkit-zoom-in;
+
+}
+
+.cockdiv {
+	background-image: url('images/sadpenis.png');
+	background-repeat: no-repeat;
+	height: 400px;
+	margin-left: 48%;
 
 }
 
@@ -1824,11 +1833,15 @@ text-transform: uppercase;
 	
 }
 
-	.pagination li a {
+.pagination li a {
 		color: #E92FE3;
 	}
 
-	.navbar-nav {
+.navbar-nav {
 		text-align: center;
 		text-transform: uppercase;	
 	}
+
+.modal-body img {
+	max-height: 650px;
+}

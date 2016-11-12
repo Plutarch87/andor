@@ -8,9 +8,9 @@
 
 @section('content')
 	<h4>
-		<a href="{!! route('categories.show', $category->id) !!}">{{ strtoupper($category->name) }}</a>
+		<a href="{!! route('kategorije.show', $category->slug) !!}">{{ strtoupper($category->name) }}</a>
 		&gt;
-		<a href="{!! route('categories.subcats.show', [$category->id, $subcat->id]) !!}">{{ strtoupper($subcat->name) }}</a>
+		<a href="{!! route('kategorije.potkategorije.show', [$category->slug, $subcat->slug]) !!}">{{ strtoupper($subcat->name) }}</a>
 	</h4>
 
 	@if(Auth::check())
@@ -42,13 +42,11 @@
 	        <a data-toggle="modal" data-target="#item-modal{{ $item->id }}">	        	
 	        	{!! Html::image('storage/andor/'.$item->img, $item->name) !!}
 	        </a>
-	        @if($item->akcija)
 	            <div class="price-tag">
 	                <span>
 	                    <h4 id="{{ $item->name }}">{{ $item->price }}</h4>
 	                </span>
-	            </div>
-	        @endif
+</div>
 	            @include('partials.modals.item')
 	        @if(Auth::check())	                       
 	            <a class="btn-sm btn-default" data-toggle="modal" href="#updateItem{{ $item->id }}">Izmeni</a>
@@ -70,9 +68,7 @@
 	        @else
                 <a href="{{ route('item.addToCart', $item) }}#{{ $item->name }}" class="btn btn-success myShoppingCart"></a>
 	        @endif
-	        @if($item->popularno)
 		        <button type="button" class="btn btn-danger">{{ $item->sifra }}</button>
-	        @endif
 	    </div>
 	</div>
 @endforeach

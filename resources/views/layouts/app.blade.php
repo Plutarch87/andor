@@ -55,7 +55,7 @@
                 {!! Html::image('assets/images/hd.png', null, ['id' => 'logo']) !!}
             </a>
 			<ul class="nlistwrapper hidden-xs">
-				<a class="nlinew"href="#"><li>Novo</li></a>
+				<a class="nlinew"href="{!! url('ponude/novo') !!}"><li>Novo</li></a>
 				<a class="nlibestseller"href="{!! url('ponude/popular') !!}"><li>Hot</li></a>    
 				<a class="nlisale"href="{!! url('ponude/akcija') !!}"><li>Akcija</li></a>
 				@if(Auth::check())
@@ -84,7 +84,7 @@
         <ul class="nav navbar-nav">
             @foreach ($categories as $category)
                 <li>
-                    <a href="{{ route('categories.show', $category->id) }}">{{ $category->name }}</a>
+                    <a href="{{ route('kategorije.show', $category->id) }}">{{ $category->name }}</a>
                 </li>
                 <hr>
             @endforeach
@@ -94,46 +94,9 @@
 @show   
     
 </div>
-
-<div class="carousel-wrapper hidden-xs">
-
-<div id="theCarousel" class="carousel slide" data-ride="carousel">
-	<ul class="carousel-indicators">
-		<li data-target="#theCarousel" data-slide-to="0" class="active"></li>
-		<li data-target="#theCarousel" data-slide-to="1"></li>
-		<li data-target="#theCarousel" data-slide-to="2"></li>
-	</ul>
-
-
-	<div class="carousel-inner" role="listbox">
-		<div class="item active">
-			<img src="{{ url(asset("assets/images/carousel/akcija.png")) }}" alt="a">
-		</div>
-
-		<div class="item">
-			<img src="{{ url(asset("assets/images/carousel/How-a-Magic-Ritual-Can-Save-Your-Sex-Toys.jpg")) }}" alt="a">
-		</div>
-
-		<div class="item">
-			<img src="{{ url(asset("assets/images/carousel/160310-sex-pop-up.png")) }}" alt="a">
-		</div>
-
-	</div>
-
-	<a class="left carousel-control" href="#theCarousel" role="button" data-slide="prev">
-		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-		<span class="sr-only">Previous</span>
-	</a>
-	<a class="right carousel-control" href="#theCarousel" role="button" data-slide="next">
-		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-		<span class="sr-only">Next</span>
-	</a>
-</div>
-</div>
-
-	</header>
-</section>
-
+{{-- CAROUSEL --}}
+@include('partials.carousel')
+{{-- END --}}
 @section('sidebar')
 <section style="background-color: #EDD9F6;" id="section2">
     <div class="row">
@@ -141,12 +104,12 @@
             <ul>
                 @foreach ($categories as $category)
                     <li>
-                        <a href="{{ route('categories.show', $category->id) }}">{{ $category->name }}</a>
+                        <a href="{{ route('kategorije.show', $category->slug) }}">{{ $category->name }}</a>
                         <ul>
                             @if(Auth::check())
                                 <li>
                                     {!! Form::open(['route' => ['categories.subcats.store', $category->id]]) !!}
-                                    {!! Form::text('name') !!}
+                                    {!! Form::text('name', null, ['style' => 'width:100%']) !!}
                                 </li>
                                 <li>
                                     {!! Form::submit('Dodaj Potkategoriju', ['class' => 'btn-xs btn-danger']) !!}
@@ -156,7 +119,7 @@
                          
                             @foreach($category->subcats as $subcat)
                                 <li> 
-                                    <a href="{{ route('categories.subcats.show', array($category->id, $subcat->id)) }}">{{ $subcat->name }}</a>
+                                    <a href="{{ route('kategorije.potkategorije.show', [$category->slug, $subcat->slug]) }}">{{ $subcat->name }}</a>
                                 {{-- DELETE SUBCATEGORY --}}
                                     @if(Auth::check())
                                         <span >

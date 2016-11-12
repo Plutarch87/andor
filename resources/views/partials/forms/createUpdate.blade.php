@@ -26,9 +26,12 @@
 	<div class="col-sm-offset-2 col-sm-3">
 		{{ Form::label('akcija', 'Akcija') }}
 		{{ Form::checkbox('akcija') }}
-
-		{{ Form::label('popularno', 'Najprodavanije') }}
+		<br>
+		{{ Form::label('popularno', 'Hot') }}
 		{{ Form::checkbox('popularno') }}
+		<br>
+		{{ Form::label('novo', 'Novo') }}
+		{{ Form::checkbox('novo') }}
 	</div>
 </div>
 <hr>
