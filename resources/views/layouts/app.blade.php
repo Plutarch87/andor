@@ -14,6 +14,7 @@
 <!-- SCRIPTS -->
 {!! Html::script('assets/jquery-1.12.0.min.js') !!}
 {!! Html::script('assets/bootstrap.js') !!}
+{!! Html::script('assets/cart.js') !!}
 @stack('scripts')
 	<title>Hexor - @yield('title')</title>
 </head>
@@ -63,11 +64,31 @@
 				@endif
 			</ul>
 			<div class="shopingwrapper">
-				<span id="shopcircle" class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : '0' }}</span>
-				<a href="{{ route('item.showCart') }}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+				
+				<a href="{{ route('item.showCart') }}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span id="shopcircle" class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : null }}</span></a>
                 <div>
 			</div>
 		</div>
+</div>
+
+<div class="modal" id="cart">    
+    <div class="modal-content">        
+        <div class="list-group" id="cartModal">
+            
+        </div>    
+    </div>
+</div>
+<div class="modal" id="checkout">    
+    <div class="modal-content">        
+        <div class="list-group" id="chck">
+            <div class="modal-header">
+                <h1>Vasi Podaci<span class="pull-right close">&times;</span></h1>
+            </div>
+            {{ Form::open(['action' => ['CartController@postCheckout'], 'role' => 'form', 'id' => 'checkout-form']) }}
+                @include('partials.forms.order')
+            {{ Form::close() }}
+        </div>    
+    </div>
 </div>
 <!-- NAVBAR -->
     <nav class="navbar navbar-default hidden-lg hidden-md hidden-sm">
@@ -89,11 +110,12 @@
                 <hr>
             @endforeach
         </ul>
+        </div>
     </div>
+    </nav>
 
 @show   
     
-</div>
 {{-- CAROUSEL --}}
 @include('partials.carousel')
 {{-- END --}}
@@ -158,7 +180,7 @@
                     <strong>{{ Session::get('success') }}</strong>
                 </div>
             @endif
-             
+            
         <div class="col-sm-9 col-xs-7">
             <div class="main-content">
             <div class="container-fluid">

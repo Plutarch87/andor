@@ -26,7 +26,7 @@
     </div>
     <div class="modal-body">            
         {!! Form::open(['files' => true, 'class' => 'form-horizontal', 'role' => 'form', 'route' => ['items.store']]) !!}
-                @include('partials.forms.createUpdate', ['submitButton' => 'Napravi'])
+            @include('partials.forms.createUpdate', ['submitButton' => 'Napravi'])
         {!! Form::close() !!}
     </div>
 </div>
@@ -45,7 +45,7 @@
                     <span>
                         <h4 id="{{ $item->name }}">{{ $item->price }}</h4>
                     </span>
-</div>
+                </div>
             @if(Auth::check())                         
                 <a class="btn-sm btn-default" data-toggle="modal" href="#updateItem{{ $item->id }}">Izmeni</a>
                 {{--MODAL--}}
@@ -64,7 +64,7 @@
                 </div>
                 @include('partials.forms.delete', ['route' => 'items.destroy', 'id' => $item->id])
             @else
-                <a href="{{ route('item.addToCart', $item) }}#{{ $item->name }}" class="btn btn-success myShoppingCart"></a>
+                <a href="{{ route('item.addToCart', $item) }}" class="btn btn-success myShoppingCart"></a>
             @endif
             <button type="button" class="btn btn-danger">{{ $item->sifra }}</button>
         </div>

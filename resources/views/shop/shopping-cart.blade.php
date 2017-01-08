@@ -18,8 +18,8 @@
 							<div class="btn-group">
 								<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">Action<span class="caret"></span></button>
 								<ul class="dropdown-menu">
-									<li><a href="{{ route('item.reduceByOne', ['id' => $item['item']['id']]) }}">Reduce by 1</a></li>
-									<li><a href="{{ route('item.removeItem', ['id' => $item['item']['id']]) }}">Reduce All</a></li>
+									<li><a class="minusOne" href="{{ route('item.reduceByOne', ['id' => $item['item']['id']]) }}">Reduce by 1</a></li>
+									<li><a class="minusAll" href="{{ route('item.removeItem', ['id' => $item['item']['id']]) }}">Reduce All</a></li>
 								</ul>
 							</div>
 						</li>

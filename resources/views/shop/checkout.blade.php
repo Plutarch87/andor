@@ -11,8 +11,7 @@
 			<h1>Naruci</h1>
 			<hr>
 			<h4>Ukupno: {{ $total }} din</h4>
-			<hr>
-			
+			<hr>			
 			{{ Form::open(['action' => ['CartController@postCheckout'], 'role' => 'form', 'id' => 'checkout-form']) }}
 				@include('partials.forms.order')
 			{{ Form::close() }}

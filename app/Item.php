@@ -15,11 +15,6 @@ class Item extends Model
 
     protected $fillable = ['name', 'price', 'sifra', 'description', 'img', 'akcija', 'popularno', 'category_id', 'subcat_id', 'created_at'];
 
-    // protected $casts = [
-    // 'category_id' => 'integer',
-    // 'subcat_id' => 'integer',
-    // ];
-
     public function category()
     {
     	return $this->belongsTo(Category::class);

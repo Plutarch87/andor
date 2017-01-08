@@ -10,6 +10,10 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('proba.php', function(){
+		return response()->json(session('cart'));
+});
+
 Route::post('send-email', [
 		'as' => 'sendEmail',
 		'uses' => 'ItemController@sendEmailReminder'
@@ -46,7 +50,7 @@ Route::post('checkout', [
 	]);
 
 Route::get('/', [
-'middleware' => 'auth',
+// 'middleware' => 'auth',
 		'as' => 'index',
 		'uses' => 'CategoryController@index',
 	]);
@@ -94,4 +98,22 @@ Route::group(['prefix' => 'inactive'], function(){
 	Route::delete('/{item}', ['as' => 'inactive.delete', 'uses' => 'ItemController@deleteTrashed']);
 });
 
-Route::auth();
+Route::get('carousel', [
+	'middleware' => 'auth',
+	'as' => 'carousel.index',
+	'uses' => 'CarouselController@index'
+]);
+
+Route::post('carousel', [
+	'middleware' => 'auth',
+	'as' => 'carousel.store',
+	'uses' => 'CarouselController@store'
+]);
+
+Route::get('andor-admin', function(){
+	return view('auth.login');
+});
+
+Route::post('andor-admin', 'Auth\AuthController@login');
+
+Route::get('logout', 'Auth\AuthController@logout');

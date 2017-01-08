@@ -19,12 +19,13 @@ class CartController extends Controller
     public function addToCart(Request $request, $id)
     {
     	$item = Item::find($id);
-        $oldCart = Session::has('cart') ? Session::get('cart') : '';
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
         $cart->add($item, $item->id);
 
         $request->session()->put('cart', $cart);
-        return back();
+
+        return response()->json($cart);
     }
 
     public function getReduceByOne($id)
@@ -35,7 +36,8 @@ class CartController extends Controller
 
         Session::put('cart', $cart);
 
-        return redirect()->route('item.showCart');
+        return response()->json($cart);
+
     }
 
     public function getRemoveItem($id)
@@ -53,7 +55,7 @@ class CartController extends Controller
             Session::forget('cart');
         }
 
-        return redirect()->route('item.showCart');
+        return response()->json($cart);
     }    
 
     public function showCart()
@@ -65,7 +67,8 @@ class CartController extends Controller
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
 
-        return view('shop.shopping-cart', ['items' => $cart->items, 'totalPrice' => $cart->totalPrice]);
+        // return view('shop.shopping-cart', ['items' => $cart->items, 'totalPrice' => $cart->totalPrice]);
+        return response()->json($cart);
     }
 
     public function getCheckout(Request $request)
@@ -79,7 +82,8 @@ class CartController extends Controller
         
         $total = $cart->totalPrice;
 
-        return view('shop.checkout', compact('total'));                
+        // return view('shop.checkout', compact('total'));                
+        return response()->json($total);
     }
 
     public function postCheckout(Request $request, Item $item)
@@ -99,6 +103,7 @@ class CartController extends Controller
 
         $data = [$request->input()];
         $order->cart = unserialize($order->cart);
+
         Mail::send('emails.order', ['request' => $request,'order' => $order, 'cart' => $cart], function ($m) use ($request, $order, $cart) { 
             $m->from('mrzi.me.87@gmail.com', 'Hexor');
 

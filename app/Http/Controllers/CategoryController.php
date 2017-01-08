@@ -18,11 +18,11 @@ class CategoryController extends Controller
      */
     public function __construct(CategoryRepository $categories)
     {
-        $this->middleware('auth', [
-                'except' => [
-                'index', 'show'
-                ]
-            ]);
+        // $this->middleware('auth', [
+        //         'except' => [
+        //         'index', 'show'
+        //         ]
+        //     ]);
 
         $this->categories = $categories;
     }

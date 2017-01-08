@@ -107,6 +107,6 @@ return [
     |
     */
 
-    'sendmail' => 'log',
+    'sendmail' => 'true',
 
 ];
